@@ -1,0 +1,47 @@
+/*
+  VSGH design tokens — PROVISIONAL.
+
+  WEB-065 defines semantic roles, not an approved palette or typeface.
+  WEB-080 (WP04 baseline) is Draft and has not passed the implementation gate.
+  These values are grayscale industrial placeholders so the app can build.
+  They are not the VSGH brand identity. Do not treat them as frozen UX.
+*/
+
+:root {
+  --vsgh-color-background: #f4f2ee;
+  --vsgh-color-surface: #ffffff;
+  --vsgh-color-surface-elevated: #eceae4;
+  --vsgh-color-text: #121417;
+  --vsgh-color-text-secondary: #4b524a;
+  --vsgh-color-accent: #2f4a3c;
+  --vsgh-color-action: #1c2b24;
+  --vsgh-color-success: #215c3a;
+  --vsgh-color-warning: #8a5a12;
+  --vsgh-color-error: #8a1f1f;
+  --vsgh-color-focus: #1c4d7a;
+
+  --vsgh-font-sans: ui-sans-serif, system-ui, sans-serif;
+  --vsgh-font-display: ui-sans-serif, system-ui, sans-serif;
+  --vsgh-font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --vsgh-space-1: 0.25rem;
+  --vsgh-space-2: 0.5rem;
+  --vsgh-space-3: 0.75rem;
+  --vsgh-space-4: 1rem;
+  --vsgh-space-6: 1.5rem;
+  --vsgh-space-8: 2rem;
+  --vsgh-space-12: 3rem;
+
+  --vsgh-radius: 0.125rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

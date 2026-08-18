@@ -1,0 +1,41 @@
+{
+  "name": "vsgh-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "VSGH external corporate website — implementation repository (WP03 Rev B).",
+  "engines": {
+    "node": ">=20.9.0",
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "sbom": "npm sbom --sbom-format cyclonedx --sbom-type application"
+  },
+  "dependencies": {
+    "next": "16.2.12",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.2.12",
+    "eslint-config-prettier": "^10.1.8",
+    "jsdom": "^26.1.0",
+    "prettier": "^3.6.2",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

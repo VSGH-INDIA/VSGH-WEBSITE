@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+@theme inline {
+  --color-background: var(--vsgh-color-background);
+  --color-foreground: var(--vsgh-color-text);
+  --color-surface: var(--vsgh-color-surface);
+  --color-muted: var(--vsgh-color-text-secondary);
+  --color-accent: var(--vsgh-color-accent);
+  --color-action: var(--vsgh-color-action);
+  --color-focus: var(--vsgh-color-focus);
+  --font-sans: var(--vsgh-font-sans);
+  --font-display: var(--vsgh-font-display);
+  --font-mono: var(--vsgh-font-mono);
+}
+
+body {
+  background: var(--vsgh-color-background);
+  color: var(--vsgh-color-text);
+  font-family: var(--vsgh-font-sans);
+}
