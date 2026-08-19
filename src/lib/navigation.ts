@@ -2,8 +2,8 @@ export const PRIMARY_NAV = [
   { label: "About", href: "/about/company" },
   { label: "Materials", href: "/materials/overview" },
   { label: "Technology", href: "/technology/resource-recovery" },
-  { label: "Applications", href: "/applications" },
-  { label: "Research", href: "/research" },
+  { label: "Applications", href: "/applications/aerospace" },
+  { label: "Research", href: "/research/overview" },
   { label: "Sustainability", href: "/sustainability" },
   { label: "Insights", href: "/insights" },
   { label: "Careers", href: "/careers" },
@@ -36,12 +36,33 @@ export const TECHNOLOGY_NAV = [
   { label: "Manufacturing", href: "/technology/manufacturing" },
 ] as const;
 
-const PUBLISHED_PREFIXES = ["/about/", "/materials/", "/technology/"] as const;
+export const APPLICATIONS_NAV = [
+  { label: "Aerospace", href: "/applications/aerospace" },
+  { label: "Defense", href: "/applications/defense" },
+  { label: "Space", href: "/applications/space" },
+  { label: "Advanced industrial", href: "/applications/advanced-industrial" },
+] as const;
+
+export const RESEARCH_NAV = [
+  { label: "Overview", href: "/research/overview" },
+  { label: "Research areas", href: "/research/research-areas" },
+  { label: "Publications", href: "/research/publications" },
+] as const;
+
+const PUBLISHED_PREFIXES = [
+  "/about/",
+  "/materials/",
+  "/technology/",
+  "/applications/",
+  "/research/",
+] as const;
 
 const CURRENT_DOMAINS = [
   { hrefPrefix: "/about", pathPrefix: "/about/" },
   { hrefPrefix: "/materials", pathPrefix: "/materials/" },
   { hrefPrefix: "/technology", pathPrefix: "/technology/" },
+  { hrefPrefix: "/applications", pathPrefix: "/applications/" },
+  { hrefPrefix: "/research", pathPrefix: "/research/" },
 ] as const;
 
 export function isPublishedPath(href: string): boolean {

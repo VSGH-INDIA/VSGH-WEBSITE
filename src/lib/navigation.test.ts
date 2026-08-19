@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
   ABOUT_NAV,
+  APPLICATIONS_NAV,
   isPrimaryNavCurrent,
   isPublishedPath,
   MATERIALS_NAV,
   PRIMARY_NAV,
+  RESEARCH_NAV,
   TECHNOLOGY_NAV,
 } from "./navigation";
 
@@ -27,42 +29,40 @@ describe("WEB-081 primary navigation", () => {
     expect(PRIMARY_NAV[0]?.href).toBe("/about/company");
     expect(PRIMARY_NAV[1]?.href).toBe("/materials/overview");
     expect(PRIMARY_NAV[2]?.href).toBe("/technology/resource-recovery");
+    expect(PRIMARY_NAV[3]?.href).toBe("/applications/aerospace");
+    expect(PRIMARY_NAV[4]?.href).toBe("/research/overview");
   });
 });
 
 describe("WEB-081 domain trees", () => {
-  it("lists About, Materials, and Technology children", () => {
+  it("lists implemented domain children", () => {
     expect(ABOUT_NAV).toHaveLength(7);
-    expect(MATERIALS_NAV.map((item) => item.href)).toEqual([
-      "/materials/overview",
-      "/materials/material-development",
-      "/materials/metallurgy",
-      "/materials/processing",
-      "/materials/qualification",
+    expect(MATERIALS_NAV).toHaveLength(5);
+    expect(TECHNOLOGY_NAV).toHaveLength(5);
+    expect(APPLICATIONS_NAV.map((item) => item.href)).toEqual([
+      "/applications/aerospace",
+      "/applications/defense",
+      "/applications/space",
+      "/applications/advanced-industrial",
     ]);
-    expect(TECHNOLOGY_NAV.map((item) => item.href)).toEqual([
-      "/technology/resource-recovery",
-      "/technology/purification",
-      "/technology/alloy-development",
-      "/technology/advanced-materials",
-      "/technology/manufacturing",
+    expect(RESEARCH_NAV.map((item) => item.href)).toEqual([
+      "/research/overview",
+      "/research/research-areas",
+      "/research/publications",
     ]);
   });
 });
 
 describe("nav helpers", () => {
   it("treats published domain children as current and prefetchable", () => {
-    expect(isPublishedPath("/materials/overview")).toBe(true);
-    expect(isPublishedPath("/technology/purification")).toBe(true);
-    expect(isPublishedPath("/applications/aerospace")).toBe(false);
+    expect(isPublishedPath("/applications/aerospace")).toBe(true);
+    expect(isPublishedPath("/research/publications")).toBe(true);
+    expect(isPublishedPath("/contact")).toBe(false);
     expect(
-      isPrimaryNavCurrent("/materials/overview", "/materials/qualification"),
+      isPrimaryNavCurrent("/applications/aerospace", "/applications/space"),
     ).toBe(true);
     expect(
-      isPrimaryNavCurrent(
-        "/technology/resource-recovery",
-        "/materials/overview",
-      ),
+      isPrimaryNavCurrent("/research/overview", "/applications/aerospace"),
     ).toBe(false);
   });
 });
