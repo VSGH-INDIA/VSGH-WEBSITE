@@ -57,6 +57,7 @@ async function cachedPublishedQuery<T>(
   try {
     return (
       (await client.fetch<T>(groq, params, {
+        useCdn: false,
         next: { revalidate: 3600, tags: ["sanity"] },
       })) ?? null
     );
