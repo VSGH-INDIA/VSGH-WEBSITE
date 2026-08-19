@@ -1,13 +1,6 @@
-import { CapabilityPageView } from "@/components/domain/capability-page-view";
+import { capabilityRoute } from "@/lib/cms-routes";
 import { sustainabilityPage } from "@/content/sustainability";
-import { pageMetadata } from "@/lib/seo";
 
-export const metadata = pageMetadata({
-  title: sustainabilityPage.seoTitle,
-  description: sustainabilityPage.description,
-  path: sustainabilityPage.path,
-});
-
-export default function SustainabilityPage() {
-  return <CapabilityPageView page={sustainabilityPage} />;
-}
+const route = capabilityRoute(sustainabilityPage);
+export const generateMetadata = route.generateMetadata;
+export default route.Page;

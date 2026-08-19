@@ -14,9 +14,11 @@ import { contactPage } from "@/content/contact";
 import { isPublishedPath } from "@/lib/navigation";
 import Link from "next/link";
 
-export function ContactPageView() {
-  const page = contactPage;
-
+export function ContactPageView({
+  page = contactPage,
+}: {
+  page?: typeof contactPage;
+}) {
   return (
     <main id="main">
       <DomainJsonLd

@@ -1,16 +1,7 @@
-import { CapabilityPageView } from "@/components/domain/capability-page-view";
+import { capabilityRoute } from "@/lib/cms-routes";
 import { materialsPages } from "@/content/materials";
 import { MATERIALS_NAV } from "@/lib/navigation";
-import { pageMetadata } from "@/lib/seo";
 
-const page = materialsPages.overview;
-
-export const metadata = pageMetadata({
-  title: page.seoTitle,
-  description: page.description,
-  path: page.path,
-});
-
-export default function Page() {
-  return <CapabilityPageView page={page} nav={MATERIALS_NAV} />;
-}
+const route = capabilityRoute(materialsPages.overview, MATERIALS_NAV);
+export const generateMetadata = route.generateMetadata;
+export default route.Page;

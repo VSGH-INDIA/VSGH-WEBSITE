@@ -20,7 +20,7 @@ The public site is isolated from VSGH internal systems. No V1 PostgreSQL databas
 src/app/          App Router (server components by default)
 src/styles/       Design tokens — PROVISIONAL — NOT FINAL VSGH BRAND TOKENS
 src/lib/          Shared typed utilities
-src/sanity/       CMS entity names only (WEB-034); no live client
+src/sanity/       Public CMS schemas + server-only client (Studio is not a public route)
 docs/             Index, hierarchy, conflicts, decision records
 docs/library/     Versioned copies of library files changed in VSGH-CURSOR-TASK-001
 .github/          CI quality gates
@@ -31,6 +31,6 @@ V1 public sitemap: **WEB-081**. Implemented: `/`, About children, Materials chil
 ## Not in this bootstrap
 
 - Nested Insights children (not frozen in WEB-081)
-- Sanity Studio as a public route
+- Sanity Studio as a public www.vsgh.com route
 - Analytics (NOT APPROVED / NOT IMPLEMENTED)
 - Contact form backend (email TBD / not selected)
