@@ -3,7 +3,9 @@ import {
   ABOUT_NAV,
   isPrimaryNavCurrent,
   isPublishedPath,
+  MATERIALS_NAV,
   PRIMARY_NAV,
+  TECHNOLOGY_NAV,
 } from "./navigation";
 
 describe("WEB-081 primary navigation", () => {
@@ -21,30 +23,46 @@ describe("WEB-081 primary navigation", () => {
     ]);
   });
 
-  it("lands About on the implemented company page until /about exists", () => {
+  it("lands implemented domains on first published children", () => {
     expect(PRIMARY_NAV[0]?.href).toBe("/about/company");
+    expect(PRIMARY_NAV[1]?.href).toBe("/materials/overview");
+    expect(PRIMARY_NAV[2]?.href).toBe("/technology/resource-recovery");
   });
 });
 
-describe("WEB-081 About domain", () => {
-  it("implements exactly the seven approved child paths", () => {
-    expect(ABOUT_NAV.map((item) => item.href)).toEqual([
-      "/about/company",
-      "/about/vision",
-      "/about/mission",
-      "/about/leadership",
-      "/about/scientific-integrity",
-      "/about/quality",
-      "/about/facilities",
+describe("WEB-081 domain trees", () => {
+  it("lists About, Materials, and Technology children", () => {
+    expect(ABOUT_NAV).toHaveLength(7);
+    expect(MATERIALS_NAV.map((item) => item.href)).toEqual([
+      "/materials/overview",
+      "/materials/material-development",
+      "/materials/metallurgy",
+      "/materials/processing",
+      "/materials/qualification",
+    ]);
+    expect(TECHNOLOGY_NAV.map((item) => item.href)).toEqual([
+      "/technology/resource-recovery",
+      "/technology/purification",
+      "/technology/alloy-development",
+      "/technology/advanced-materials",
+      "/technology/manufacturing",
     ]);
   });
 });
 
 describe("nav helpers", () => {
-  it("treats About children as published and current under About", () => {
-    expect(isPublishedPath("/about/vision")).toBe(true);
-    expect(isPublishedPath("/materials")).toBe(false);
-    expect(isPrimaryNavCurrent("/about/company", "/about/quality")).toBe(true);
-    expect(isPrimaryNavCurrent("/materials", "/about/company")).toBe(false);
+  it("treats published domain children as current and prefetchable", () => {
+    expect(isPublishedPath("/materials/overview")).toBe(true);
+    expect(isPublishedPath("/technology/purification")).toBe(true);
+    expect(isPublishedPath("/applications/aerospace")).toBe(false);
+    expect(
+      isPrimaryNavCurrent("/materials/overview", "/materials/qualification"),
+    ).toBe(true);
+    expect(
+      isPrimaryNavCurrent(
+        "/technology/resource-recovery",
+        "/materials/overview",
+      ),
+    ).toBe(false);
   });
 });

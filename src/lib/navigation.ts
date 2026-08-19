@@ -1,7 +1,7 @@
 export const PRIMARY_NAV = [
   { label: "About", href: "/about/company" },
-  { label: "Materials", href: "/materials" },
-  { label: "Technology", href: "/technology" },
+  { label: "Materials", href: "/materials/overview" },
+  { label: "Technology", href: "/technology/resource-recovery" },
   { label: "Applications", href: "/applications" },
   { label: "Research", href: "/research" },
   { label: "Sustainability", href: "/sustainability" },
@@ -20,13 +20,41 @@ export const ABOUT_NAV = [
   { label: "Facilities", href: "/about/facilities" },
 ] as const;
 
+export const MATERIALS_NAV = [
+  { label: "Overview", href: "/materials/overview" },
+  { label: "Material development", href: "/materials/material-development" },
+  { label: "Metallurgy", href: "/materials/metallurgy" },
+  { label: "Processing", href: "/materials/processing" },
+  { label: "Qualification", href: "/materials/qualification" },
+] as const;
+
+export const TECHNOLOGY_NAV = [
+  { label: "Resource recovery", href: "/technology/resource-recovery" },
+  { label: "Purification", href: "/technology/purification" },
+  { label: "Alloy development", href: "/technology/alloy-development" },
+  { label: "Advanced materials", href: "/technology/advanced-materials" },
+  { label: "Manufacturing", href: "/technology/manufacturing" },
+] as const;
+
+const PUBLISHED_PREFIXES = ["/about/", "/materials/", "/technology/"] as const;
+
+const CURRENT_DOMAINS = [
+  { hrefPrefix: "/about", pathPrefix: "/about/" },
+  { hrefPrefix: "/materials", pathPrefix: "/materials/" },
+  { hrefPrefix: "/technology", pathPrefix: "/technology/" },
+] as const;
+
 export function isPublishedPath(href: string): boolean {
-  return href === "/" || href.startsWith("/about/");
+  return (
+    href === "/" || PUBLISHED_PREFIXES.some((prefix) => href.startsWith(prefix))
+  );
 }
 
 export function isPrimaryNavCurrent(href: string, pathname: string): boolean {
-  if (href.startsWith("/about")) {
-    return pathname.startsWith("/about/");
+  for (const domain of CURRENT_DOMAINS) {
+    if (href.startsWith(domain.hrefPrefix)) {
+      return pathname.startsWith(domain.pathPrefix);
+    }
   }
   return pathname === href || pathname.startsWith(`${href}/`);
 }
