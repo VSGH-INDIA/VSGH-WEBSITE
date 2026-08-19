@@ -1,5 +1,6 @@
 import "server-only";
 import { createClient, type SanityClient } from "@sanity/client";
+import { isConfiguredSecret } from "@/lib/security-headers";
 import { getSanityEnv, isSanityConfigured } from "@/sanity/env";
 
 export function getPublishedSanityClient(): SanityClient | null {
@@ -22,7 +23,7 @@ export function getPreviewSanityClient(): SanityClient | null {
     return null;
   }
   const { projectId, dataset, apiVersion, readToken } = getSanityEnv();
-  if (!readToken) {
+  if (!isConfiguredSecret(readToken)) {
     return null;
   }
   return createClient({

@@ -15,6 +15,31 @@ export const deskStructure: StructureResolver = (S) =>
           S.document().schemaType("contactPage").documentId("contactPage"),
         ),
       S.divider(),
+      S.listItem()
+        .title("Review queue")
+        .child(
+          S.list()
+            .title("Review queue")
+            .items([
+              S.listItem()
+                .title("Technical / IP review")
+                .child(
+                  S.documentList()
+                    .title("lifecycle = review")
+                    .filter("lifecycle == $state")
+                    .params({ state: "review" }),
+                ),
+              S.listItem()
+                .title("Approved, not published")
+                .child(
+                  S.documentList()
+                    .title("lifecycle = approved")
+                    .filter("lifecycle == $state")
+                    .params({ state: "approved" }),
+                ),
+            ]),
+        ),
+      S.divider(),
       S.documentTypeListItem("aboutPage").title("About"),
       S.documentTypeListItem("capabilityPage").title(
         "Materials / Technology / Applications / Research / leaf domains",

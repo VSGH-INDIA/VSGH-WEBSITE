@@ -108,9 +108,9 @@ See `.env.example`. Never commit `.env.local`.
 
 ## Known limitations
 
-- No Sanity project exists in CI; fetch is a no-op.
-- Preview cookie does not yet load draft GROQ.
+- No Sanity project is verified in this environment; fetch is a no-op until a project id is configured.
 - Homepage sections not CMS-driven in the UI.
 - Insight/vacancy cards not rendered (empty by design until real records).
-- Growth workflow UI depends on the Sanity plan.
+- Growth workflow UI and custom RBAC ids depend on the Sanity plan / manage UI.
 - `contactEnquiry` entity remains unimplemented on purpose.
+- MFA, member invites, webhooks, and Vercel secrets: [VSGH-SANITY-PRODUCTION-CONFIGURATION-001](VSGH-SANITY-PRODUCTION-CONFIGURATION-001.md).

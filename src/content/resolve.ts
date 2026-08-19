@@ -3,52 +3,81 @@ import type { AboutPageContent } from "@/content/about";
 import { overlayPublishedContent } from "@/content/sanitize-cms";
 import type { CapabilityPageContent } from "@/content/types";
 import {
+  fetchPreviewAboutPage,
+  fetchPreviewCapabilityPage,
+  fetchPreviewContactPage,
+  fetchPreviewHomepage,
   fetchPublishedAboutPage,
   fetchPublishedCapabilityPage,
   fetchPublishedContactPage,
   fetchPublishedHomepage,
 } from "@/sanity/fetch";
+import { isPreviewSession } from "@/sanity/preview-session";
+
+async function resolveWithPreview<T extends object>(
+  fallback: T,
+  previewFetch: () => Promise<Partial<T> | null>,
+  publishedFetch: () => Promise<Partial<T> | null>,
+  isUsable: (incoming: Partial<T> | null) => boolean,
+): Promise<T> {
+  if (await isPreviewSession()) {
+    const draft = await previewFetch();
+    if (isUsable(draft)) {
+      return overlayPublishedContent(fallback, draft);
+    }
+  }
+  const incoming = await publishedFetch();
+  if (!isUsable(incoming)) {
+    return fallback;
+  }
+  return overlayPublishedContent(fallback, incoming);
+}
 
 export async function resolveCapabilityPage(
   fallback: CapabilityPageContent,
 ): Promise<CapabilityPageContent> {
-  const incoming = await fetchPublishedCapabilityPage(fallback.path);
-  if (!incoming?.headline || !incoming.cta) {
-    return fallback;
-  }
-  return overlayPublishedContent(fallback, incoming);
+  return resolveWithPreview(
+    fallback,
+    () => fetchPreviewCapabilityPage(fallback.path),
+    () => fetchPublishedCapabilityPage(fallback.path),
+    (incoming) => Boolean(incoming?.headline && incoming.cta),
+  );
 }
 
 export async function resolveAboutPage(
   fallback: AboutPageContent,
 ): Promise<AboutPageContent> {
-  const incoming = await fetchPublishedAboutPage(fallback.path);
-  if (!incoming?.headline || !incoming.cta) {
-    return fallback;
-  }
-  return overlayPublishedContent(fallback, incoming);
+  return resolveWithPreview(
+    fallback,
+    () => fetchPreviewAboutPage(fallback.path),
+    () => fetchPublishedAboutPage(fallback.path),
+    (incoming) => Boolean(incoming?.headline && incoming.cta),
+  );
 }
 
 export async function resolveContactPage(
   fallback: typeof contactPage,
 ): Promise<typeof contactPage> {
-  const incoming = await fetchPublishedContactPage();
-  if (!incoming?.headline) {
-    return fallback;
-  }
-  return overlayPublishedContent(fallback, incoming);
+  return resolveWithPreview(
+    fallback,
+    () => fetchPreviewContactPage(),
+    () => fetchPublishedContactPage(),
+    (incoming) => Boolean(incoming?.headline),
+  );
 }
 
 export async function resolveHomepage<T extends object>(
   fallback: T,
 ): Promise<T> {
-  const incoming = await fetchPublishedHomepage();
-  if (
-    !incoming ||
-    typeof incoming.hero !== "object" ||
-    incoming.hero === null
-  ) {
-    return fallback;
-  }
-  return overlayPublishedContent(fallback, incoming as Partial<T>);
+  return resolveWithPreview(
+    fallback,
+    () => fetchPreviewHomepage() as Promise<Partial<T> | null>,
+    () => fetchPublishedHomepage() as Promise<Partial<T> | null>,
+    (incoming) =>
+      Boolean(
+        incoming &&
+        typeof (incoming as { hero?: unknown }).hero === "object" &&
+        (incoming as { hero?: unknown }).hero !== null,
+      ),
+  );
 }
