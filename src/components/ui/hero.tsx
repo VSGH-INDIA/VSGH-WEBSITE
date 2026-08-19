@@ -20,7 +20,7 @@ export function Hero({
   return (
     <div
       className={cn(
-        "vsgh-grid-bg flex min-h-[78vh] flex-col justify-center border-b border-border",
+        "vsgh-grid-bg flex min-h-[var(--vsgh-hero-min)] flex-col justify-center border-b border-border",
         align === "center" && "text-center",
       )}
     >

@@ -59,7 +59,7 @@ export function Metric({
       <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
         {index}
       </p>
-      <p className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
+      <p className="font-display text-[length:var(--vsgh-text-h1)] font-semibold tracking-tight">
         {value}
       </p>
       <p className="text-[length:var(--vsgh-text-meta)] text-muted">{label}</p>

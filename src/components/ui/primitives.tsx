@@ -138,7 +138,7 @@ export function TextLink({
     <a
       href={href}
       className={cn(
-        "underline-offset-4 transition-[color,text-decoration] duration-[var(--vsgh-duration)] ease-[var(--vsgh-ease)] hover:underline",
+        "underline underline-offset-4 transition-[color] duration-[var(--vsgh-duration)] ease-[var(--vsgh-ease)] hover:text-accent-strong",
         className,
       )}
     >

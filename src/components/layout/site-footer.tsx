@@ -1,5 +1,3 @@
-import { Divider } from "@/components/ui/primitives";
-
 export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-border">
@@ -14,7 +12,6 @@ export function SiteFooter() {
           WEB-081 navigation · pages not implemented
         </p>
       </div>
-      <Divider />
     </footer>
   );
 }

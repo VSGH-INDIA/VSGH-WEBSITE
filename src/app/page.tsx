@@ -23,7 +23,7 @@ export default function DesignSystemPage() {
   return (
     <>
       <SiteHeader />
-      <main>
+      <main id="main">
         <div className="border-b border-border bg-surface py-3">
           <Container>
             <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
