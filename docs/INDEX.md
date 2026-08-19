@@ -86,6 +86,8 @@ IA trees in WEB-002, WEB-023, WEB-062 — **SUPERSEDED** (IA portions) by WEB-08
 - [Performance QA](qa/VSGH-PERFORMANCE-QA-001.md)
 - [Public content administration](cms/VSGH-PUBLIC-CONTENT-ADMINISTRATION-001.md)
 - [Sanity production configuration](cms/VSGH-SANITY-PRODUCTION-CONFIGURATION-001.md)
+- [CMS Insights pilot verification](cms/VSGH-CMS-PILOT-VERIFICATION-001.md)
+- [CMS content migration plan](cms/VSGH-CMS-CONTENT-MIGRATION-PLAN-001.md)
 - [Public website security hardening](security/VSGH-PUBLIC-WEBSITE-SECURITY-HARDENING-001.md)
 - [CMS.md](CMS.md)
 - [SECURITY.md](SECURITY.md)

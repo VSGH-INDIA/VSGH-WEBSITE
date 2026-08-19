@@ -1,5 +1,6 @@
 import { contactPage } from "@/content/contact";
 import type { AboutPageContent } from "@/content/about";
+import type { InsightArticle } from "@/content/insight-articles";
 import { overlayPublishedContent } from "@/content/sanitize-cms";
 import type { CapabilityPageContent } from "@/content/types";
 import {
@@ -7,10 +8,12 @@ import {
   fetchPreviewCapabilityPage,
   fetchPreviewContactPage,
   fetchPreviewHomepage,
+  fetchPreviewInsightArticles,
   fetchPublishedAboutPage,
   fetchPublishedCapabilityPage,
   fetchPublishedContactPage,
   fetchPublishedHomepage,
+  fetchPublishedInsightArticles,
 } from "@/sanity/fetch";
 import { isPreviewSession } from "@/sanity/preview-session";
 
@@ -64,6 +67,13 @@ export async function resolveContactPage(
     () => fetchPublishedContactPage(),
     (incoming) => Boolean(incoming?.headline),
   );
+}
+
+export async function resolveInsightArticles(): Promise<InsightArticle[]> {
+  if (await isPreviewSession()) {
+    return fetchPreviewInsightArticles();
+  }
+  return fetchPublishedInsightArticles();
 }
 
 export async function resolveHomepage<T extends object>(

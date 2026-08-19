@@ -13,7 +13,7 @@ VSGH content team → Sanity Studio (admin, not public)
 
 The CMS may hold only approved public information. It is not PLM, LIMS, QMS, COSMOS, HRIS, or an IP repository.
 
-Schemas, fetch fallbacks, revalidation, and RBAC intent: [VSGH-PUBLIC-CONTENT-ADMINISTRATION-001](cms/VSGH-PUBLIC-CONTENT-ADMINISTRATION-001.md). Production admin, preview, webhook, and manual account steps: [VSGH-SANITY-PRODUCTION-CONFIGURATION-001](cms/VSGH-SANITY-PRODUCTION-CONFIGURATION-001.md).
+Schemas, fetch fallbacks, revalidation, and RBAC intent: [VSGH-PUBLIC-CONTENT-ADMINISTRATION-001](cms/VSGH-PUBLIC-CONTENT-ADMINISTRATION-001.md). Production admin, preview, webhook, and manual account steps: [VSGH-SANITY-PRODUCTION-CONFIGURATION-001](cms/VSGH-SANITY-PRODUCTION-CONFIGURATION-001.md). Insights pilot and bulk-migration gate: [VSGH-CMS-PILOT-VERIFICATION-001](cms/VSGH-CMS-PILOT-VERIFICATION-001.md).
 
 WEB-034 names: `src/sanity/entities.ts`. `src/content/*` remains the runtime fallback until a VSGH project is configured and documents are published.
 

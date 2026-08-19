@@ -1,6 +1,5 @@
-import { capabilityRoute } from "@/lib/cms-routes";
-import { insightsPage } from "@/content/insights";
+import { insightsRoute } from "@/lib/cms-routes";
 
-const route = capabilityRoute(insightsPage);
+const route = insightsRoute();
 export const generateMetadata = route.generateMetadata;
 export default route.Page;

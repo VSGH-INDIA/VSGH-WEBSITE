@@ -2,7 +2,10 @@ import { unstable_cache } from "next/cache";
 import type { AboutPageContent } from "@/content/about";
 import type { CareerVacancy } from "@/content/careers";
 import { contactPage } from "@/content/contact";
-import type { InsightArticle } from "@/content/insights";
+import {
+  normalizeInsightArticles,
+  type InsightArticle,
+} from "@/content/insight-articles";
 import type { CapabilityPageContent } from "@/content/types";
 import {
   getPreviewSanityClient,
@@ -137,18 +140,16 @@ export function fetchPreviewContactPage(): Promise<Partial<
 export async function fetchPublishedInsightArticles(): Promise<
   InsightArticle[]
 > {
-  return (
-    (await cachedPublishedQuery<InsightArticle[]>(
-      ["sanity-insights"],
-      INSIGHT_ARTICLES_QUERY,
-    )) ?? []
+  const incoming = await cachedPublishedQuery<unknown>(
+    ["sanity-insights"],
+    INSIGHT_ARTICLES_QUERY,
   );
+  return normalizeInsightArticles(incoming, "published");
 }
 
 export async function fetchPreviewInsightArticles(): Promise<InsightArticle[]> {
-  return (
-    (await previewQuery<InsightArticle[]>(INSIGHT_ARTICLES_PREVIEW_QUERY)) ?? []
-  );
+  const incoming = await previewQuery<unknown>(INSIGHT_ARTICLES_PREVIEW_QUERY);
+  return normalizeInsightArticles(incoming, "preview");
 }
 
 export async function fetchPublishedCareerVacancies(): Promise<
