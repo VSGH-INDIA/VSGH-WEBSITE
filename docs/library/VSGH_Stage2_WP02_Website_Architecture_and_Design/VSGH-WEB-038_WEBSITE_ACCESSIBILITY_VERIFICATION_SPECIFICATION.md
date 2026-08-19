@@ -4,7 +4,7 @@ title: VSGH Website Accessibility Verification Specification
 document_type: Verification Specification
 domain: Stage 2 / WP02 Website Architecture and Design
 revision: B
-status: DRAFT — REVIEW REQUIRED
+status: Approved
 classification: Internal
 owner: Accessibility Authority
 approver: Quality/Verification Authority

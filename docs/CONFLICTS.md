@@ -3,7 +3,9 @@
 Controlled record for VSGH-CURSOR-TASK-001. Historical analysis is retained below the resolution table.
 
 **Date:** 2026-08-19  
-**Revision:** B (resolutions recorded; original analysis kept)
+**Revision:** C (TASK-002 corporate status approval recorded)
+
+TASK-002 did not reopen C-01–C-07. WP01/WP02 were status-approved after consistency review. Residual historical IA text remains in WEB-002/WEB-023/WEB-062 and is governed by WEB-081. WP04 visual execution remains unexecuted (C-02 remaining action).
 
 ## Resolution summary
 

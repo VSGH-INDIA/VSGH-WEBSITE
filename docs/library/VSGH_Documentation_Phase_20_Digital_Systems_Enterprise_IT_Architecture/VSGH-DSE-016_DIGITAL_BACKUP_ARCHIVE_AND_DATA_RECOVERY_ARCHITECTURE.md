@@ -4,7 +4,7 @@ title: VSGH Digital Backup Archive and Data Recovery Architecture
 document_type: Architecture
 domain: Digital Systems and Enterprise IT Architecture
 revision: A
-status: Draft
+status: Approved
 classification: Restricted
 owner: Digital Systems Authority
 approver: Information Security Authority

@@ -31,7 +31,9 @@ Its purpose is to determine whether the VSGH corporate documentation architectur
 23. VSGH-CAR-023 — Corporate Documentation Continual Improvement Framework
 24. VSGH-CAR-024 — Corporate Documentation Architecture Closure Declaration
 
-25. VSGH-CAR-025 — Corporate Documentation Approval Status Audit (**DRAFT — REVIEW REQUIRED**; not a duplicate of CAR-003)
+25. VSGH-CAR-025 — Corporate Documentation Approval Status Audit (**DRAFT — REVIEW REQUIRED**; TASK-001 snapshot; not a duplicate of CAR-003)
+
+26. VSGH-CAR-026 — Corporate Documentation Approval Declaration (**APPROVED**; TASK-002)
 
 ## What Phase 27 Does
 

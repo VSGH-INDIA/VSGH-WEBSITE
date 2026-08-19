@@ -10,14 +10,16 @@ See [PATHS.md](PATHS.md) and [HIERARCHY.md](HIERARCHY.md).
 
 ## Authoritative documents
 
-| Authority                        | Document                                                                                     | Status                             |
-| -------------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------- |
-| Technology                       | WP03 Revision B / WEB-060                                                                    | **APPROVED**                       |
-| UX / design **requirements**     | WP04 / WEB-080                                                                               | **FROZEN — REQUIREMENTS BASELINE** |
-| V1 sitemap / IA                  | [WEB-081](decisions/VSGH-WEB-081_V1_SITEMAP_AND_INFORMATION_ARCHITECTURE_DECISION_RECORD.md) | **APPROVED**                       |
-| Cursor implementation governance | CURSOR-020                                                                                   | **APPROVED / BASELINE**            |
-| Conflict register                | [CONFLICTS.md](CONFLICTS.md)                                                                 | Controlled record                  |
-| Corporate approval audit         | [CAR-025](decisions/VSGH-CAR-025_CORPORATE_DOCUMENTATION_APPROVAL_STATUS_AUDIT.md)           | **DRAFT — REVIEW REQUIRED**        |
+| Authority                        | Document                                                                                     | Status                                                                                                      |
+| -------------------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Corporate documentation          | Phases 0–27 (eligible Draft)                                                                 | **Approved** (TASK-002 / [CAR-026](decisions/VSGH-CAR-026_CORPORATE_DOCUMENTATION_APPROVAL_DECLARATION.md)) |
+| Technology                       | WP03 Revision B / WEB-060                                                                    | **APPROVED**                                                                                                |
+| UX / design **requirements**     | WP04 / WEB-080                                                                               | **FROZEN — REQUIREMENTS BASELINE**                                                                          |
+| V1 sitemap / IA                  | [WEB-081](decisions/VSGH-WEB-081_V1_SITEMAP_AND_INFORMATION_ARCHITECTURE_DECISION_RECORD.md) | **APPROVED**                                                                                                |
+| Cursor implementation governance | CURSOR-020                                                                                   | **APPROVED / BASELINE**                                                                                     |
+| Conflict register                | [CONFLICTS.md](CONFLICTS.md)                                                                 | Controlled record                                                                                           |
+| Corporate approval audit         | [CAR-025](decisions/VSGH-CAR-025_CORPORATE_DOCUMENTATION_APPROVAL_STATUS_AUDIT.md)           | **DRAFT — REVIEW REQUIRED** (snapshot)                                                                      |
+| Corporate approval declaration   | [CAR-026](decisions/VSGH-CAR-026_CORPORATE_DOCUMENTATION_APPROVAL_DECLARATION.md)            | **APPROVED**                                                                                                |
 
 ## Governing hierarchy (summary)
 
@@ -34,22 +36,22 @@ A lower-level document shall not override a higher-level approved baseline. WEB-
 
 ## Corporate documentation
 
-Phases 0–27 live in the documentation library. They are **not** bulk-approved.
+Phases 0–27 live in the documentation library. Eligible Draft numbered documents were status-approved under **VSGH-CURSOR-TASK-002** ([CAR-026](decisions/VSGH-CAR-026_CORPORATE_DOCUMENTATION_APPROVAL_DECLARATION.md)). That change is lifecycle status only, not a rewrite of technical content.
 
-Status audit: [CAR-025](decisions/VSGH-CAR-025_CORPORATE_DOCUMENTATION_APPROVAL_STATUS_AUDIT.md).
+Pre-approval audit snapshot: [CAR-025](decisions/VSGH-CAR-025_CORPORATE_DOCUMENTATION_APPROVAL_STATUS_AUDIT.md).
 
-**ID note:** Task VSGH-CURSOR-TASK-001 asked for `VSGH-CAR-003` as this audit. That ID is already **VSGH-CAR-003 — Documentation Hierarchy and Supremacy Standard**. This audit is issued as **VSGH-CAR-025** to avoid a duplicate ID.
+**ID note:** `VSGH-CAR-003` remains the Hierarchy and Supremacy Standard. The TASK-001 audit is **CAR-025**. The TASK-002 approval declaration is **CAR-026**.
 
 ## Stage 2 website
 
-| Package          | Library folder                                                             | Authority                                                  |
-| ---------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| WP01             | `VSGH_Stage2_WP01_External_Corporate_Website_Implementation_Package`       | Requirements; **DRAFT — REVIEW REQUIRED** at package level |
-| WP02             | `VSGH_Stage2_WP02_Website_Architecture_and_Design`                         | Architecture; **DRAFT — REVIEW REQUIRED** at package level |
-| WP03 Rev B       | `VSGH_Stage2_WP03_APPROVED_Technology_Baseline_REV_B`                      | **APPROVED technology authority**                          |
-| WP03 evaluation  | `VSGH_Stage2_WP03_Technology_Stack_Infrastructure_Development_Environment` | **SUPERSEDED / HISTORICAL**                                |
-| WP04             | `VSGH_Stage2_WP04_UX_Visual_Design_Prototype`                              | **FROZEN requirements**; visual execution not done         |
-| Decision records | this repo `docs/decisions/`                                                | WEB-081, CAR-025                                           |
+| Package          | Library folder                                                             | Authority                                                                                     |
+| ---------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| WP01             | `VSGH_Stage2_WP01_External_Corporate_Website_Implementation_Package`       | **Approved** (TASK-002); IA body in WEB-002 superseded by WEB-081                             |
+| WP02             | `VSGH_Stage2_WP02_Website_Architecture_and_Design`                         | **Approved** (TASK-002); sitemap body in WEB-023 superseded by WEB-081                        |
+| WP03 Rev B       | `VSGH_Stage2_WP03_APPROVED_Technology_Baseline_REV_B`                      | **APPROVED technology authority**                                                             |
+| WP03 evaluation  | `VSGH_Stage2_WP03_Technology_Stack_Infrastructure_Development_Environment` | **SUPERSEDED / HISTORICAL**                                                                   |
+| WP04             | `VSGH_Stage2_WP04_UX_Visual_Design_Prototype`                              | **FROZEN requirements** (WEB-080); other WP04 files remain Draft / review until visual design |
+| Decision records | this repo `docs/decisions/`                                                | WEB-081, CAR-025, CAR-026                                                                     |
 
 ## Cursor governance
 
@@ -60,10 +62,11 @@ Authority: **CURSOR-020**.
 
 - [WEB-081](decisions/VSGH-WEB-081_V1_SITEMAP_AND_INFORMATION_ARCHITECTURE_DECISION_RECORD.md)
 - [CAR-025](decisions/VSGH-CAR-025_CORPORATE_DOCUMENTATION_APPROVAL_STATUS_AUDIT.md)
+- [CAR-026](decisions/VSGH-CAR-026_CORPORATE_DOCUMENTATION_APPROVAL_DECLARATION.md)
 
 ## Historical / superseded
 
-WP03 evaluation package (WEB-041–WEB-060 Draft copies) — **SUPERSEDED** by WP03 Revision B. Files are retained.
+WP03 evaluation package (WEB-041–WEB-060) — **SUPERSEDED** by WP03 Revision B. Files are retained.
 
 IA trees in WEB-002, WEB-023, WEB-062 — **SUPERSEDED** (IA portions) by WEB-081. Files are retained.
 

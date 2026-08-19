@@ -4,7 +4,7 @@ title: VSGH Website Sitemap and URL Architecture
 document_type: Architecture
 domain: Stage 2 / WP02 Website Architecture and Design
 revision: B
-status: DRAFT — REVIEW REQUIRED
+status: Approved
 classification: Internal
 owner: UX/Information Architecture Authority
 approver: Corporate Communications Authority

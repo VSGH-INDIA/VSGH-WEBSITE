@@ -4,7 +4,7 @@ title: VSGH Website Third Party Integration Architecture
 document_type: Integration Architecture
 domain: Stage 2 / WP02 Website Architecture and Design
 revision: B
-status: DRAFT — REVIEW REQUIRED
+status: Approved
 classification: Restricted
 owner: Digital Architecture Authority
 approver: Security Authority
