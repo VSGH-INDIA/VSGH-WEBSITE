@@ -14,9 +14,10 @@ const sans = IBM_Plex_Sans({
 
 const mono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400"],
   variable: "--font-ibm-mono",
   display: "swap",
+  preload: false,
 });
 
 export const viewport: Viewport = {
