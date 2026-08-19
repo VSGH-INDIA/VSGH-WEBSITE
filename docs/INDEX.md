@@ -76,6 +76,7 @@ IA trees in WEB-002, WEB-023, WEB-062 — **SUPERSEDED** (IA portions) by WEB-08
 - [ARCHITECTURE.md](ARCHITECTURE.md)
 - [Design system Rev A](design/VSGH-DESIGN-SYSTEM-001.md)
 - [Design system verification](design/VSGH-DESIGN-SYSTEM-VERIFICATION-001.md)
+- [Homepage QA](design/VSGH-HOMEPAGE-QA-001.md)
 - [CMS.md](CMS.md)
 - [SECURITY.md](SECURITY.md)
 - [DEPLOYMENT.md](DEPLOYMENT.md)

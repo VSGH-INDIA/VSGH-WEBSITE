@@ -183,10 +183,10 @@ export const homeContent = {
     eyebrow: "Company",
     title:
       "Mission: turn recovered resource into qualified material capability.",
-    body: "VSGH exists to develop materials technology — from feedstock to application — with the restraint required of aerospace-adjacent work. Leadership, facilities, and detailed company history are reserved for dedicated About pages when those pages are authorized.",
+    body: "VSGH exists to develop materials technology — from feedstock to application — with the restraint required of aerospace-adjacent work. Leadership, facilities, and company history will be published on dedicated About pages.",
   },
   cta: {
     title: "Start a technical conversation.",
-    body: "Enquiries are welcome for technology collaboration, research discussion, or business contact. A contact form is not wired on this site yet. Use the contact route when you are ready; the destination page will follow in a later implementation task.",
+    body: "Enquiries are welcome for technology collaboration, research discussion, or business contact. A public contact form is not available on this page. Use Contact to reach VSGH.",
   },
 } as const;

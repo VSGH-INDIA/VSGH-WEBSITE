@@ -24,6 +24,7 @@ export function SiteFooter() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
+                    prefetch={false}
                     className="text-[length:var(--vsgh-text-nav)] text-muted no-underline transition-colors duration-[var(--vsgh-duration)] hover:text-foreground"
                   >
                     {item.label}
