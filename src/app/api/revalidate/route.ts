@@ -29,7 +29,7 @@ export async function POST(request: Request) {
 
   revalidateTag("sanity", { expire: 0 });
   if (parsed.path) {
-    revalidatePath(parsed.path);
+    revalidatePath(parsed.path, "page");
   }
 
   return NextResponse.json({ ok: true });
