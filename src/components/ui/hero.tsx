@@ -10,6 +10,8 @@ export function Hero({
   actions,
   media,
   align = "start",
+  compact = false,
+  heading = "display",
 }: {
   eyebrow: string;
   headline: string;
@@ -18,17 +20,21 @@ export function Hero({
   actions: ReactNode;
   media?: ReactNode;
   align?: "start" | "center";
+  compact?: boolean;
+  heading?: "display" | "hero";
 }) {
   return (
     <div
       className={cn(
-        "vsgh-grid-bg flex min-h-[var(--vsgh-hero-min)] flex-col justify-center border-b border-border",
+        "vsgh-grid-bg flex flex-col justify-center border-b border-border",
+        compact ? "min-h-0" : "min-h-[var(--vsgh-hero-min)]",
         align === "center" && "text-center",
       )}
     >
       <div
         className={cn(
-          "mx-auto grid w-full max-w-[var(--vsgh-content-wide)] items-center gap-12 py-20",
+          "mx-auto grid w-full max-w-[var(--vsgh-content-wide)] items-center gap-12",
+          compact ? "py-14 md:py-16" : "py-20",
           media ? "lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]" : "",
           align === "center" && "justify-items-center",
         )}
@@ -41,7 +47,7 @@ export function Hero({
           )}
         >
           <Badge>{eyebrow}</Badge>
-          <Heading as="h1" variant="display" className="max-w-5xl">
+          <Heading as="h1" variant={heading} className="max-w-5xl">
             {headline}
             {emphasis ? (
               <>

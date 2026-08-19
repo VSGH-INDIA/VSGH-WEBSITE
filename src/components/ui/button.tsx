@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { isPublishedPath } from "@/lib/navigation";
 
 const variants = {
   primary:
@@ -76,7 +77,7 @@ export function ButtonLink({
   }
 
   return (
-    <Link href={href} prefetch={href === "/"} className={classNames}>
+    <Link href={href} prefetch={isPublishedPath(href)} className={classNames}>
       {children}
     </Link>
   );

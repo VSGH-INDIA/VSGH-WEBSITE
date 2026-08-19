@@ -3,7 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { PRIMARY_NAV } from "@/lib/navigation";
+import {
+  isPrimaryNavCurrent,
+  isPublishedPath,
+  PRIMARY_NAV,
+} from "@/lib/navigation";
 import { cn } from "@/lib/cn";
 
 export function SiteHeader() {
@@ -70,9 +74,11 @@ export function SiteHeader() {
             <Link
               key={item.label}
               href={item.href}
-              prefetch={false}
+              prefetch={isPublishedPath(item.href)}
               className="text-[length:var(--vsgh-text-nav)] text-muted no-underline transition-colors duration-[var(--vsgh-duration)] hover:text-foreground"
-              aria-current={pathname === item.href ? "page" : undefined}
+              aria-current={
+                isPrimaryNavCurrent(item.href, pathname) ? "page" : undefined
+              }
             >
               {item.label}
             </Link>
@@ -112,11 +118,13 @@ export function SiteHeader() {
             <li key={item.label}>
               <Link
                 href={item.href}
-                prefetch={false}
+                prefetch={isPublishedPath(item.href)}
                 className={cn(
                   "block py-3 text-[length:var(--vsgh-text-body)] text-foreground no-underline",
                 )}
-                aria-current={pathname === item.href ? "page" : undefined}
+                aria-current={
+                  isPrimaryNavCurrent(item.href, pathname) ? "page" : undefined
+                }
                 onClick={() => setOpen(false)}
               >
                 {item.label}
