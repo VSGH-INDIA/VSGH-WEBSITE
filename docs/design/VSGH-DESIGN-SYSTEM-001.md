@@ -45,7 +45,7 @@ IBM Plex Sans (UI/display) and IBM Plex Mono (meta), loaded with `next/font`. Sc
 
 ## Spacing / grid
 
-4px-based scale `--vsgh-space-*`. Page gutter `--vsgh-gutter` (fluid). Content width 72rem / 80rem wide. Section padding `--vsgh-section-y`. Hero min-height `--vsgh-hero-min`. Blueprint cell `--vsgh-grid-size`. Control height `--vsgh-control`.
+4px-based scale `--vsgh-space-*`. Page gutter `--vsgh-gutter` (fluid). Content width 72rem / 80rem wide. Section padding `--vsgh-section-y`. Hero min-height `--vsgh-hero-min` (`min(68vh, 42rem)`). Blueprint cell `--vsgh-grid-size`. Control height `--vsgh-control`.
 
 ## Motion
 

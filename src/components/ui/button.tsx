@@ -76,7 +76,7 @@ export function ButtonLink({
   }
 
   return (
-    <Link href={href} className={classNames}>
+    <Link href={href} prefetch={href === "/"} className={classNames}>
       {children}
     </Link>
   );

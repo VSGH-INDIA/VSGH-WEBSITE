@@ -108,7 +108,10 @@ export function MediaFrame({
       aria-label={label}
     >
       {children}
-      <p className="relative font-mono text-[length:var(--vsgh-text-meta)] text-muted">
+      <p
+        aria-hidden
+        className="relative font-mono text-[length:var(--vsgh-text-meta)] text-muted"
+      >
         {label}
       </p>
     </div>

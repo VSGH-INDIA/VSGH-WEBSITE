@@ -23,10 +23,15 @@ describe("design-system contrast (WCAG 2.2 AA intent)", () => {
   const background = "#080c14";
   const surface = "#0d131c";
 
-  it("meets 4.5:1 for body and muted text on dark fields", () => {
+  it("meets 4.5:1 for body, muted, and accent text on dark fields", () => {
     expect(contrast("#f4f6f8", background)).toBeGreaterThanOrEqual(4.5);
     expect(contrast("#94a3b8", background)).toBeGreaterThanOrEqual(4.5);
     expect(contrast("#94a3b8", surface)).toBeGreaterThanOrEqual(4.5);
+    expect(contrast("#c5d0dc", background)).toBeGreaterThanOrEqual(4.5);
     expect(contrast("#080c14", "#f4f6f8")).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it("meets 3:1 for the focus indicator on the page field", () => {
+    expect(contrast("#8ec0ff", background)).toBeGreaterThanOrEqual(3);
   });
 });
