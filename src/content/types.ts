@@ -46,5 +46,10 @@ export type CapabilityPageContent = {
   principles?: PageStage[];
   related?: RelatedLink[];
   statuses?: StatusBand[];
+  emptyState?: {
+    eyebrow: string;
+    title: string;
+    body: string;
+  };
   cta: PageCta;
 };

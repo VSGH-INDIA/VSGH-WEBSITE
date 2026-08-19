@@ -15,8 +15,7 @@ export function SiteFooter() {
             </p>
             <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
               Engineered material capability from recovered resource to
-              application. Sustainability, Insights, Careers, and Contact are
-              not yet implemented.
+              application. Public overview only.
             </p>
           </div>
           <nav aria-label="Footer">
