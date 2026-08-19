@@ -17,4 +17,4 @@ Schemas, fetch fallbacks, revalidation, and RBAC intent: [VSGH-PUBLIC-CONTENT-AD
 
 WEB-034 names: `src/sanity/entities.ts`. `src/content/*` remains the runtime fallback until a VSGH project is configured and documents are published.
 
-Environment variable names are in `.env.example`. Read tokens stay server-side. No write tokens in the Next.js app.
+Environment variable names are in `.env.example`. Published fetches do not use a read token. No write tokens in the Next.js app.

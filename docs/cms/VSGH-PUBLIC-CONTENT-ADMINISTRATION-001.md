@@ -56,7 +56,7 @@ No accounts or passwords are in git. MFA is enabled on Sanity user accounts / SS
 
 ## Authentication
 
-Sanity Studio login only. No custom password table. No tokens in client bundles. Read token (optional, required for private datasets and draft preview) is `SANITY_API_READ_TOKEN` (server). There is **no write token** in the Next.js app.
+Sanity Studio login only. No custom password table. No tokens in client bundles. Read token (optional, **not** attached to published fetches; public dataset is the intended model) is `SANITY_API_READ_TOKEN` (server). There is **no write token** in the Next.js app. Hardening: [VSGH-PUBLIC-WEBSITE-SECURITY-HARDENING-001](../security/VSGH-PUBLIC-WEBSITE-SECURITY-HARDENING-001.md).
 
 ## Next.js integration
 
@@ -68,7 +68,7 @@ Insights/vacancies lists remain empty in the UI until published CMS records exis
 
 ## Preview / revalidation
 
-- `POST /api/revalidate` with header `x-vsgh-revalidate-secret` → `revalidateTag("sanity")` and an allowlisted path. Returns 501 if secret unset, 401 if mismatch.
+- `POST /api/revalidate` with header `x-vsgh-revalidate-secret` → `revalidateTag("sanity")` and an optional allowlisted `path`. GET is 405. Returns 501 if secret unset/short, 401 if mismatch, 400 if `path` is present but not allowlisted.
 - `GET /api/draft?secret=&path=` enables Next.js draft mode and redirects to an implemented path. Draft **content** fetch is not yet wired (pages still resolve published/fallback). Cookie does not change robots (`noindex` remains).
 - `GET /api/draft/disable` clears draft mode.
 - ISR: 3600s + tag `sanity` when a real project id is configured.

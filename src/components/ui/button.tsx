@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 import { isPublishedPath } from "@/lib/navigation";
+import { isSafeHref } from "@/lib/safe-url";
 
 const variants = {
   primary:
@@ -67,6 +68,10 @@ export function ButtonLink({
     variants[variant],
     className,
   );
+
+  if (!isSafeHref(href)) {
+    return <span className={classNames}>{children}</span>;
+  }
 
   if (href.startsWith("#")) {
     return (
