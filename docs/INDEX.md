@@ -85,6 +85,7 @@ IA trees in WEB-002, WEB-023, WEB-062 — **SUPERSEDED** (IA portions) by WEB-08
 - [Accessibility and responsive QA](qa/VSGH-ACCESSIBILITY-RESPONSIVE-QA-001.md)
 - [Performance QA](qa/VSGH-PERFORMANCE-QA-001.md)
 - [Public content administration](cms/VSGH-PUBLIC-CONTENT-ADMINISTRATION-001.md)
+- [Sanity production configuration](cms/VSGH-SANITY-PRODUCTION-CONFIGURATION-001.md)
 - [Public website security hardening](security/VSGH-PUBLIC-WEBSITE-SECURITY-HARDENING-001.md)
 - [CMS.md](CMS.md)
 - [SECURITY.md](SECURITY.md)

@@ -94,4 +94,14 @@ describe("secret surface", () => {
     expect(publishedFn).toContain('perspective: "published"');
     expect(publishedFn).not.toContain("token:");
   });
+
+  it("does not cache preview GROQ with unstable_cache", () => {
+    const fetchSource = readFileSync("src/sanity/fetch.ts", "utf8");
+    const previewFn = fetchSource.slice(
+      fetchSource.indexOf("function previewQuery"),
+      fetchSource.indexOf("export function fetchPublishedCapabilityPage"),
+    );
+    expect(previewFn).toContain("getPreviewSanityClient");
+    expect(previewFn).not.toContain("unstable_cache");
+  });
 });

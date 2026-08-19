@@ -1,6 +1,10 @@
 import { defineArrayMember, defineField } from "sanity";
 import { isSafeInternalPath } from "@/lib/safe-url";
 import { PUBLIC_CONTENT_GUIDANCE } from "@/sanity/constants";
+import {
+  canSetPublished,
+  studioUserFromValidationContext,
+} from "@/sanity/rbac";
 
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
@@ -21,7 +25,15 @@ export const lifecycleField = defineField({
     layout: "radio",
   },
   initialValue: "draft",
-  validation: (rule) => rule.required(),
+  validation: (rule) =>
+    rule.required().custom((value, context) => {
+      if (value !== "published") {
+        return true;
+      }
+      return canSetPublished(studioUserFromValidationContext(context))
+        ? true
+        : "Only Publisher or Super Admin may set lifecycle to Published";
+    }),
 });
 
 export const seoFields = [
