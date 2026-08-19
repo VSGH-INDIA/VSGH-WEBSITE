@@ -16,6 +16,31 @@ export function DomainJsonLd({
   parentName: string;
   parentPath: string;
 }) {
+  const crumbs = [
+    {
+      "@type": "ListItem" as const,
+      position: 1,
+      name: "Home",
+      item: SITE_ORIGIN,
+    },
+    ...(parentPath !== "/"
+      ? [
+          {
+            "@type": "ListItem" as const,
+            position: 2,
+            name: parentName,
+            item: absoluteUrl(parentPath),
+          },
+        ]
+      : []),
+    {
+      "@type": "ListItem" as const,
+      position: parentPath !== "/" ? 3 : 2,
+      name: navLabel,
+      item: absoluteUrl(path),
+    },
+  ];
+
   const data = {
     "@context": "https://schema.org",
     "@graph": [
@@ -32,26 +57,7 @@ export function DomainJsonLd({
       },
       {
         "@type": "BreadcrumbList",
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: SITE_ORIGIN,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: parentName,
-            item: absoluteUrl(parentPath),
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: navLabel,
-            item: absoluteUrl(path),
-          },
-        ],
+        itemListElement: crumbs,
       },
     ],
   };

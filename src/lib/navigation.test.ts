@@ -57,7 +57,11 @@ describe("nav helpers", () => {
   it("treats published domain children as current and prefetchable", () => {
     expect(isPublishedPath("/applications/aerospace")).toBe(true);
     expect(isPublishedPath("/research/publications")).toBe(true);
-    expect(isPublishedPath("/contact")).toBe(false);
+    expect(isPublishedPath("/sustainability")).toBe(true);
+    expect(isPublishedPath("/insights")).toBe(true);
+    expect(isPublishedPath("/careers")).toBe(true);
+    expect(isPublishedPath("/contact")).toBe(true);
+    expect(isPublishedPath("/insights/news")).toBe(false);
     expect(
       isPrimaryNavCurrent("/applications/aerospace", "/applications/space"),
     ).toBe(true);

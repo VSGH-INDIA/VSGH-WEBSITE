@@ -49,6 +49,14 @@ export const RESEARCH_NAV = [
   { label: "Publications", href: "/research/publications" },
 ] as const;
 
+const PUBLISHED_EXACT = [
+  "/",
+  "/sustainability",
+  "/insights",
+  "/careers",
+  "/contact",
+] as const;
+
 const PUBLISHED_PREFIXES = [
   "/about/",
   "/materials/",
@@ -67,7 +75,8 @@ const CURRENT_DOMAINS = [
 
 export function isPublishedPath(href: string): boolean {
   return (
-    href === "/" || PUBLISHED_PREFIXES.some((prefix) => href.startsWith(prefix))
+    (PUBLISHED_EXACT as readonly string[]).includes(href) ||
+    PUBLISHED_PREFIXES.some((prefix) => href.startsWith(prefix))
   );
 }
 

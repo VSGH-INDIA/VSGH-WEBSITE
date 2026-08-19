@@ -18,10 +18,10 @@ import Link from "next/link";
 
 export function CapabilityPageView({
   page,
-  nav,
+  nav = [],
 }: {
   page: CapabilityPageContent;
-  nav: readonly { label: string; href: string }[];
+  nav?: readonly { label: string; href: string }[];
 }) {
   return (
     <main id="main">
@@ -33,7 +33,9 @@ export function CapabilityPageView({
         parentName={page.domain}
         parentPath={page.parentPath}
       />
-      <DomainSubnav label={page.domain} items={nav} currentPath={page.path} />
+      {nav.length > 0 ? (
+        <DomainSubnav label={page.domain} items={nav} currentPath={page.path} />
+      ) : null}
       <Hero
         compact
         heading="hero"
@@ -124,6 +126,23 @@ export function CapabilityPageView({
                 </li>
               ))}
             </ol>
+          </Container>
+        </Section>
+      ) : null}
+      {page.emptyState ? (
+        <Section tone="surface" className="vsgh-reveal">
+          <Container wide>
+            <div className="border border-border p-8 md:p-12">
+              <p className="font-mono text-[length:var(--vsgh-text-label)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
+                {page.emptyState.eyebrow}
+              </p>
+              <Heading as="h2" variant="h2" className="mt-4">
+                {page.emptyState.title}
+              </Heading>
+              <Text className="mt-3 max-w-2xl text-muted">
+                {page.emptyState.body}
+              </Text>
+            </div>
           </Container>
         </Section>
       ) : null}
