@@ -4,7 +4,7 @@ title: VSGH Website Information Architecture
 document_type: Architecture
 domain: Stage 2 / External Website
 revision: B
-status: DRAFT — REVIEW REQUIRED
+status: Approved
 classification: Internal
 owner: Corporate Communications Authority
 approver: Managing Authority

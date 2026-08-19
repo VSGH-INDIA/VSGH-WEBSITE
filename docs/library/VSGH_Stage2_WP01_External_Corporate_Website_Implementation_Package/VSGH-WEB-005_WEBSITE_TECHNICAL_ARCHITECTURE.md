@@ -4,7 +4,7 @@ title: VSGH Website Technical Architecture
 document_type: Architecture
 domain: Stage 2 / External Website
 revision: B
-status: DRAFT — REVIEW REQUIRED
+status: Approved
 classification: Restricted
 owner: Digital Architecture Authority
 approver: Security Authority

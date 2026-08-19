@@ -3,7 +3,7 @@
 
 ## Status
 
-**DRAFT — REVIEW REQUIRED** (package). Technology selection is **not** open: WP03 Revision B is authoritative. V1 sitemap: WEB-081. Accessibility: WCAG 2.2 AA.
+**Approved** (package; VSGH-CURSOR-TASK-002). Technology: WP03 Revision B. V1 sitemap: WEB-081. Accessibility: WCAG 2.2 AA. Historical IA in WEB-002 is superseded by WEB-081.
 
 ## Purpose
 

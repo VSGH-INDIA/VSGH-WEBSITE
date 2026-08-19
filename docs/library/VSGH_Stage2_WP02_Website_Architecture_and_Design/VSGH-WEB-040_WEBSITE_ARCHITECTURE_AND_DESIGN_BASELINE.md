@@ -4,7 +4,7 @@ title: VSGH Website Architecture and Design Baseline
 document_type: Baseline Specification
 domain: Stage 2 / WP02 Website Architecture and Design
 revision: B
-status: DRAFT — REVIEW REQUIRED
+status: Approved
 classification: Restricted
 owner: Website Programme Authority
 approver: Managing Authority

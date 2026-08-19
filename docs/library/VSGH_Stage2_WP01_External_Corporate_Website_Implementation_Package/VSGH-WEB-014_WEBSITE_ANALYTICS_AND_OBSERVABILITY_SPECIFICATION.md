@@ -4,7 +4,7 @@ title: VSGH Website Analytics and Observability Specification
 document_type: Specification
 domain: Stage 2 / External Website
 revision: B
-status: DRAFT — REVIEW REQUIRED
+status: Approved
 classification: Restricted
 owner: Digital Operations Authority
 approver: Privacy/Data Authority

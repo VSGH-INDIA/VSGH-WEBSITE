@@ -86,6 +86,6 @@ without exposing proprietary technical know-how.
 
 ## Status
 
-**DRAFT — REVIEW REQUIRED** (package, Revision B notes).
+**Approved** (package; VSGH-CURSOR-TASK-002).
 
-Technology baseline superseded by VSGH WP03 Revision B. V1 sitemap superseded by VSGH-WEB-081. WP02 does not select the software stack and does not authorize production deployment.
+Technology baseline: WP03 Revision B. V1 sitemap: VSGH-WEB-081. WP02 does not reopen the software stack and does not authorize production deployment. Historical sitemap in WEB-023 is superseded by WEB-081.

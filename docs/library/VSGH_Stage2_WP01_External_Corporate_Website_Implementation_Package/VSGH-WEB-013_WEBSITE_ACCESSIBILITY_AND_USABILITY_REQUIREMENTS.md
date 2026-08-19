@@ -4,7 +4,7 @@ title: VSGH Website Accessibility and Usability Requirements
 document_type: Requirements Specification
 domain: Stage 2 / External Website
 revision: B
-status: DRAFT — REVIEW REQUIRED
+status: Approved
 classification: Internal
 owner: UX Authority
 approver: Corporate Communications Authority
