@@ -8,6 +8,7 @@ export function Hero({
   emphasis,
   body,
   actions,
+  media,
   align = "start",
 }: {
   eyebrow: string;
@@ -15,6 +16,7 @@ export function Hero({
   emphasis?: string;
   body: string;
   actions: ReactNode;
+  media?: ReactNode;
   align?: "start" | "center";
 }) {
   return (
@@ -26,30 +28,39 @@ export function Hero({
     >
       <div
         className={cn(
-          "mx-auto flex w-full max-w-[var(--vsgh-content)] flex-col gap-8 py-20",
-          align === "center" && "items-center",
+          "mx-auto grid w-full max-w-[var(--vsgh-content-wide)] items-center gap-12 py-20",
+          media ? "lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]" : "",
+          align === "center" && "justify-items-center",
         )}
         style={{ paddingInline: "var(--vsgh-gutter)" }}
       >
-        <Badge>{eyebrow}</Badge>
-        <Heading as="h1" variant="display" className="max-w-5xl">
-          {headline}
-          {emphasis ? (
-            <>
-              {" "}
-              <span className="text-accent">{emphasis}</span>
-            </>
-          ) : null}
-        </Heading>
-        <Text className="max-w-2xl text-muted">{body}</Text>
         <div
           className={cn(
-            "flex flex-col gap-3 sm:flex-row sm:flex-wrap",
-            align === "center" && "justify-center",
+            "flex flex-col gap-8",
+            align === "center" && "items-center",
           )}
         >
-          {actions}
+          <Badge>{eyebrow}</Badge>
+          <Heading as="h1" variant="display" className="max-w-5xl">
+            {headline}
+            {emphasis ? (
+              <>
+                {" "}
+                <span className="text-accent">{emphasis}</span>
+              </>
+            ) : null}
+          </Heading>
+          <Text className="max-w-2xl text-muted">{body}</Text>
+          <div
+            className={cn(
+              "flex flex-col gap-3 sm:flex-row sm:flex-wrap",
+              align === "center" && "justify-center",
+            )}
+          >
+            {actions}
+          </div>
         </div>
+        {media ? <div className="min-w-0">{media}</div> : null}
       </div>
     </div>
   );

@@ -26,12 +26,11 @@ docs/library/     Versioned copies of library files changed in VSGH-CURSOR-TASK-
 .github/          CI quality gates
 ```
 
-V1 public sitemap: **WEB-081**. Do not implement those routes until a later task.
+V1 public sitemap: **WEB-081**. `/` is implemented. Other listed routes are not built until a later task.
 
 ## Not in this bootstrap
 
-- Full sitemap routes (documented in WEB-081; not built)
+- Remaining WEB-081 routes (authorized only as later page tasks)
 - Sanity Studio as a public route
 - Analytics (NOT APPROVED / NOT IMPLEMENTED)
 - Contact form backend (email TBD / not selected)
-- High-fidelity UI (WEB-080 frozen as requirements only)

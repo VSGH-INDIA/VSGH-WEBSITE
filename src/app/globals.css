@@ -34,3 +34,18 @@ body {
     linear-gradient(90deg, var(--vsgh-grid-line) 1px, transparent 1px);
   background-size: var(--vsgh-grid-size) var(--vsgh-grid-size);
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .vsgh-reveal {
+    animation: vsgh-reveal var(--vsgh-duration-reveal) var(--vsgh-ease) both;
+  }
+}
+
+@keyframes vsgh-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

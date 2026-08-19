@@ -74,6 +74,7 @@
 
   --vsgh-duration-fast: 120ms;
   --vsgh-duration: 200ms;
+  --vsgh-duration-reveal: 400ms;
   --vsgh-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 
   --vsgh-grid-line: rgb(255 255 255 / 0.045);

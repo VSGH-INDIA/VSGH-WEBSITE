@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { PRIMARY_NAV } from "@/lib/navigation";
 import { cn } from "@/lib/cn";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!open) {
@@ -36,21 +38,18 @@ export function SiteHeader() {
               VSGH
             </span>
             <span className="block font-mono text-[length:var(--vsgh-text-meta)] text-muted">
-              Design system · Rev A
+              Materials technology
             </span>
           </span>
         </Link>
 
-        <nav
-          className="hidden items-center gap-4 xl:flex"
-          aria-label="Primary"
-        >
+        <nav className="hidden items-center gap-4 xl:flex" aria-label="Primary">
           {PRIMARY_NAV.map((item) => (
             <Link
               key={item.label}
               href={item.href}
               className="text-[length:var(--vsgh-text-nav)] text-muted no-underline transition-colors duration-[var(--vsgh-duration)] hover:text-foreground"
-              aria-label={`${item.label}, page not implemented`}
+              aria-current={pathname === item.href ? "page" : undefined}
             >
               {item.label}
             </Link>
@@ -85,7 +84,7 @@ export function SiteHeader() {
                   className={cn(
                     "block py-3 text-[length:var(--vsgh-text-body)] text-foreground no-underline",
                   )}
-                  aria-label={`${item.label}, page not implemented`}
+                  aria-current={pathname === item.href ? "page" : undefined}
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
