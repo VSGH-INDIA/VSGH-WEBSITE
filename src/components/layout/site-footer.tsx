@@ -25,7 +25,7 @@ export function SiteFooter() {
                   <Link
                     href={item.href}
                     prefetch={isPublishedPath(item.href)}
-                    className="text-[length:var(--vsgh-text-nav)] text-muted no-underline transition-colors duration-[var(--vsgh-duration)] hover:text-foreground"
+                    className="inline-flex min-h-11 items-center py-2 text-[length:var(--vsgh-text-nav)] text-muted no-underline transition-colors duration-[var(--vsgh-duration)] hover:text-foreground"
                   >
                     {item.label}
                   </Link>

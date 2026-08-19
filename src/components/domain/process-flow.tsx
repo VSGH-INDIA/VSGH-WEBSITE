@@ -10,10 +10,10 @@ export function ProcessFlow({
 }) {
   return (
     <div className="space-y-6">
-      <p className="font-mono text-[length:var(--vsgh-text-label)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
+      <h2 className="font-mono text-[length:var(--vsgh-text-label)] font-normal uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
         {heading}
-      </p>
-      <ol className="grid gap-px bg-border sm:grid-cols-2 xl:grid-cols-7">
+      </h2>
+      <ol className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,minmax(9.5rem,1fr))]">
         {stages.map((stage, index) => (
           <li
             key={stage.title}

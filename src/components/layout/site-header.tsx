@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   isPrimaryNavCurrent,
   isPublishedPath,
@@ -11,36 +11,49 @@ import {
 import { cn } from "@/lib/cn";
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  return <SiteHeaderBar key={pathname} pathname={pathname} />;
+}
+
+function SiteHeaderBar({ pathname }: { pathname: string }) {
+  const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  const closeMenu = useCallback((restoreFocus = false) => {
+    setOpen(false);
+    if (restoreFocus) {
+      menuButtonRef.current?.focus();
+    }
+  }, []);
 
   useEffect(() => {
     if (!open) {
+      document.body.style.overflow = "";
       return;
     }
+    document.body.style.overflow = "hidden";
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setOpen(false);
+        closeMenu(true);
       }
     };
     window.addEventListener("keydown", onKey);
-    document.body.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [open]);
+  }, [open, closeMenu]);
 
   useEffect(() => {
     const media = window.matchMedia("(min-width: 80rem)");
     const onChange = () => {
       if (media.matches) {
-        setOpen(false);
+        closeMenu(false);
       }
     };
     media.addEventListener("change", onChange);
     return () => media.removeEventListener("change", onChange);
-  }, []);
+  }, [closeMenu]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background">
@@ -50,7 +63,7 @@ export function SiteHeader() {
       >
         <Link
           href="/"
-          className="flex items-center gap-3 no-underline"
+          className="flex min-h-[var(--vsgh-control)] items-center gap-3 no-underline"
           aria-label="VSGH home"
         >
           <span
@@ -69,13 +82,16 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-4 xl:flex" aria-label="Primary">
+        <nav
+          className="hidden max-w-[min(100%,44rem)] flex-wrap items-center justify-end gap-x-1 xl:flex"
+          aria-label="Primary"
+        >
           {PRIMARY_NAV.map((item) => (
             <Link
               key={item.label}
               href={item.href}
               prefetch={isPublishedPath(item.href)}
-              className="text-[length:var(--vsgh-text-nav)] text-muted no-underline transition-colors duration-[var(--vsgh-duration)] hover:text-foreground"
+              className="inline-flex min-h-11 items-center px-2 text-[length:var(--vsgh-text-nav)] text-muted no-underline transition-colors duration-[var(--vsgh-duration)] hover:text-foreground"
               aria-current={
                 isPrimaryNavCurrent(item.href, pathname) ? "page" : undefined
               }
@@ -86,6 +102,7 @@ export function SiteHeader() {
         </nav>
 
         <button
+          ref={menuButtonRef}
           type="button"
           className="inline-flex size-[var(--vsgh-control)] items-center justify-center border border-border xl:hidden"
           aria-expanded={open}
@@ -111,7 +128,7 @@ export function SiteHeader() {
         id="mobile-nav"
         hidden={!open}
         className="border-t border-border bg-surface px-[var(--vsgh-gutter)] py-4 xl:hidden"
-        aria-label="Mobile"
+        aria-label="Primary"
       >
         <ul className="flex flex-col gap-1">
           {PRIMARY_NAV.map((item) => (
@@ -120,12 +137,12 @@ export function SiteHeader() {
                 href={item.href}
                 prefetch={isPublishedPath(item.href)}
                 className={cn(
-                  "block py-3 text-[length:var(--vsgh-text-body)] text-foreground no-underline",
+                  "flex min-h-11 items-center py-3 text-[length:var(--vsgh-text-body)] text-foreground no-underline",
                 )}
                 aria-current={
                   isPrimaryNavCurrent(item.href, pathname) ? "page" : undefined
                 }
-                onClick={() => setOpen(false)}
+                onClick={() => closeMenu(false)}
               >
                 {item.label}
               </Link>

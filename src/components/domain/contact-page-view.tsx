@@ -110,7 +110,7 @@ export function ContactPageView() {
                   id="inquiry-type"
                   name="inquiryType"
                   defaultValue=""
-                  className="min-h-[var(--vsgh-control)] w-full border border-border bg-surface px-3 text-[length:var(--vsgh-text-nav)] text-foreground"
+                  className="min-h-[var(--vsgh-control)] w-full min-w-0 border border-border bg-surface px-3 text-[length:var(--vsgh-text-nav)] text-foreground"
                 >
                   <option value="" disabled>
                     Select a class
@@ -136,7 +136,7 @@ export function ContactPageView() {
                       name={field.id}
                       rows={5}
                       placeholder={field.hint}
-                      className="w-full border border-border bg-surface px-3 py-2 text-[length:var(--vsgh-text-nav)] text-foreground"
+                      className="w-full min-w-0 border border-border bg-surface px-3 py-2 text-[length:var(--vsgh-text-nav)] text-foreground"
                     />
                   </div>
                 ) : (
@@ -153,7 +153,7 @@ export function ContactPageView() {
                       type="text"
                       autoComplete="off"
                       placeholder={field.hint}
-                      className="min-h-[var(--vsgh-control)] w-full border border-border bg-surface px-3 text-[length:var(--vsgh-text-nav)] text-foreground"
+                      className="min-h-[var(--vsgh-control)] w-full min-w-0 border border-border bg-surface px-3 text-[length:var(--vsgh-text-nav)] text-foreground"
                     />
                   </div>
                 ),
@@ -167,7 +167,9 @@ export function ContactPageView() {
       </Section>
       <Section className="vsgh-reveal">
         <Container wide className="space-y-6">
-          <Badge>Related</Badge>
+          <h2 className="font-mono text-[length:var(--vsgh-text-label)] font-normal uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
+            Related
+          </h2>
           <ul className="divide-y divide-border border-y border-border">
             {page.related.map((item) => (
               <li key={item.href} className="py-5">

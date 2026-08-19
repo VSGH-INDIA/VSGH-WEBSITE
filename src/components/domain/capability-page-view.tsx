@@ -5,13 +5,7 @@ import { MediaPlaceholder } from "@/components/home/media-placeholder";
 import { ButtonLink } from "@/components/ui/button";
 import { CtaBlock } from "@/components/ui/card";
 import { Hero } from "@/components/ui/hero";
-import {
-  Badge,
-  Container,
-  Heading,
-  Section,
-  Text,
-} from "@/components/ui/primitives";
+import { Container, Heading, Section, Text } from "@/components/ui/primitives";
 import type { CapabilityPageContent } from "@/content/types";
 import { isPublishedPath } from "@/lib/navigation";
 import Link from "next/link";
@@ -85,7 +79,9 @@ export function CapabilityPageView({
           className="vsgh-reveal"
         >
           <Container wide className="space-y-8">
-            <Badge>Disciplines</Badge>
+            <h2 className="font-mono text-[length:var(--vsgh-text-label)] font-normal uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
+              Disciplines
+            </h2>
             <ul className="divide-y divide-border border-y border-border">
               {page.principles.map((item) => (
                 <li
@@ -110,7 +106,9 @@ export function CapabilityPageView({
       {page.statuses ? (
         <Section className="vsgh-reveal">
           <Container wide className="space-y-8">
-            <Badge>Status of public statements</Badge>
+            <h2 className="font-mono text-[length:var(--vsgh-text-label)] font-normal uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
+              Status of public statements
+            </h2>
             <ol className="grid gap-px bg-border md:grid-cols-2">
               {page.statuses.map((item) => (
                 <li key={item.label} className="bg-background p-6">
@@ -149,7 +147,9 @@ export function CapabilityPageView({
       {page.related ? (
         <Section className="vsgh-reveal">
           <Container wide className="space-y-6">
-            <Badge>Related</Badge>
+            <h2 className="font-mono text-[length:var(--vsgh-text-label)] font-normal uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
+              Related
+            </h2>
             <ul className="divide-y divide-border border-y border-border">
               {page.related.map((item) => (
                 <li key={item.href} className="py-5">

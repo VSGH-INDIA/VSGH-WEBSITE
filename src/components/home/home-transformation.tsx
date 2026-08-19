@@ -20,7 +20,7 @@ export function HomeTransformation() {
           </Heading>
           <Text className="text-muted">{transformation.body}</Text>
         </div>
-        <ol className="grid gap-px bg-border sm:grid-cols-2 xl:grid-cols-7">
+        <ol className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 xl:grid-cols-[repeat(auto-fit,minmax(9.5rem,1fr))]">
           {transformation.stages.map((stage, index) => (
             <li
               key={stage.title}

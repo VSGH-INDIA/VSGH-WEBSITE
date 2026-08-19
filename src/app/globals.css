@@ -26,6 +26,7 @@ body {
   color: var(--vsgh-color-foreground);
   font-family: var(--vsgh-font-sans);
   overflow-x: clip;
+  overflow-wrap: break-word;
 }
 
 .vsgh-grid-bg {
