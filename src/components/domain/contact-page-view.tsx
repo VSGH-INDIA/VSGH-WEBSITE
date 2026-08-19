@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/primitives";
 import { contactPage } from "@/content/contact";
 import { isPublishedPath } from "@/lib/navigation";
+import { isSafeHref } from "@/lib/safe-url";
 import Link from "next/link";
 
 export function ContactPageView({
@@ -173,20 +174,22 @@ export function ContactPageView({
             Related
           </h2>
           <ul className="divide-y divide-border border-y border-border">
-            {page.related.map((item) => (
-              <li key={item.href} className="py-5">
-                <Link
-                  href={item.href}
-                  prefetch={isPublishedPath(item.href)}
-                  className="text-foreground no-underline hover:underline"
-                >
-                  {item.label}
-                </Link>
-                <Text size="small" className="mt-2 text-muted">
-                  {item.body}
-                </Text>
-              </li>
-            ))}
+            {page.related
+              .filter((item) => isSafeHref(item.href))
+              .map((item) => (
+                <li key={item.href} className="py-5">
+                  <Link
+                    href={item.href}
+                    prefetch={isPublishedPath(item.href)}
+                    className="text-foreground no-underline hover:underline"
+                  >
+                    {item.label}
+                  </Link>
+                  <Text size="small" className="mt-2 text-muted">
+                    {item.body}
+                  </Text>
+                </li>
+              ))}
           </ul>
         </Container>
       </Section>

@@ -1,32 +1,35 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
-import { isRevalidatablePath, secretsEqual } from "@/sanity/revalidate";
+import { isConfiguredSecret } from "@/lib/security-headers";
+import { parseRevalidatePayload, secretsEqual } from "@/sanity/revalidate";
+
+function jsonError(status: number) {
+  return NextResponse.json({ ok: false }, { status });
+}
+
+export function GET() {
+  return jsonError(405);
+}
 
 export async function POST(request: Request) {
   const secret = process.env.SANITY_REVALIDATE_SECRET;
-  if (!secret) {
-    return NextResponse.json({ ok: false }, { status: 501 });
+  if (!isConfiguredSecret(secret)) {
+    return jsonError(501);
   }
   const header = request.headers.get("x-vsgh-revalidate-secret") ?? "";
   if (!secretsEqual(header, secret)) {
-    return NextResponse.json({ ok: false }, { status: 401 });
+    return jsonError(401);
   }
 
-  let path = "/";
-  try {
-    const body = (await request.json()) as { path?: string };
-    if (typeof body.path === "string") {
-      path = body.path;
-    }
-  } catch {
-    path = "/";
+  const raw = await request.text();
+  const parsed = parseRevalidatePayload(raw);
+  if (!parsed.ok) {
+    return jsonError(parsed.status);
   }
 
   revalidateTag("sanity", { expire: 0 });
-  if (isRevalidatablePath(path)) {
-    revalidatePath(path);
-  } else {
-    revalidatePath("/");
+  if (parsed.path) {
+    revalidatePath(parsed.path);
   }
 
   return NextResponse.json({ ok: true });

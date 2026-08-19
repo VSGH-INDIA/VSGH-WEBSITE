@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField } from "sanity";
+import { isSafeInternalPath } from "@/lib/safe-url";
 import { PUBLIC_CONTENT_GUIDANCE } from "@/sanity/constants";
 
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -84,9 +85,13 @@ export const ctaField = defineField({
       type: "string",
       description: "Internal path beginning with /",
       validation: (rule) =>
-        rule.required().regex(/^\/[a-z0-9\-/?#]*$/i, {
-          name: "internal-path",
-        }),
+        rule
+          .required()
+          .custom((value) =>
+            typeof value === "string" && isSafeInternalPath(value)
+              ? true
+              : "Use an internal site path beginning with a single /",
+          ),
     }),
     defineField({
       name: "secondaryLabel",
@@ -97,9 +102,13 @@ export const ctaField = defineField({
       name: "secondaryHref",
       type: "string",
       validation: (rule) =>
-        rule.required().regex(/^\/[a-z0-9\-/?#]*$/i, {
-          name: "internal-path",
-        }),
+        rule
+          .required()
+          .custom((value) =>
+            typeof value === "string" && isSafeInternalPath(value)
+              ? true
+              : "Use an internal site path beginning with a single /",
+          ),
     }),
   ],
 });
@@ -178,7 +187,13 @@ export const relatedMember = defineArrayMember({
       name: "href",
       type: "string",
       validation: (rule) =>
-        rule.required().regex(/^\/[a-z0-9\-/?#]*$/i, { name: "internal-path" }),
+        rule
+          .required()
+          .custom((value) =>
+            typeof value === "string" && isSafeInternalPath(value)
+              ? true
+              : "Use an internal site path beginning with a single /",
+          ),
     }),
     defineField({
       name: "label",

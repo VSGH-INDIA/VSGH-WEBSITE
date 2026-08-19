@@ -9,7 +9,7 @@
 
 ## Headers
 
-`next.config.ts` sets `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, and `Permissions-Policy`. Content-Security-Policy will be added when Sanity image/script origins are confirmed.
+`src/lib/security-headers.ts` (applied in `next.config.ts`) sets CSP (`frame-ancestors 'none'`), `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, COOP/CORP, `X-Robots-Tag`, and production-only HSTS. Details: [public website security hardening](security/VSGH-PUBLIC-WEBSITE-SECURITY-HARDENING-001.md).
 
 ## Analytics
 

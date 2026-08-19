@@ -6,14 +6,13 @@ export function getPublishedSanityClient(): SanityClient | null {
   if (!isSanityConfigured()) {
     return null;
   }
-  const { projectId, dataset, apiVersion, readToken } = getSanityEnv();
+  const { projectId, dataset, apiVersion } = getSanityEnv();
   return createClient({
     projectId,
     dataset,
     apiVersion,
     useCdn: true,
     perspective: "published",
-    token: readToken || undefined,
     stega: false,
   });
 }

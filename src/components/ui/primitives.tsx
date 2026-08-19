@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { isSafeHref } from "@/lib/safe-url";
 
 export function Container({
   children,
@@ -134,6 +135,10 @@ export function TextLink({
   children: ReactNode;
   className?: string;
 }) {
+  if (!isSafeHref(href)) {
+    return <span className={className}>{children}</span>;
+  }
+
   return (
     <a
       href={href}

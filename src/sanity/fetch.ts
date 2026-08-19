@@ -6,6 +6,7 @@ import type { InsightArticle } from "@/content/insights";
 import type { CapabilityPageContent } from "@/content/types";
 import { getPublishedSanityClient } from "@/sanity/client";
 import { isSanityConfigured } from "@/sanity/env";
+import { isRevalidatablePath } from "@/sanity/revalidate";
 import {
   ABOUT_PAGE_QUERY,
   CAPABILITY_PAGE_QUERY,
@@ -47,6 +48,9 @@ async function cachedQuery<T>(
 export function fetchPublishedCapabilityPage(
   path: string,
 ): Promise<Partial<CapabilityPageContent> | null> {
+  if (!isRevalidatablePath(path)) {
+    return Promise.resolve(null);
+  }
   return cachedQuery(["sanity-capability", path], CAPABILITY_PAGE_QUERY, {
     path,
   });
@@ -55,6 +59,9 @@ export function fetchPublishedCapabilityPage(
 export function fetchPublishedAboutPage(
   path: string,
 ): Promise<Partial<AboutPageContent> | null> {
+  if (!isRevalidatablePath(path)) {
+    return Promise.resolve(null);
+  }
   return cachedQuery(["sanity-about", path], ABOUT_PAGE_QUERY, { path });
 }
 

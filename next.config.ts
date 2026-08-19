@@ -1,8 +1,13 @@
 import type { NextConfig } from "next";
+import { securityHeaders } from "./src/lib/security-headers";
+
+const isProduction = process.env.VERCEL_ENV === "production";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  productionBrowserSourceMaps: false,
   images: {
+    dangerouslyAllowSVG: false,
     remotePatterns: [
       {
         protocol: "https",
@@ -14,15 +19,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/:path*",
-        headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "X-Frame-Options", value: "DENY" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          {
-            key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
-          },
-        ],
+        headers: securityHeaders(isProduction),
       },
     ];
   },

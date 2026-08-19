@@ -1,5 +1,6 @@
 import { contactPage } from "@/content/contact";
 import type { AboutPageContent } from "@/content/about";
+import { overlayPublishedContent } from "@/content/sanitize-cms";
 import type { CapabilityPageContent } from "@/content/types";
 import {
   fetchPublishedAboutPage,
@@ -8,16 +9,6 @@ import {
   fetchPublishedHomepage,
 } from "@/sanity/fetch";
 
-function overlay<T extends object>(
-  fallback: T,
-  incoming: Partial<T> | null,
-): T {
-  if (!incoming) {
-    return fallback;
-  }
-  return { ...fallback, ...incoming };
-}
-
 export async function resolveCapabilityPage(
   fallback: CapabilityPageContent,
 ): Promise<CapabilityPageContent> {
@@ -25,7 +16,7 @@ export async function resolveCapabilityPage(
   if (!incoming?.headline || !incoming.cta) {
     return fallback;
   }
-  return overlay(fallback, incoming);
+  return overlayPublishedContent(fallback, incoming);
 }
 
 export async function resolveAboutPage(
@@ -35,7 +26,7 @@ export async function resolveAboutPage(
   if (!incoming?.headline || !incoming.cta) {
     return fallback;
   }
-  return overlay(fallback, incoming);
+  return overlayPublishedContent(fallback, incoming);
 }
 
 export async function resolveContactPage(
@@ -45,7 +36,7 @@ export async function resolveContactPage(
   if (!incoming?.headline) {
     return fallback;
   }
-  return overlay(fallback, incoming) as typeof contactPage;
+  return overlayPublishedContent(fallback, incoming);
 }
 
 export async function resolveHomepage<T extends object>(
@@ -59,5 +50,5 @@ export async function resolveHomepage<T extends object>(
   ) {
     return fallback;
   }
-  return overlay(fallback, incoming as Partial<T>);
+  return overlayPublishedContent(fallback, incoming as Partial<T>);
 }
