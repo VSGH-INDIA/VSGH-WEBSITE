@@ -109,6 +109,7 @@ describe("secret surface", () => {
     expect(previewFn).not.toContain("unstable_cache");
     expect(previewFn).not.toContain('tags: ["sanity"]');
     expect(publishedFn).toContain('tags: ["sanity"]');
+    expect(publishedFn).toContain("useCdn: false");
     expect(publishedFn).not.toContain("unstable_cache");
   });
 });
