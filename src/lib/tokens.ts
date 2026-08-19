@@ -10,6 +10,11 @@ export const TOKEN_ROLES = [
   "warning",
   "error",
   "focus",
+  "border",
+  "accent-strong",
+  "accent-muted",
+  "inverse-background",
+  "inverse-foreground",
 ] as const;
 
 export type TokenRole = (typeof TOKEN_ROLES)[number];

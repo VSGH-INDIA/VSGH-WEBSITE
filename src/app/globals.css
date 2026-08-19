@@ -3,19 +3,34 @@
 
 @theme inline {
   --color-background: var(--vsgh-color-background);
-  --color-foreground: var(--vsgh-color-text);
+  --color-foreground: var(--vsgh-color-foreground);
   --color-surface: var(--vsgh-color-surface);
-  --color-muted: var(--vsgh-color-text-secondary);
+  --color-surface-elevated: var(--vsgh-color-surface-elevated);
+  --color-muted: var(--vsgh-color-foreground-muted);
+  --color-border: var(--vsgh-color-border);
   --color-accent: var(--vsgh-color-accent);
-  --color-action: var(--vsgh-color-action);
+  --color-accent-strong: var(--vsgh-color-accent-strong);
+  --color-accent-muted: var(--vsgh-color-accent-muted);
+  --color-inverse: var(--vsgh-color-inverse-background);
+  --color-inverse-fg: var(--vsgh-color-inverse-foreground);
   --color-focus: var(--vsgh-color-focus);
+  --color-error: var(--vsgh-color-error);
   --font-sans: var(--vsgh-font-sans);
   --font-display: var(--vsgh-font-display);
   --font-mono: var(--vsgh-font-mono);
 }
 
+html,
 body {
   background: var(--vsgh-color-background);
-  color: var(--vsgh-color-text);
+  color: var(--vsgh-color-foreground);
   font-family: var(--vsgh-font-sans);
+}
+
+.vsgh-grid-bg {
+  background-color: var(--vsgh-color-background);
+  background-image:
+    linear-gradient(var(--vsgh-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--vsgh-grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
 }
