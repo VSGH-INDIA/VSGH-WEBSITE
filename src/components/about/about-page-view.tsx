@@ -1,5 +1,5 @@
-import { AboutJsonLd } from "@/components/about/about-json-ld";
 import { AboutSubnav } from "@/components/about/about-subnav";
+import { DomainJsonLd } from "@/components/domain/domain-json-ld";
 import { MediaPlaceholder } from "@/components/home/media-placeholder";
 import { ButtonLink } from "@/components/ui/button";
 import { CtaBlock } from "@/components/ui/card";
@@ -181,7 +181,14 @@ function FacilitiesBody({ page }: { page: AboutPageContent }) {
 export function AboutPageView({ page }: { page: AboutPageContent }) {
   return (
     <main id="main">
-      <AboutJsonLd page={page} />
+      <DomainJsonLd
+        title={page.seoTitle}
+        description={page.description}
+        path={page.path}
+        navLabel={page.navLabel}
+        parentName="About"
+        parentPath="/about/company"
+      />
       <AboutSubnav currentPath={page.path} />
       <Hero
         compact

@@ -183,7 +183,7 @@ export const homeContent = {
     eyebrow: "Company",
     title:
       "Mission: turn recovered resource into qualified material capability.",
-    body: "VSGH exists to develop materials technology — from feedstock to application — with the restraint required of aerospace-adjacent work. Leadership, facilities, and company history will be published on dedicated About pages.",
+    body: "VSGH exists to develop materials technology — from feedstock to application — with the restraint required of aerospace-adjacent work. Company identity, leadership posture, and facilities language live on dedicated About pages.",
   },
   cta: {
     title: "Start a technical conversation.",

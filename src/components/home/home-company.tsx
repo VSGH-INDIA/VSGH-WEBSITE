@@ -1,3 +1,4 @@
+import { ButtonLink } from "@/components/ui/button";
 import {
   Badge,
   Container,
@@ -23,6 +24,9 @@ export function HomeCompany() {
             {company.title}
           </Heading>
           <Text className="text-muted">{company.body}</Text>
+          <ButtonLink href="/about/company" variant="secondary">
+            Company
+          </ButtonLink>
         </div>
         <MediaPlaceholder label="Company / facilities visual · placeholder" />
       </Container>

@@ -49,20 +49,17 @@ export const RESEARCH_NAV = [
   { label: "Publications", href: "/research/publications" },
 ] as const;
 
-const PUBLISHED_EXACT = [
+export const IMPLEMENTED_ROUTES = [
   "/",
+  ...ABOUT_NAV.map((item) => item.href),
+  ...MATERIALS_NAV.map((item) => item.href),
+  ...TECHNOLOGY_NAV.map((item) => item.href),
+  ...APPLICATIONS_NAV.map((item) => item.href),
+  ...RESEARCH_NAV.map((item) => item.href),
   "/sustainability",
   "/insights",
   "/careers",
   "/contact",
-] as const;
-
-const PUBLISHED_PREFIXES = [
-  "/about/",
-  "/materials/",
-  "/technology/",
-  "/applications/",
-  "/research/",
 ] as const;
 
 const CURRENT_DOMAINS = [
@@ -74,10 +71,8 @@ const CURRENT_DOMAINS = [
 ] as const;
 
 export function isPublishedPath(href: string): boolean {
-  return (
-    (PUBLISHED_EXACT as readonly string[]).includes(href) ||
-    PUBLISHED_PREFIXES.some((prefix) => href.startsWith(prefix))
-  );
+  const path = href.split("#")[0]?.split("?")[0] ?? href;
+  return (IMPLEMENTED_ROUTES as readonly string[]).includes(path);
 }
 
 export function isPrimaryNavCurrent(href: string, pathname: string): boolean {

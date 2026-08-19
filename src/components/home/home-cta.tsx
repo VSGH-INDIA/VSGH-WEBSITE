@@ -17,8 +17,8 @@ export function HomeCta() {
               <ButtonLink href="/contact" variant="primary">
                 Contact VSGH
               </ButtonLink>
-              <ButtonLink href="#research" variant="secondary">
-                Research collaboration
+              <ButtonLink href="/research/overview" variant="secondary">
+                Research
               </ButtonLink>
             </>
           }

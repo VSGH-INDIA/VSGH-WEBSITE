@@ -1,3 +1,4 @@
+import { ButtonLink } from "@/components/ui/button";
 import {
   Badge,
   Container,
@@ -19,6 +20,9 @@ export function HomeResearch() {
             {research.title}
           </Heading>
           <Text className="text-muted">{research.body}</Text>
+          <ButtonLink href="/research/overview" variant="secondary">
+            Research
+          </ButtonLink>
         </div>
         <div className="grid gap-px bg-border md:grid-cols-2">
           {research.items.map((item) => (

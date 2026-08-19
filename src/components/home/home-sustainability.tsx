@@ -1,3 +1,4 @@
+import { ButtonLink } from "@/components/ui/button";
 import {
   Badge,
   Container,
@@ -27,6 +28,9 @@ export function HomeSustainability() {
             {sustainability.title}
           </Heading>
           <Text className="text-muted">{sustainability.body}</Text>
+          <ButtonLink href="/sustainability" variant="secondary">
+            Sustainability
+          </ButtonLink>
         </div>
         <ol className="grid gap-4 md:grid-cols-5">
           {chain.map((step, index) => (
