@@ -32,8 +32,8 @@ export function HomeApplications() {
             </Heading>
             <Text className="text-muted">{applications.featured.body}</Text>
             <div>
-              <ButtonLink href="/applications" variant="secondary">
-                Applications overview
+              <ButtonLink href="/applications/aerospace" variant="secondary">
+                Aerospace applications
               </ButtonLink>
             </div>
           </article>

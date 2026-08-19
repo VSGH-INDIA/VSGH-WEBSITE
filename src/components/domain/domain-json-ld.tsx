@@ -1,5 +1,5 @@
 import { SITE_NAME, SITE_ORIGIN } from "@/lib/site";
-import { absoluteUrl } from "@/lib/seo";
+import { absoluteUrl, breadcrumbItems } from "@/lib/seo";
 
 export function DomainJsonLd({
   title,
@@ -16,30 +16,17 @@ export function DomainJsonLd({
   parentName: string;
   parentPath: string;
 }) {
-  const crumbs = [
-    {
-      "@type": "ListItem" as const,
-      position: 1,
-      name: "Home",
-      item: SITE_ORIGIN,
-    },
-    ...(parentPath !== "/"
-      ? [
-          {
-            "@type": "ListItem" as const,
-            position: 2,
-            name: parentName,
-            item: absoluteUrl(parentPath),
-          },
-        ]
-      : []),
-    {
-      "@type": "ListItem" as const,
-      position: parentPath !== "/" ? 3 : 2,
-      name: navLabel,
-      item: absoluteUrl(path),
-    },
-  ];
+  const crumbs = breadcrumbItems({
+    path,
+    navLabel,
+    parentName,
+    parentPath,
+  }).map((item, index) => ({
+    "@type": "ListItem" as const,
+    position: index + 1,
+    name: item.name,
+    item: item.item,
+  }));
 
   const data = {
     "@context": "https://schema.org",

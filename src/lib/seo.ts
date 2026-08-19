@@ -38,3 +38,28 @@ export function pageMetadata({
 export function absoluteUrl(path: string): string {
   return `${SITE_ORIGIN}${path}`;
 }
+
+export function breadcrumbItems({
+  path,
+  navLabel,
+  parentName,
+  parentPath,
+}: {
+  path: string;
+  navLabel: string;
+  parentName: string;
+  parentPath: string;
+}): { name: string; item: string }[] {
+  const home = { name: "Home", item: SITE_ORIGIN };
+  if (parentPath === "/") {
+    return [home, { name: navLabel, item: absoluteUrl(path) }];
+  }
+  if (parentPath === path) {
+    return [home, { name: parentName, item: absoluteUrl(path) }];
+  }
+  return [
+    home,
+    { name: parentName, item: absoluteUrl(parentPath) },
+    { name: navLabel, item: absoluteUrl(path) },
+  ];
+}

@@ -2,18 +2,30 @@ import { describe, expect, it } from "vitest";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_ORIGIN } from "@/lib/site";
 
 describe("homepage JSON-LD", () => {
-  it("serializes a valid Organization object", () => {
+  it("serializes Organization, WebPage, and Home breadcrumb without Article", () => {
     const data = {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_ORIGIN,
-      description: SITE_DESCRIPTION,
+      "@graph": [
+        {
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_ORIGIN,
+          description: SITE_DESCRIPTION,
+        },
+        {
+          "@type": "WebPage",
+          name: SITE_NAME,
+          description: SITE_DESCRIPTION,
+          url: SITE_ORIGIN,
+        },
+      ],
     };
     const parsed = JSON.parse(
       JSON.stringify(data).replace(/</g, "\\u003c"),
     ) as typeof data;
-    expect(parsed["@type"]).toBe("Organization");
-    expect(parsed.url).toBe("https://www.vsgh.com");
+    expect(parsed["@graph"][0]?.["@type"]).toBe("Organization");
+    expect(parsed["@graph"][1]?.["@type"]).toBe("WebPage");
+    expect(JSON.stringify(parsed).includes("Article")).toBe(false);
+    expect(parsed["@graph"][0]?.url).toBe("https://www.vsgh.com");
   });
 });

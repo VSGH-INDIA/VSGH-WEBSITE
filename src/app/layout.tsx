@@ -32,21 +32,13 @@ export const metadata: Metadata = {
     template: "%s · VSGH",
   },
   description: SITE_DESCRIPTION,
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
-    url: "/",
     siteName: "VSGH",
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
     locale: "en",
   },
   twitter: {
     card: "summary",
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
   },
   robots: {
     index: false,

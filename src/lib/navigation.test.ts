@@ -62,6 +62,7 @@ describe("nav helpers", () => {
     expect(isPublishedPath("/careers")).toBe(true);
     expect(isPublishedPath("/contact")).toBe(true);
     expect(isPublishedPath("/insights/news")).toBe(false);
+    expect(isPublishedPath("/applications")).toBe(false);
     expect(
       isPrimaryNavCurrent("/applications/aerospace", "/applications/space"),
     ).toBe(true);

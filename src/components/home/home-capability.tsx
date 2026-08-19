@@ -1,3 +1,4 @@
+import { ButtonLink } from "@/components/ui/button";
 import {
   Badge,
   Container,
@@ -22,6 +23,9 @@ export function HomeCapability() {
             {capability.title}
           </Heading>
           <Text className="text-muted">{capability.body}</Text>
+          <ButtonLink href="/materials/overview" variant="secondary">
+            Materials
+          </ButtonLink>
         </div>
         <ul className="divide-y divide-border border-y border-border">
           {capability.items.map((item) => (

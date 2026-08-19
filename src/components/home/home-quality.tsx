@@ -1,3 +1,4 @@
+import { ButtonLink } from "@/components/ui/button";
 import {
   Badge,
   Container,
@@ -19,6 +20,9 @@ export function HomeQuality() {
             {quality.title}
           </Heading>
           <Text className="text-muted">{quality.body}</Text>
+          <ButtonLink href="/about/quality" variant="secondary">
+            Quality
+          </ButtonLink>
         </div>
         <ul>
           {quality.items.map((item) => (
