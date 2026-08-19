@@ -18,17 +18,20 @@ The public site is isolated from VSGH internal systems. No V1 PostgreSQL databas
 
 ```text
 src/app/          App Router (server components by default)
-src/styles/       Design tokens (provisional until WP04 approval)
+src/styles/       Design tokens — PROVISIONAL — NOT FINAL VSGH BRAND TOKENS
 src/lib/          Shared typed utilities
-src/sanity/       CMS entity contract (WEB-034), no live client yet
-docs/             Setup, security, CMS, deployment, conflicts
+src/sanity/       CMS entity names only (WEB-034); no live client
+docs/             Index, hierarchy, conflicts, decision records
+docs/library/     Versioned copies of library files changed in VSGH-CURSOR-TASK-001
 .github/          CI quality gates
 ```
 
+V1 public sitemap: **WEB-081**. Do not implement those routes until a later task.
+
 ## Not in this bootstrap
 
-- Full sitemap routes (blocked by IA conflict; see CONFLICTS.md)
+- Full sitemap routes (documented in WEB-081; not built)
 - Sanity Studio as a public route
-- Analytics
-- Contact form backend (corporate email architecture is TBD in WEB-058)
-- High-fidelity UI (WEB-080 not approved; no prototype supplied)
+- Analytics (NOT APPROVED / NOT IMPLEMENTED)
+- Contact form backend (email TBD / not selected)
+- High-fidelity UI (WEB-080 frozen as requirements only)
