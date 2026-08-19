@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { isPublishedPath, PRIMARY_NAV } from "@/lib/navigation";
+import { PRIMARY_NAV } from "@/lib/navigation";
 
 export function SiteFooter() {
   return (
@@ -24,7 +24,7 @@ export function SiteFooter() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    prefetch={isPublishedPath(item.href)}
+                    prefetch={false}
                     className="inline-flex min-h-11 items-center py-2 text-[length:var(--vsgh-text-nav)] text-muted no-underline transition-colors duration-[var(--vsgh-duration)] hover:text-foreground"
                   >
                     {item.label}

@@ -3,20 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  isPrimaryNavCurrent,
-  isPublishedPath,
-  PRIMARY_NAV,
-} from "@/lib/navigation";
+import { isPrimaryNavCurrent, PRIMARY_NAV } from "@/lib/navigation";
 import { cn } from "@/lib/cn";
 
 export function SiteHeader() {
-  const pathname = usePathname();
-  return <SiteHeaderBar key={pathname} pathname={pathname} />;
-}
-
-function SiteHeaderBar({ pathname }: { pathname: string }) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const closeMenu = useCallback((restoreFocus = false) => {
@@ -37,9 +29,20 @@ function SiteHeaderBar({ pathname }: { pathname: string }) {
         closeMenu(true);
       }
     };
+    const onClick = (event: MouseEvent) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+      if (target.closest("a[href]")) {
+        closeMenu(false);
+      }
+    };
     window.addEventListener("keydown", onKey);
+    document.addEventListener("click", onClick);
     return () => {
       window.removeEventListener("keydown", onKey);
+      document.removeEventListener("click", onClick);
       document.body.style.overflow = "";
     };
   }, [open, closeMenu]);
@@ -90,7 +93,7 @@ function SiteHeaderBar({ pathname }: { pathname: string }) {
             <Link
               key={item.label}
               href={item.href}
-              prefetch={isPublishedPath(item.href)}
+              prefetch={false}
               className="inline-flex min-h-11 items-center px-2 text-[length:var(--vsgh-text-nav)] text-muted no-underline transition-colors duration-[var(--vsgh-duration)] hover:text-foreground"
               aria-current={
                 isPrimaryNavCurrent(item.href, pathname) ? "page" : undefined
@@ -135,14 +138,13 @@ function SiteHeaderBar({ pathname }: { pathname: string }) {
             <li key={item.label}>
               <Link
                 href={item.href}
-                prefetch={isPublishedPath(item.href)}
+                prefetch={false}
                 className={cn(
                   "flex min-h-11 items-center py-3 text-[length:var(--vsgh-text-body)] text-foreground no-underline",
                 )}
                 aria-current={
                   isPrimaryNavCurrent(item.href, pathname) ? "page" : undefined
                 }
-                onClick={() => closeMenu(false)}
               >
                 {item.label}
               </Link>

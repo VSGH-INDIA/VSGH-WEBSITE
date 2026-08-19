@@ -83,6 +83,7 @@ IA trees in WEB-002, WEB-023, WEB-062 — **SUPERSEDED** (IA portions) by WEB-08
 - [Sustainability, Insights, Careers, and Contact implementation](implementation/VSGH-SUSTAINABILITY-INSIGHTS-CAREERS-CONTACT-IMPLEMENTATION-001.md)
 - [Whole-site architecture QA](qa/VSGH-WHOLE-SITE-ARCHITECTURE-QA-001.md)
 - [Accessibility and responsive QA](qa/VSGH-ACCESSIBILITY-RESPONSIVE-QA-001.md)
+- [Performance QA](qa/VSGH-PERFORMANCE-QA-001.md)
 - [CMS.md](CMS.md)
 - [SECURITY.md](SECURITY.md)
 - [DEPLOYMENT.md](DEPLOYMENT.md)

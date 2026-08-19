@@ -22,7 +22,7 @@ export function DomainSubnav({
             <li key={item.href} className="shrink-0">
               <Link
                 href={item.href}
-                prefetch
+                prefetch={false}
                 className={cn(
                   "inline-flex min-h-11 items-center px-3 py-2 text-[length:var(--vsgh-text-nav)] no-underline transition-colors duration-[var(--vsgh-duration)]",
                   current
