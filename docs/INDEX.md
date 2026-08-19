@@ -79,6 +79,7 @@ IA trees in WEB-002, WEB-023, WEB-062 — **SUPERSEDED** (IA portions) by WEB-08
 - [Homepage QA](design/VSGH-HOMEPAGE-QA-001.md)
 - [About implementation](implementation/VSGH-ABOUT-IMPLEMENTATION-001.md)
 - [Materials and Technology implementation](implementation/VSGH-MATERIALS-TECHNOLOGY-IMPLEMENTATION-001.md)
+- [Applications and Research implementation](implementation/VSGH-APPLICATIONS-RESEARCH-IMPLEMENTATION-001.md)
 - [CMS.md](CMS.md)
 - [SECURITY.md](SECURITY.md)
 - [DEPLOYMENT.md](DEPLOYMENT.md)
