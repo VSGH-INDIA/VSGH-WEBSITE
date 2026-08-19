@@ -1,4 +1,3 @@
-import { unstable_cache } from "next/cache";
 import type { AboutPageContent } from "@/content/about";
 import type { CareerVacancy } from "@/content/careers";
 import { contactPage } from "@/content/contact";
@@ -45,21 +44,25 @@ async function queryWithClient<T>(
 }
 
 async function cachedPublishedQuery<T>(
-  key: string[],
   groq: string,
   params: Record<string, string> = {},
 ): Promise<T | null> {
   if (!isSanityConfigured()) {
     return null;
   }
-  return unstable_cache(
-    async () => queryWithClient<T>(getPublishedSanityClient(), groq, params),
-    key,
-    {
-      revalidate: 3600,
-      tags: ["sanity"],
-    },
-  )();
+  const client = getPublishedSanityClient();
+  if (!client) {
+    return null;
+  }
+  try {
+    return (
+      (await client.fetch<T>(groq, params, {
+        next: { revalidate: 3600, tags: ["sanity"] },
+      })) ?? null
+    );
+  } catch {
+    return null;
+  }
 }
 
 function previewQuery<T>(
@@ -75,11 +78,7 @@ export function fetchPublishedCapabilityPage(
   if (!isRevalidatablePath(path)) {
     return Promise.resolve(null);
   }
-  return cachedPublishedQuery(
-    ["sanity-capability", path],
-    CAPABILITY_PAGE_QUERY,
-    { path },
-  );
+  return cachedPublishedQuery(CAPABILITY_PAGE_QUERY, { path });
 }
 
 export function fetchPreviewCapabilityPage(
@@ -97,9 +96,7 @@ export function fetchPublishedAboutPage(
   if (!isRevalidatablePath(path)) {
     return Promise.resolve(null);
   }
-  return cachedPublishedQuery(["sanity-about", path], ABOUT_PAGE_QUERY, {
-    path,
-  });
+  return cachedPublishedQuery(ABOUT_PAGE_QUERY, { path });
 }
 
 export function fetchPreviewAboutPage(
@@ -115,7 +112,7 @@ export function fetchPublishedHomepage(): Promise<Record<
   string,
   unknown
 > | null> {
-  return cachedPublishedQuery(["sanity-homepage"], HOMEPAGE_QUERY);
+  return cachedPublishedQuery(HOMEPAGE_QUERY);
 }
 
 export function fetchPreviewHomepage(): Promise<Record<
@@ -128,7 +125,7 @@ export function fetchPreviewHomepage(): Promise<Record<
 export function fetchPublishedContactPage(): Promise<Partial<
   typeof contactPage
 > | null> {
-  return cachedPublishedQuery(["sanity-contact"], CONTACT_PAGE_QUERY);
+  return cachedPublishedQuery(CONTACT_PAGE_QUERY);
 }
 
 export function fetchPreviewContactPage(): Promise<Partial<
@@ -140,10 +137,7 @@ export function fetchPreviewContactPage(): Promise<Partial<
 export async function fetchPublishedInsightArticles(): Promise<
   InsightArticle[]
 > {
-  const incoming = await cachedPublishedQuery<unknown>(
-    ["sanity-insights"],
-    INSIGHT_ARTICLES_QUERY,
-  );
+  const incoming = await cachedPublishedQuery<unknown>(INSIGHT_ARTICLES_QUERY);
   return normalizeInsightArticles(incoming, "published");
 }
 
@@ -156,10 +150,7 @@ export async function fetchPublishedCareerVacancies(): Promise<
   CareerVacancy[]
 > {
   return (
-    (await cachedPublishedQuery<CareerVacancy[]>(
-      ["sanity-careers"],
-      CAREER_VACANCIES_QUERY,
-    )) ?? []
+    (await cachedPublishedQuery<CareerVacancy[]>(CAREER_VACANCIES_QUERY)) ?? []
   );
 }
 

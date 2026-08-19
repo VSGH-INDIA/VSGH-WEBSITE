@@ -95,13 +95,20 @@ describe("secret surface", () => {
     expect(publishedFn).not.toContain("token:");
   });
 
-  it("does not cache preview GROQ with unstable_cache", () => {
+  it("does not cache preview GROQ and tags published GROQ for revalidateTag", () => {
     const fetchSource = readFileSync("src/sanity/fetch.ts", "utf8");
     const previewFn = fetchSource.slice(
       fetchSource.indexOf("function previewQuery"),
       fetchSource.indexOf("export function fetchPublishedCapabilityPage"),
     );
+    const publishedFn = fetchSource.slice(
+      fetchSource.indexOf("async function cachedPublishedQuery"),
+      fetchSource.indexOf("function previewQuery"),
+    );
     expect(previewFn).toContain("getPreviewSanityClient");
     expect(previewFn).not.toContain("unstable_cache");
+    expect(previewFn).not.toContain('tags: ["sanity"]');
+    expect(publishedFn).toContain('tags: ["sanity"]');
+    expect(publishedFn).not.toContain("unstable_cache");
   });
 });
