@@ -1,35 +1,8 @@
-import Link from "next/link";
+import { DomainSubnav } from "@/components/domain/domain-subnav";
 import { ABOUT_NAV } from "@/lib/navigation";
-import { cn } from "@/lib/cn";
 
 export function AboutSubnav({ currentPath }: { currentPath: string }) {
   return (
-    <nav aria-label="About" className="border-b border-border bg-surface">
-      <ul
-        className="mx-auto flex max-w-[var(--vsgh-content-wide)] gap-1 overflow-x-auto py-2"
-        style={{ paddingInline: "var(--vsgh-gutter)" }}
-      >
-        {ABOUT_NAV.map((item) => {
-          const current = currentPath === item.href;
-          return (
-            <li key={item.href} className="shrink-0">
-              <Link
-                href={item.href}
-                prefetch
-                className={cn(
-                  "block px-3 py-2 text-[length:var(--vsgh-text-nav)] no-underline transition-colors duration-[var(--vsgh-duration)]",
-                  current
-                    ? "text-foreground"
-                    : "text-muted hover:text-foreground",
-                )}
-                aria-current={current ? "page" : undefined}
-              >
-                {item.label}
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+    <DomainSubnav label="About" items={ABOUT_NAV} currentPath={currentPath} />
   );
 }

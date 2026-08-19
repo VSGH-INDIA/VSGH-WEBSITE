@@ -26,11 +26,11 @@ docs/library/     Versioned copies of library files changed in VSGH-CURSOR-TASK-
 .github/          CI quality gates
 ```
 
-V1 public sitemap: **WEB-081**. `/` and the seven `/about/*` child routes are implemented. `/about` index is not built. Other listed routes wait for later tasks.
+V1 public sitemap: **WEB-081**. `/`, `/about/*` children, `/materials/*` children, and `/technology/*` children are implemented. Parent indexes for those folders are not built. Other listed routes wait for later tasks.
 
 ## Not in this bootstrap
 
-- Remaining WEB-081 routes outside `/` and `/about/*` children
+- Remaining WEB-081 routes outside `/`, `/about/*`, `/materials/*`, and `/technology/*` children
 - Sanity Studio as a public route
 - Analytics (NOT APPROVED / NOT IMPLEMENTED)
 - Contact form backend (email TBD / not selected)
