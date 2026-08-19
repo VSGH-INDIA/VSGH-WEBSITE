@@ -1,38 +1,79 @@
 /*
-  PROVISIONAL — NOT FINAL VSGH BRAND TOKENS.
+  VSGH DESIGN SYSTEM — REV A — IMPLEMENTATION DRAFT
 
-  Do not treat these grayscale values as the VSGH corporate identity.
-  WEB-065 defines semantic roles only. WEB-080 freezes requirements, not executed visual design.
-  Final hex values, typefaces, and brand tokens are a later dedicated visual-design phase.
-  Do not invent a final visual identity in implementation tasks.
+  Candidate visual baseline interpreted from the approved visual reference
+  (vsgh-enterprise-site.preview.emergentagent.com) and WP04 requirements.
+  This is not a permanently frozen corporate brand identity.
 */
 
 :root {
-  --vsgh-color-background: #f4f2ee;
-  --vsgh-color-surface: #ffffff;
-  --vsgh-color-surface-elevated: #eceae4;
-  --vsgh-color-text: #121417;
-  --vsgh-color-text-secondary: #4b524a;
-  --vsgh-color-accent: #2f4a3c;
-  --vsgh-color-action: #1c2b24;
-  --vsgh-color-success: #215c3a;
-  --vsgh-color-warning: #8a5a12;
-  --vsgh-color-error: #8a1f1f;
-  --vsgh-color-focus: #1c4d7a;
+  --vsgh-color-background: #080c14;
+  --vsgh-color-surface: #0d131c;
+  --vsgh-color-surface-elevated: #141b26;
+  --vsgh-color-foreground: #f4f6f8;
+  --vsgh-color-foreground-muted: #94a3b8;
+  --vsgh-color-border: rgb(255 255 255 / 0.12);
+  --vsgh-color-accent: #c5d0dc;
+  --vsgh-color-accent-strong: #ffffff;
+  --vsgh-color-accent-muted: #64748b;
+  --vsgh-color-inverse-background: #f4f6f8;
+  --vsgh-color-inverse-foreground: #080c14;
+  --vsgh-color-focus: #8ec0ff;
+  --vsgh-color-error: #f87171;
+  --vsgh-color-success: #86efac;
+  --vsgh-color-warning: #fbbf24;
 
-  --vsgh-font-sans: ui-sans-serif, system-ui, sans-serif;
-  --vsgh-font-display: ui-sans-serif, system-ui, sans-serif;
-  --vsgh-font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --vsgh-font-sans:
+    var(--font-ibm-sans), "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --vsgh-font-display:
+    var(--font-ibm-sans), "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --vsgh-font-mono:
+    var(--font-ibm-mono), "IBM Plex Mono", ui-monospace, SFMono-Regular,
+    monospace;
+
+  --vsgh-text-display: clamp(2.75rem, 6vw, 4.75rem);
+  --vsgh-text-hero: clamp(2.25rem, 4.5vw, 3.75rem);
+  --vsgh-text-h1: clamp(1.875rem, 3vw, 2.5rem);
+  --vsgh-text-h2: clamp(1.5rem, 2.2vw, 1.875rem);
+  --vsgh-text-h3: 1.25rem;
+  --vsgh-text-body: 1.0625rem;
+  --vsgh-text-body-small: 0.9375rem;
+  --vsgh-text-label: 0.6875rem;
+  --vsgh-text-nav: 0.8125rem;
+  --vsgh-text-meta: 0.75rem;
+
+  --vsgh-leading-display: 1.02;
+  --vsgh-leading-body: 1.7;
+  --vsgh-tracking-display: -0.03em;
+  --vsgh-tracking-label: 0.18em;
 
   --vsgh-space-1: 0.25rem;
   --vsgh-space-2: 0.5rem;
   --vsgh-space-3: 0.75rem;
   --vsgh-space-4: 1rem;
+  --vsgh-space-5: 1.25rem;
   --vsgh-space-6: 1.5rem;
   --vsgh-space-8: 2rem;
+  --vsgh-space-10: 2.5rem;
   --vsgh-space-12: 3rem;
+  --vsgh-space-16: 4rem;
+  --vsgh-space-20: 5rem;
+  --vsgh-space-24: 6rem;
+
+  --vsgh-gutter: clamp(1.25rem, 4vw, 3rem);
+  --vsgh-content: 72rem;
+  --vsgh-content-wide: 80rem;
+  --vsgh-section-y: clamp(4rem, 8vw, 7rem);
 
   --vsgh-radius: 0.125rem;
+  --vsgh-border: 1px solid var(--vsgh-color-border);
+  --vsgh-elevation: 0 0 0 1px var(--vsgh-color-border);
+
+  --vsgh-duration-fast: 120ms;
+  --vsgh-duration: 200ms;
+  --vsgh-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --vsgh-grid-line: rgb(255 255 255 / 0.045);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -44,4 +85,9 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+:focus-visible {
+  outline: 2px solid var(--vsgh-color-focus);
+  outline-offset: 3px;
 }
