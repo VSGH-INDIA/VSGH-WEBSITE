@@ -64,6 +64,9 @@
   --vsgh-content: 72rem;
   --vsgh-content-wide: 80rem;
   --vsgh-section-y: clamp(4rem, 8vw, 7rem);
+  --vsgh-hero-min: 78vh;
+  --vsgh-grid-size: 4.5rem;
+  --vsgh-control: 2.75rem;
 
   --vsgh-radius: 0.125rem;
   --vsgh-border: 1px solid var(--vsgh-color-border);

@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 
 const variants = {
   primary:
-    "bg-inverse text-inverse-fg hover:bg-accent-strong disabled:bg-accent-muted disabled:text-background",
+    "bg-inverse text-inverse-fg hover:opacity-90 disabled:bg-accent-muted disabled:text-background disabled:opacity-100",
   secondary:
     "border border-border bg-transparent text-foreground hover:border-foreground disabled:opacity-40",
   ghost:
@@ -30,7 +30,7 @@ export function Button({
       className={cn(
         "inline-flex items-center justify-center gap-2 rounded-[var(--vsgh-radius)] font-medium transition-[background-color,border-color,opacity,transform] duration-[var(--vsgh-duration)] ease-[var(--vsgh-ease)] active:scale-[0.99]",
         size === "md" &&
-          "min-h-11 px-5 py-2.5 text-[length:var(--vsgh-text-nav)]",
+          "min-h-[var(--vsgh-control)] px-5 py-2.5 text-[length:var(--vsgh-text-nav)]",
         size === "sm" &&
           "min-h-9 px-3 py-1.5 text-[length:var(--vsgh-text-meta)]",
         variants[variant],
@@ -59,8 +59,9 @@ export function ButtonLink({
   children: ReactNode;
 }) {
   const classNames = cn(
-    "inline-flex items-center justify-center gap-2 rounded-[var(--vsgh-radius)] font-medium no-underline transition-[background-color,border-color] duration-[var(--vsgh-duration)] ease-[var(--vsgh-ease)]",
-    size === "md" && "min-h-11 px-5 py-2.5 text-[length:var(--vsgh-text-nav)]",
+    "inline-flex items-center justify-center gap-2 rounded-[var(--vsgh-radius)] font-medium no-underline transition-[background-color,border-color,opacity] duration-[var(--vsgh-duration)] ease-[var(--vsgh-ease)]",
+    size === "md" &&
+      "min-h-[var(--vsgh-control)] px-5 py-2.5 text-[length:var(--vsgh-text-nav)]",
     size === "sm" && "min-h-9 px-3 py-1.5 text-[length:var(--vsgh-text-meta)]",
     variants[variant],
     className,

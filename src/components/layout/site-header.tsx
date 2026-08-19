@@ -1,16 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PRIMARY_NAV } from "@/lib/navigation";
 import { cn } from "@/lib/cn";
-import { ButtonLink } from "@/components/ui/button";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-border bg-background">
       <div
         className="mx-auto flex max-w-[var(--vsgh-content-wide)] items-center justify-between gap-4 py-3"
         style={{ paddingInline: "var(--vsgh-gutter)" }}
@@ -29,47 +41,40 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-5 lg:flex" aria-label="Primary">
+        <nav
+          className="hidden items-center gap-4 xl:flex"
+          aria-label="Primary"
+        >
           {PRIMARY_NAV.map((item) => (
             <Link
               key={item.label}
               href={item.href}
               className="text-[length:var(--vsgh-text-nav)] text-muted no-underline transition-colors duration-[var(--vsgh-duration)] hover:text-foreground"
-              title="Route not implemented — design-system foundation only"
+              aria-label={`${item.label}, page not implemented`}
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <ButtonLink
-            href="#ds-cta"
-            variant="primary"
-            size="sm"
-            className="hidden sm:inline-flex"
-          >
-            Contact
-          </ButtonLink>
-          <button
-            type="button"
-            className="inline-flex min-h-11 min-w-11 items-center justify-center border border-border lg:hidden"
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            onClick={() => setOpen((value) => !value)}
-          >
-            <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-            <span aria-hidden className="font-mono text-sm">
-              {open ? "×" : "☰"}
-            </span>
-          </button>
-        </div>
+        <button
+          type="button"
+          className="inline-flex size-[var(--vsgh-control)] items-center justify-center border border-border xl:hidden"
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+          <span aria-hidden className="font-mono text-sm">
+            {open ? "×" : "☰"}
+          </span>
+        </button>
       </div>
 
       {open ? (
         <nav
           id="mobile-nav"
-          className="border-t border-border bg-surface px-[var(--vsgh-gutter)] py-4 lg:hidden"
+          className="border-t border-border bg-surface px-[var(--vsgh-gutter)] py-4 xl:hidden"
           aria-label="Mobile"
         >
           <ul className="flex flex-col gap-1">
@@ -80,6 +85,7 @@ export function SiteHeader() {
                   className={cn(
                     "block py-3 text-[length:var(--vsgh-text-body)] text-foreground no-underline",
                   )}
+                  aria-label={`${item.label}, page not implemented`}
                   onClick={() => setOpen(false)}
                 >
                   {item.label}

@@ -45,7 +45,7 @@ IBM Plex Sans (UI/display) and IBM Plex Mono (meta), loaded with `next/font`. Sc
 
 ## Spacing / grid
 
-4px-based scale `--vsgh-space-*`. Page gutter `--vsgh-gutter` (fluid). Content width 72rem / 80rem wide. Section padding `--vsgh-section-y`.
+4px-based scale `--vsgh-space-*`. Page gutter `--vsgh-gutter` (fluid). Content width 72rem / 80rem wide. Section padding `--vsgh-section-y`. Hero min-height `--vsgh-hero-min`. Blueprint cell `--vsgh-grid-size`. Control height `--vsgh-control`.
 
 ## Motion
 
@@ -59,11 +59,11 @@ Navigation labels follow WEB-081. Destinations currently point at `/` because th
 
 ## Accessibility
 
-Semantic header/nav/main/footer, visible `:focus-visible`, button disabled/loading states, mobile menu `aria-expanded`, keyboard-operable menu toggle, no color-only meaning.
+Semantic header/nav/main/footer, skip link, visible `:focus-visible`, button disabled/loading states, mobile menu `aria-expanded`, Escape to dismiss, keyboard-operable menu toggle. Inline links are underlined. Unimplemented WEB-081 items expose that in `aria-label`.
 
 ## Responsive
 
-Header collapses to a disclosure under `lg`. Hero CTAs stack on small screens. Metric strip becomes a stacked list, then four columns. Feature cards 1 → 3 columns.
+Header uses a disclosure below `xl` so nine WEB-081 labels do not overflow. Hero CTAs stack on small screens. Metric strip becomes a stacked list, then four columns. Feature cards 1 → 3 columns.
 
 ## Provisional items
 
