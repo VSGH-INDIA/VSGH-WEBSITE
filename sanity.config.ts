@@ -2,14 +2,12 @@ import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { isSafeInternalPath } from "@/lib/safe-url";
+import { resolveSanityDataset, resolveSanityProjectId } from "@/sanity/project";
 import { schemaTypes } from "@/sanity/schema";
 import { deskStructure } from "@/sanity/structure";
 
-const projectId =
-  process.env.SANITY_STUDIO_PROJECT_ID ||
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID ||
-  "unconfigured";
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+const projectId = resolveSanityProjectId();
+const dataset = resolveSanityDataset();
 const previewOrigin = process.env.SANITY_STUDIO_PREVIEW_ORIGIN;
 const previewSecret = process.env.SANITY_STUDIO_PREVIEW_SECRET;
 
