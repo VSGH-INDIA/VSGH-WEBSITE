@@ -5,3 +5,5 @@ build
 coverage
 package-lock.json
 sbom.cdx.json
+docs/library
+docs/decisions/VSGH-CAR-025_CORPORATE_DOCUMENTATION_APPROVAL_STATUS_AUDIT.md

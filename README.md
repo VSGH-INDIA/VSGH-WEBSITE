@@ -4,7 +4,11 @@ Private implementation repository for the VSGH external corporate website.
 
 **Stack (WEB-060 Rev B):** Next.js 16.2.x · React 19.2.x · TypeScript · Tailwind CSS · Sanity (not wired until a VSGH project exists) · Vercel · GitHub Actions.
 
-This bootstrap satisfies VSGH-CURSOR-003 (structure, TypeScript, lint, tests, env templates, CI, docs). It does **not** authorize production launch, public indexing, or a frozen sitemap.
+This bootstrap satisfies VSGH-CURSOR-003. It does **not** authorize production launch or public indexing.
+
+**V1 sitemap authority:** [WEB-081](docs/decisions/VSGH-WEB-081_V1_SITEMAP_AND_INFORMATION_ARCHITECTURE_DECISION_RECORD.md) (routes are **not** implemented yet).
+
+**Design tokens in `src/styles/tokens.css`:** PROVISIONAL — NOT FINAL VSGH BRAND TOKENS.
 
 ## Setup
 
@@ -29,6 +33,7 @@ npm run build
 
 ## Documentation
 
+- [Documentation index](docs/INDEX.md)
 - [Setup](docs/SETUP.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [CMS](docs/CMS.md)

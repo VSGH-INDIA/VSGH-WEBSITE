@@ -1,10 +1,10 @@
 /*
-  VSGH design tokens — PROVISIONAL.
+  PROVISIONAL — NOT FINAL VSGH BRAND TOKENS.
 
-  WEB-065 defines semantic roles, not an approved palette or typeface.
-  WEB-080 (WP04 baseline) is Draft and has not passed the implementation gate.
-  These values are grayscale industrial placeholders so the app can build.
-  They are not the VSGH brand identity. Do not treat them as frozen UX.
+  Do not treat these grayscale values as the VSGH corporate identity.
+  WEB-065 defines semantic roles only. WEB-080 freezes requirements, not executed visual design.
+  Final hex values, typefaces, and brand tokens are a later dedicated visual-design phase.
+  Do not invent a final visual identity in implementation tasks.
 */
 
 :root {
