@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { isSanityConfigured } from "./env";
+import { VSGH_SANITY_DATASET, VSGH_SANITY_PROJECT_ID } from "./project";
 import {
   CAPABILITY_PAGE_QUERY,
   CAREER_VACANCIES_QUERY,
@@ -13,6 +14,12 @@ describe("Sanity public CMS foundation", () => {
     expect(isSanityConfigured("", "production")).toBe(false);
     expect(isSanityConfigured("unconfigured", "production")).toBe(false);
     expect(isSanityConfigured("abcdefgh", "production")).toBe(true);
+  });
+
+  it("treats the verified VSGH production project as configured", () => {
+    expect(
+      isSanityConfigured(VSGH_SANITY_PROJECT_ID, VSGH_SANITY_DATASET),
+    ).toBe(true);
   });
 
   it("registers the public document types", () => {
