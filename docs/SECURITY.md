@@ -21,4 +21,6 @@ Unapproved analytics/tracking is prohibited (VSGH-CURSOR-003). WEB-014 and WEB-0
 
 ## Internal systems
 
-Do not connect this application to PLM, LIMS, ERP, QMS, or engineering repositories.
+Do not connect this application to PLM, LIMS, ERP, QMS, COSMOS, HRIS, MES, or engineering repositories.
+
+Sanity is limited to publicly publishable website content. The Next.js app holds no Sanity write token. Studio is not served from the public route tree.

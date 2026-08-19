@@ -1,16 +1,7 @@
-import { CapabilityPageView } from "@/components/domain/capability-page-view";
+import { capabilityRoute } from "@/lib/cms-routes";
 import { applicationsPages } from "@/content/applications";
 import { APPLICATIONS_NAV } from "@/lib/navigation";
-import { pageMetadata } from "@/lib/seo";
 
-const page = applicationsPages.defense;
-
-export const metadata = pageMetadata({
-  title: page.seoTitle,
-  description: page.description,
-  path: page.path,
-});
-
-export default function Page() {
-  return <CapabilityPageView page={page} nav={APPLICATIONS_NAV} />;
-}
+const route = capabilityRoute(applicationsPages.defense, APPLICATIONS_NAV);
+export const generateMetadata = route.generateMetadata;
+export default route.Page;

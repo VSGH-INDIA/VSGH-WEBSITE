@@ -17,17 +17,18 @@ cp .env.example .env.local
 
 ## Commands
 
-| Command             | Purpose                |
-| ------------------- | ---------------------- |
-| `npm run dev`       | Local Next.js server   |
-| `npm run build`     | Production build       |
-| `npm start`         | Serve production build |
-| `npm run lint`      | ESLint                 |
-| `npm run typecheck` | `tsc --noEmit`         |
-| `npm test`          | Vitest                 |
-| `npm run format`    | Prettier write         |
-| `npm run sbom`      | CycloneDX SBOM         |
+| Command             | Purpose                             |
+| ------------------- | ----------------------------------- |
+| `npm run dev`       | Local Next.js server                |
+| `npm run build`     | Production build                    |
+| `npm start`         | Serve production build              |
+| `npm run lint`      | ESLint                              |
+| `npm run typecheck` | `tsc --noEmit`                      |
+| `npm test`          | Vitest                              |
+| `npm run format`    | Prettier write                      |
+| `npm run studio`    | Sanity Studio on :3333 (not public) |
+| `npm run sbom`      | CycloneDX SBOM                      |
 
 ## CMS
 
-Sanity Studio must not be mounted on the public site. Local studio setup is deferred until project IDs exist. See `docs/CMS.md`.
+Sanity Studio is a separate process (`npm run studio`). Do not mount it on www.vsgh.com. See `docs/CMS.md` and `docs/cms/VSGH-PUBLIC-CONTENT-ADMINISTRATION-001.md`.

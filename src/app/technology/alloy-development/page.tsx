@@ -1,16 +1,10 @@
-import { CapabilityPageView } from "@/components/domain/capability-page-view";
+import { capabilityRoute } from "@/lib/cms-routes";
 import { technologyPages } from "@/content/technology";
 import { TECHNOLOGY_NAV } from "@/lib/navigation";
-import { pageMetadata } from "@/lib/seo";
 
-const page = technologyPages["alloy-development"];
-
-export const metadata = pageMetadata({
-  title: page.seoTitle,
-  description: page.description,
-  path: page.path,
-});
-
-export default function Page() {
-  return <CapabilityPageView page={page} nav={TECHNOLOGY_NAV} />;
-}
+const route = capabilityRoute(
+  technologyPages["alloy-development"],
+  TECHNOLOGY_NAV,
+);
+export const generateMetadata = route.generateMetadata;
+export default route.Page;
