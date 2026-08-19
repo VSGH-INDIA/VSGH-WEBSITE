@@ -1,11 +1,13 @@
 import { DomainJsonLd } from "@/components/domain/domain-json-ld";
 import { DomainSubnav } from "@/components/domain/domain-subnav";
+import { InsightsArticleList } from "@/components/domain/insights-article-list";
 import { ProcessFlow } from "@/components/domain/process-flow";
 import { MediaPlaceholder } from "@/components/home/media-placeholder";
 import { ButtonLink } from "@/components/ui/button";
 import { CtaBlock } from "@/components/ui/card";
 import { Hero } from "@/components/ui/hero";
 import { Container, Heading, Section, Text } from "@/components/ui/primitives";
+import type { InsightArticle } from "@/content/insight-articles";
 import type { CapabilityPageContent } from "@/content/types";
 import { isPublishedPath } from "@/lib/navigation";
 import { isSafeHref } from "@/lib/safe-url";
@@ -14,9 +16,11 @@ import Link from "next/link";
 export function CapabilityPageView({
   page,
   nav = [],
+  articles,
 }: {
   page: CapabilityPageContent;
   nav?: readonly { label: string; href: string }[];
+  articles?: readonly InsightArticle[];
 }) {
   return (
     <main id="main">
@@ -67,6 +71,16 @@ export function CapabilityPageView({
           ))}
         </Container>
       </Section>
+      {articles && articles.length > 0 ? (
+        <Section tone="surface" className="vsgh-reveal">
+          <Container wide className="space-y-6">
+            <h2 className="font-mono text-[length:var(--vsgh-text-label)] font-normal uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
+              Articles
+            </h2>
+            <InsightsArticleList articles={articles} />
+          </Container>
+        </Section>
+      ) : null}
       {page.stages ? (
         <Section tone="surface" className="vsgh-reveal">
           <Container wide>
@@ -128,7 +142,7 @@ export function CapabilityPageView({
           </Container>
         </Section>
       ) : null}
-      {page.emptyState ? (
+      {page.emptyState && !articles?.length ? (
         <Section tone="surface" className="vsgh-reveal">
           <Container wide>
             <div className="border border-border p-8 md:p-12">

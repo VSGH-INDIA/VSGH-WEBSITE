@@ -1,20 +1,10 @@
 import type { CapabilityPageContent } from "@/content/types";
 
-export type InsightArticle = {
-  slug: string;
-  title: string;
-  category: string;
-  summary: string;
-  publicationDate: string | null;
-  author: string | null;
-  status: "draft" | "published";
-  body: string;
-  mediaLabel: string;
-  seoTitle: string;
-  description: string;
-};
-
-export const insightArticles: InsightArticle[] = [];
+export type {
+  InsightArticle,
+  InsightArticleBlock,
+} from "@/content/insight-articles";
+export { insightArticles } from "@/content/insight-articles";
 
 export const insightsPage = {
   slug: "insights",
