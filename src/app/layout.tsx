@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { SiteHeader } from "@/components/layout/site-header";
+import { SITE_DESCRIPTION, SITE_ORIGIN, SITE_TITLE } from "@/lib/site";
 import "./globals.css";
 
 const sans = IBM_Plex_Sans({
@@ -17,15 +20,28 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
+  metadataBase: new URL(SITE_ORIGIN),
   title: {
-    default: "VSGH design system",
+    default: SITE_TITLE,
     template: "%s · VSGH",
   },
-  description:
-    "VSGH design-system demonstration. Not the production homepage. Indexing disabled.",
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "VSGH",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    locale: "en",
+  },
+  twitter: {
+    card: "summary",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
   robots: {
     index: false,
     follow: false,
@@ -49,7 +65,9 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

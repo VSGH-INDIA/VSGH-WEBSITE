@@ -49,17 +49,19 @@ IBM Plex Sans (UI/display) and IBM Plex Mono (meta), loaded with `next/font`. Sc
 
 ## Motion
 
-`--vsgh-duration-fast` 120ms, `--vsgh-duration` 200ms, `--vsgh-ease` cubic-bezier(0.2, 0.7, 0.2, 1). Hover/border transitions only. Global reduced-motion override in `tokens.css`.
+`--vsgh-duration-fast` 120ms, `--vsgh-duration` 200ms, `--vsgh-duration-reveal` 400ms, `--vsgh-ease` cubic-bezier(0.2, 0.7, 0.2, 1). Hover/border transitions; section opacity reveal (`.vsgh-reveal`). Global reduced-motion override in `tokens.css`.
 
 ## Components
 
-Under `src/components/`: Container, Section, Heading, Text, Button, ButtonLink, TextLink, Badge, Card, FeatureCard, Hero, SiteHeader, SiteFooter, MediaFrame, Divider, Metric, CtaBlock.
+Under `src/components/`: Container, Section, Heading, Text, Button, ButtonLink, TextLink, Badge, Card, FeatureCard, Hero (optional `media` slot), SiteHeader, SiteFooter, MediaFrame (optional children for future imagery), Divider, Metric, CtaBlock.
 
-Navigation labels follow WEB-081. Destinations currently point at `/` because those pages are not implemented.
+Navigation labels and hrefs follow WEB-081. Destination pages other than `/` are not implemented in V1 homepage task; those URLs 404 until later tasks.
+
+Homepage composition lives under `src/components/home/` and structured copy under `src/content/home.ts`.
 
 ## Accessibility
 
-Semantic header/nav/main/footer, skip link, visible `:focus-visible`, button disabled/loading states, mobile menu `aria-expanded`, Escape to dismiss, keyboard-operable menu toggle. Inline links are underlined. Unimplemented WEB-081 items expose that in `aria-label`.
+Semantic header/nav/main/footer, skip link, visible `:focus-visible`, button disabled/loading states, mobile menu `aria-expanded`, Escape to dismiss, keyboard-operable menu toggle. Inline links are underlined.
 
 ## Responsive
 
@@ -68,8 +70,8 @@ Header uses a disclosure below `xl` so nine WEB-081 labels do not overflow. Hero
 ## Provisional items
 
 - IBM Plex is a production-safe stand-in until a locked brand typeface exists
-- Demo metrics on `/` are labels for the system, not VSGH operational claims
-- No photography; media is a framed placeholder
-- `/` is a showcase, not the approved homepage (WEB-063 still pending execution)
+- Media frames are placeholders until approved VSGH photography exists
+- `/` is the V1 public homepage; other WEB-081 routes are not built
+- Indexing remains disabled until a production-launch task authorizes it
 
 See WP04 WEB-064, WEB-065, WEB-066, WEB-067, WEB-070, WEB-071, WEB-080 for requirements this draft implements.

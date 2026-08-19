@@ -92,20 +92,23 @@ export function CtaBlock({
 export function MediaFrame({
   label,
   className,
+  children,
 }: {
   label: string;
   className?: string;
+  children?: ReactNode;
 }) {
   return (
     <div
       className={cn(
-        "flex aspect-[16/9] items-end border border-border bg-surface-elevated p-4",
+        "relative flex aspect-[16/9] items-end overflow-hidden border border-border bg-surface-elevated p-4",
         className,
       )}
       role="img"
       aria-label={label}
     >
-      <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
+      {children}
+      <p className="relative font-mono text-[length:var(--vsgh-text-meta)] text-muted">
         {label}
       </p>
     </div>

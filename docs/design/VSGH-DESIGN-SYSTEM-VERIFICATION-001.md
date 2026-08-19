@@ -7,7 +7,7 @@
 
 ## Scope
 
-Visual language, tokens, components, WEB-081 navigation shell, WCAG 2.2 AA *intent*, responsive behavior, and performance of the `/` design-system showcase. No production homepage. No additional routes.
+Visual language, tokens, components, WEB-081 navigation shell, WCAG 2.2 AA _intent_, responsive behavior, and performance of the `/` design-system showcase. No production homepage. No additional routes.
 
 ## Visual findings
 

@@ -4,9 +4,7 @@ function relativeLuminance(hex: string): number {
   const raw = hex.replace("#", "");
   const channels = [0, 2, 4].map((i) => {
     const value = Number.parseInt(raw.slice(i, i + 2), 16) / 255;
-    return value <= 0.04045
-      ? value / 12.92
-      : ((value + 0.055) / 1.055) ** 2.4;
+    return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
   });
   const [r, g, b] = channels;
   if (r === undefined || g === undefined || b === undefined) {
