@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PRIMARY_NAV } from "@/lib/navigation";
+import { isPublishedPath, PRIMARY_NAV } from "@/lib/navigation";
 
 export function SiteFooter() {
   return (
@@ -15,7 +15,8 @@ export function SiteFooter() {
             </p>
             <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
               Engineered material capability from recovered resource to
-              application. Inner pages listed below are not yet implemented.
+              application. About pages are published; other listed destinations
+              are not yet implemented.
             </p>
           </div>
           <nav aria-label="Footer">
@@ -24,7 +25,7 @@ export function SiteFooter() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    prefetch={false}
+                    prefetch={isPublishedPath(item.href)}
                     className="text-[length:var(--vsgh-text-nav)] text-muted no-underline transition-colors duration-[var(--vsgh-duration)] hover:text-foreground"
                   >
                     {item.label}

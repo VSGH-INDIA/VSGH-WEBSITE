@@ -53,11 +53,11 @@ IBM Plex Sans (UI/display) and IBM Plex Mono (meta), loaded with `next/font`. Sc
 
 ## Components
 
-Under `src/components/`: Container, Section, Heading, Text, Button, ButtonLink, TextLink, Badge, Card, FeatureCard, Hero (optional `media` slot), SiteHeader, SiteFooter, MediaFrame (optional children for future imagery), Divider, Metric, CtaBlock.
+Under `src/components/`: Container, Section, Heading, Text, Button, ButtonLink, TextLink, Badge, Card, FeatureCard, Hero (optional `media`, `compact`, `heading`), SiteHeader, SiteFooter, MediaFrame (optional children for future imagery), Divider, Metric, CtaBlock.
 
-Navigation labels and hrefs follow WEB-081. Destination pages other than `/` are not implemented in V1 homepage task; those URLs 404 until later tasks.
+Navigation labels follow WEB-081. About lands on `/about/company`. Other top-level destinations remain unpublished.
 
-Homepage composition lives under `src/components/home/` and structured copy under `src/content/home.ts`.
+Homepage composition: `src/components/home/` + `src/content/home.ts`. About domain: `src/components/about/` + `src/content/about.ts`.
 
 ## Accessibility
 
@@ -71,7 +71,7 @@ Header uses a disclosure below `xl` so nine WEB-081 labels do not overflow. Hero
 
 - IBM Plex is a production-safe stand-in until a locked brand typeface exists
 - Media frames are placeholders until approved VSGH photography exists
-- `/` is the V1 public homepage; other WEB-081 routes are not built
+- `/` is the V1 public homepage; WEB-081 About children are implemented; other routes are not built
 - Indexing remains disabled until a production-launch task authorizes it
 
 See WP04 WEB-064, WEB-065, WEB-066, WEB-067, WEB-070, WEB-071, WEB-080 for requirements this draft implements.
