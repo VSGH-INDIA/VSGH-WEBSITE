@@ -24,7 +24,7 @@ export function DomainSubnav({
                 href={item.href}
                 prefetch
                 className={cn(
-                  "block px-3 py-2 text-[length:var(--vsgh-text-nav)] no-underline transition-colors duration-[var(--vsgh-duration)]",
+                  "inline-flex min-h-11 items-center px-3 py-2 text-[length:var(--vsgh-text-nav)] no-underline transition-colors duration-[var(--vsgh-duration)]",
                   current
                     ? "text-foreground"
                     : "text-muted hover:text-foreground",

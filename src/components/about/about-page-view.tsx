@@ -4,13 +4,7 @@ import { MediaPlaceholder } from "@/components/home/media-placeholder";
 import { ButtonLink } from "@/components/ui/button";
 import { CtaBlock } from "@/components/ui/card";
 import { Hero } from "@/components/ui/hero";
-import {
-  Badge,
-  Container,
-  Heading,
-  Section,
-  Text,
-} from "@/components/ui/primitives";
+import { Container, Heading, Section, Text } from "@/components/ui/primitives";
 import type { AboutPageContent } from "@/content/about";
 
 function PageCta({ page }: { page: AboutPageContent }) {
@@ -54,7 +48,9 @@ function StandardBody({ page }: { page: AboutPageContent }) {
       {page.principles ? (
         <Section tone="surface" className="vsgh-reveal">
           <Container wide className="space-y-8">
-            <Badge>Principles</Badge>
+            <h2 className="font-mono text-[length:var(--vsgh-text-label)] font-normal uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
+              Principles
+            </h2>
             <ul className="divide-y divide-border border-y border-border">
               {page.principles.map((item) => (
                 <li
