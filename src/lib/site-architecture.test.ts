@@ -10,6 +10,7 @@ import { sustainabilityPage } from "@/content/sustainability";
 import { technologyPages } from "@/content/technology";
 import { IMPLEMENTED_ROUTES, isPublishedPath } from "@/lib/navigation";
 import { breadcrumbItems } from "@/lib/seo";
+import { SITE_ORIGIN } from "@/lib/site";
 
 const WEB_081_PAGES = [
   "/",
@@ -110,6 +111,15 @@ describe("internal links", () => {
   });
 });
 
+describe("canonical production origin", () => {
+  it("uses vsghindia.com and rejects the obsolete vsgh.com host", () => {
+    expect(SITE_ORIGIN).toBe("https://vsghindia.com");
+    expect(SITE_ORIGIN).not.toBe("https://www.vsgh.com");
+    expect(SITE_ORIGIN).not.toContain("www.vsgh.com");
+    expect(SITE_ORIGIN).not.toContain("vsgh.com");
+  });
+});
+
 describe("breadcrumb architecture", () => {
   it("collapses domain landings onto the first published child", () => {
     expect(
@@ -119,10 +129,7 @@ describe("breadcrumb architecture", () => {
         parentName: "Materials",
         parentPath: "/materials/overview",
       }).map((item) => item.item),
-    ).toEqual([
-      "https://www.vsgh.com",
-      "https://www.vsgh.com/materials/overview",
-    ]);
+    ).toEqual([SITE_ORIGIN, `${SITE_ORIGIN}/materials/overview`]);
   });
 
   it("uses the published landing URL rather than an unpublished parent index", () => {
@@ -133,9 +140,9 @@ describe("breadcrumb architecture", () => {
       parentPath: "/about/company",
     });
     expect(crumbs.map((item) => item.item)).toEqual([
-      "https://www.vsgh.com",
-      "https://www.vsgh.com/about/company",
-      "https://www.vsgh.com/about/vision",
+      SITE_ORIGIN,
+      `${SITE_ORIGIN}/about/company`,
+      `${SITE_ORIGIN}/about/vision`,
     ]);
   });
 });

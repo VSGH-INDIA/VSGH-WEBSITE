@@ -2,7 +2,7 @@
 
 **Task:** TASK-014  
 **Status:** Foundation implemented — public content only  
-**Studio:** separate Sanity Studio (`npm run studio`, port 3333) — **not** mounted at `/admin` or on www.vsgh.com
+**Studio:** separate Sanity Studio (`npm run studio`, port 3333) — **not** mounted at `/admin` or on vsghindia.com
 
 ## Architecture
 
@@ -81,7 +81,7 @@ Webhook (Sanity → Vercel) must send the revalidate secret. Not auto-wired with
 | --------------- | ----------------- | ------------------------------------------------ |
 | development     | `development`     | Local Studio + `.env.local`                      |
 | preview/staging | `staging`         | Vercel Preview; remain noindex                   |
-| production      | `production`      | www.vsgh.com; noindex until launch authorization |
+| production      | `production`      | vsghindia.com; noindex until launch authorization |
 
 Do not point production at a development dataset.
 

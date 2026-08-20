@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { MIN_SECRET_LENGTH } from "@/lib/security-headers";
+import { SITE_ORIGIN } from "@/lib/site";
 import {
   authorizePreviewAccess,
   previewExitUrl,
@@ -68,19 +69,21 @@ describe("preview authorization", () => {
       ok: true,
       path: "/contact",
     });
-    const url = new URL("https://www.vsgh.com/api/draft?path=/contact");
+    expect(SITE_ORIGIN).toBe("https://vsghindia.com");
+    expect(SITE_ORIGIN).not.toBe("https://www.vsgh.com");
+    const url = new URL(`${SITE_ORIGIN}/api/draft?path=/contact`);
     const headerRequest = new Request(url, {
       headers: { "x-vsgh-preview-secret": secret },
     });
     expect(previewSecretFromRequest(headerRequest, url)).toBe(secret);
-    expect(
-      sameOriginPathUrl("https://www.vsgh.com/api/draft", "/contact")?.href,
-    ).toBe("https://www.vsgh.com/contact");
+    expect(sameOriginPathUrl(`${SITE_ORIGIN}/api/draft`, "/contact")?.href).toBe(
+      `${SITE_ORIGIN}/contact`,
+    );
     expect(
       previewExitUrl(
-        "https://www.vsgh.com/api/draft/disable?next=https://evil.example",
+        `${SITE_ORIGIN}/api/draft/disable?next=https://evil.example`,
       ),
-    ).toEqual(new URL("https://www.vsgh.com/"));
+    ).toEqual(new URL(`${SITE_ORIGIN}/`));
   });
 });
 

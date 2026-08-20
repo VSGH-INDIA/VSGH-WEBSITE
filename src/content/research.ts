@@ -161,7 +161,7 @@ export const researchPages = {
     sections: [
       {
         title: "What will appear",
-        body: "Items that a later content release has approved for www.vsgh.com. Each item will carry a title, a date, and a clear status (for example: public paper, technical note). Until then, there are no rows.",
+        body: "Items that a later content release has approved for vsghindia.com. Each item will carry a title, a date, and a clear status (for example: public paper, technical note). Until then, there are no rows.",
       },
       {
         title: "What will never appear here by invention",

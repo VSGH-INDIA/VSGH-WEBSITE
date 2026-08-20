@@ -13,7 +13,7 @@ export const lifecycleField = defineField({
   title: "Publication lifecycle",
   type: "string",
   description:
-    "Only lifecycle=published documents are eligible for the public site after Sanity publish. Draft/review/approved remain off www.vsgh.com.",
+    "Only lifecycle=published documents are eligible for the public site after Sanity publish. Draft/review/approved remain off vsghindia.com.",
   options: {
     list: [
       { title: "Draft", value: "draft" },
