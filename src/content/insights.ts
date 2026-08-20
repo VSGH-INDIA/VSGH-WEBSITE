@@ -32,7 +32,7 @@ export const insightsPage = {
   emptyState: {
     eyebrow: "[ Record ]",
     title: "Insights are being developed.",
-    body: "When an article is authorized for www.vsgh.com, it will appear here. Until then this page remains a structured empty state, ready for a future content release without a layout redesign.",
+    body: "When an article is authorized for vsghindia.com, it will appear here. Until then this page remains a structured empty state, ready for a future content release without a layout redesign.",
   },
   related: [
     {

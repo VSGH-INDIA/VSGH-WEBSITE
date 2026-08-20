@@ -1,4 +1,4 @@
-export const SITE_ORIGIN = "https://www.vsgh.com";
+export const SITE_ORIGIN = "https://vsghindia.com";
 export const SITE_NAME = "VSGH";
 export const SITE_TITLE = "VSGH — Advanced materials for aerospace programmes";
 export const SITE_DESCRIPTION =

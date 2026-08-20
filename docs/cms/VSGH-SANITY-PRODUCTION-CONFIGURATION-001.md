@@ -4,7 +4,7 @@
 **Task:** TASK-016  
 **Date:** 2026-08-19  
 **Scope:** Public-content CMS administration, RBAC/MFA expectations, secure preview, webhook, Vercel env  
-**Does not apply:** VSGH internal systems, bulk content migration, `/admin` on www.vsgh.com
+**Does not apply:** VSGH internal systems, bulk content migration, `/admin` on vsghindia.com
 
 Status labels used below: **VERIFIED** (repository or CLI evidence), **CONFIGURED** (code present), **MANUAL ACTION REQUIRED**, **NOT IMPLEMENTED**, **BLOCKED**.
 
@@ -25,12 +25,12 @@ Repository-side preview, publication filters, RBAC helpers, webhook endpoint, an
 
 ```text
 Sanity identity + MFA (Sanity-hosted)
-  → Studio (localhost:3333 or sanity.studio host — not www.vsgh.com)
+  → Studio (localhost:3333 or sanity.studio host — not vsghindia.com)
   → Content Lake datasets (public website copy only)
   → Next.js
        published perspective, no token, lifecycle == published
        previewDrafts + Viewer token, only when Next draft mode is on
-  → Vercel → Cloudflare DNS → www.vsgh.com
+  → Vercel → Cloudflare DNS → vsghindia.com
 ```
 
 No second CMS. No custom auth database. No COSMOS/PLM/LIMS/ERP/MES/QMS/HRIS connectors.
@@ -55,7 +55,7 @@ Production dataset contents: public website documents of types listed in TASK-01
 
 **CONFIGURED** in repo: `sanity.config.ts`, `npm run studio` port 3333, `studioHost: undefined` (no public Next `/admin`).
 
-**MANUAL ACTION REQUIRED:** Deploy Studio with `npx sanity deploy` after login, or use Sanity-hosted Studio on a private host. Intended URL shape: `https://<studioHost>.sanity.studio/` — not `https://www.vsgh.com/admin`.
+**MANUAL ACTION REQUIRED:** Deploy Studio with `npx sanity deploy` after login, or use Sanity-hosted Studio on a private host. Intended URL shape: `https://<studioHost>.sanity.studio/` — not `https://vsghindia.com/admin`.
 
 Vision remains a Studio plugin (authenticated editors). Restrict via Sanity roles if the plan allows.
 
@@ -136,7 +136,7 @@ Flow: editor opens preview → `GET` or `POST` `/api/draft` with secret → Next
 
 **MANUAL ACTION REQUIRED** in Sanity → API → Webhooks:
 
-- URL: `https://www.vsgh.com/api/revalidate` (and Preview deployment URL if used)
+- URL: `https://vsghindia.com/api/revalidate` (and Preview deployment URL if used)
 - HTTP method: POST
 - HTTP header: `x-vsgh-revalidate-secret` = Vercel `SANITY_REVALIDATE_SECRET` (value only in secret stores)
 - Trigger: create/update/delete on public types, including publish
@@ -188,7 +188,7 @@ Fallback: CMS outage or unconfigured project id → `src/content/*`. **CONFIGURE
 6. `sanity schema deploy` / Studio deploy — **MANUAL**
 7. Webhook to `/api/revalidate` — **MANUAL**
 8. Vercel env vars as table above — **MANUAL**
-9. Studio host not on www.vsgh.com — **MANUAL**
+9. Studio host not on vsghindia.com — **MANUAL**
 10. Preview token + secrets; smoke-test draft vs public — **MANUAL** after 8–9
 
 ## 14. Remaining blockers

@@ -99,7 +99,7 @@ HSTS is not set in local or Vercel preview. Certificate management stays at Clou
 - GROQ always includes `lifecycle == "published"` (and vacancies `vacancyStatus == "open"`). Query `path` parameters are restricted to implemented routes.
 - Media schema is `publicImage` (publication-safe). Sanity media is public; do not store restricted documents there.
 - Structured text fields, not raw HTML. JSON-LD is `JSON.stringify` with `<` escaped.
-- Studio hosting: local `npm run studio` or a **separate** Sanity-hosted Studio with SSO/MFA. Do not mount Studio on www.vsgh.com.
+- Studio hosting: local `npm run studio` or a **separate** Sanity-hosted Studio with SSO/MFA. Do not mount Studio on vsghindia.com.
 
 ### Recommended Sanity project settings (manual — not changed by this task)
 

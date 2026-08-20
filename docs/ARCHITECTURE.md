@@ -3,14 +3,14 @@
 Approved V1 path (WEB-047 / WEB-048 / WEB-060):
 
 ```text
-Hostinger registrar (vsgh.com)
+Hostinger registrar (vsghindia.com)
   → Cloudflare DNS
   → Vercel Edge
   → Next.js App Router
   → Sanity Content Lake (public content only)
 ```
 
-Canonical URL: `https://www.vsgh.com`. Apex shall redirect to www.
+Canonical URL: `https://vsghindia.com`. Secondary host: `https://www.vsghindia.com`.
 
 The public site is isolated from VSGH internal systems. No V1 PostgreSQL database; Sanity is the content store. PostgreSQL is reserved for future transactional work.
 
@@ -31,6 +31,6 @@ V1 public sitemap: **WEB-081**. Implemented: `/`, About children, Materials chil
 ## Not in this bootstrap
 
 - Nested Insights children (not frozen in WEB-081)
-- Sanity Studio as a public www.vsgh.com route
+- Sanity Studio as a public vsghindia.com route
 - Analytics (NOT APPROVED / NOT IMPLEMENTED)
 - Contact form backend (email TBD / not selected)

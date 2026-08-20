@@ -31,4 +31,4 @@ cp .env.example .env.local
 
 ## CMS
 
-Sanity Studio is a separate process (`npm run studio`). Do not mount it on www.vsgh.com. See `docs/CMS.md` and `docs/cms/VSGH-PUBLIC-CONTENT-ADMINISTRATION-001.md`.
+Sanity Studio is a separate process (`npm run studio`). Do not mount it on vsghindia.com. See `docs/CMS.md` and `docs/cms/VSGH-PUBLIC-CONTENT-ADMINISTRATION-001.md`.
