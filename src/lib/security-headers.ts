@@ -1,3 +1,8 @@
+import {
+  PREVIEW_ROBOTS_HEADER,
+  PUBLIC_INDEXING_ENABLED,
+} from "./indexing-policy";
+
 export const MIN_SECRET_LENGTH = 32;
 
 export function isConfiguredSecret(value: string | undefined): value is string {
@@ -34,9 +39,12 @@ export function securityHeaders(isProduction: boolean): {
     { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
     { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
     { key: "X-DNS-Prefetch-Control", value: "off" },
-    { key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" },
     { key: "Content-Security-Policy", value: csp },
   ];
+
+  if (!PUBLIC_INDEXING_ENABLED) {
+    headers.push({ key: "X-Robots-Tag", value: PREVIEW_ROBOTS_HEADER });
+  }
 
   if (isProduction) {
     headers.push({

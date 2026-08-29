@@ -2,6 +2,7 @@ import { ContactPageView } from "@/components/domain/contact-page-view";
 import { PreviewBanner } from "@/components/layout/preview-banner";
 import { contactPage } from "@/content/contact";
 import { resolveContactPage } from "@/content/resolve";
+import { previewRobotsMetadata } from "@/lib/indexing";
 import { pageMetadata } from "@/lib/seo";
 import { isPreviewSession } from "@/sanity/preview-session";
 
@@ -15,7 +16,7 @@ export async function generateMetadata() {
   if (await isPreviewSession()) {
     return {
       ...metadata,
-      robots: { index: false, follow: false, nocache: true },
+      robots: previewRobotsMetadata(),
     };
   }
   return metadata;

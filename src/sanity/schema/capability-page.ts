@@ -1,5 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { PUBLIC_CONTENT_GUIDANCE } from "@/sanity/constants";
+import { pageBuilderField } from "@/sanity/schema/page-sections";
 import {
   ctaField,
   lifecycleField,
@@ -87,6 +88,7 @@ export const capabilityPage = defineType({
       validation: (rule) => rule.required().max(120),
     }),
     defineField({ name: "media", type: "publicImage" }),
+    pageBuilderField,
     defineField({
       name: "sections",
       type: "array",

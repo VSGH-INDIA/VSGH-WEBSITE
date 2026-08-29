@@ -31,7 +31,7 @@ export function FeatureCard({
   children: ReactNode;
 }) {
   return (
-    <article className="flex flex-col gap-4 border border-border bg-surface p-6 transition-[border-color] duration-[var(--vsgh-duration)] hover:border-foreground">
+    <article className="vsgh-card-hover flex flex-col gap-4 border border-border bg-surface p-6 hover:border-foreground">
       <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
         {index}
       </p>

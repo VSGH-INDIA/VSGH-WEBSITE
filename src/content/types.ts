@@ -1,3 +1,5 @@
+import type { PageBuilderBlock } from "@/content/page-builder";
+
 export type PageCta = {
   title: string;
   body: string;
@@ -51,5 +53,6 @@ export type CapabilityPageContent = {
     title: string;
     body: string;
   };
+  pageBuilder?: PageBuilderBlock[];
   cta: PageCta;
 };

@@ -26,6 +26,13 @@ describe("Sanity public CMS foundation", () => {
     expect(schemaTypes.map((type) => type.name)).toEqual([
       "publicImage",
       "emptyState",
+      "heroBlock",
+      "introBlock",
+      "richTextBlock",
+      "mediaBlock",
+      "processBlock",
+      "relatedContentBlock",
+      "ctaSectionBlock",
       "homepage",
       "aboutPage",
       "capabilityPage",
@@ -37,6 +44,7 @@ describe("Sanity public CMS foundation", () => {
 
   it("only revalidates implemented WEB-081 paths", () => {
     expect(isRevalidatablePath("/materials/overview")).toBe(true);
+    expect(isRevalidatablePath("/insights/cms-pipeline-test")).toBe(true);
     expect(isRevalidatablePath("/applications")).toBe(false);
     expect(isRevalidatablePath("//evil.example")).toBe(false);
     expect(secretsEqual("abc", "abc")).toBe(true);
@@ -47,5 +55,6 @@ describe("Sanity public CMS foundation", () => {
     expect(CAPABILITY_PAGE_QUERY).toContain('lifecycle == "published"');
     expect(INSIGHT_ARTICLES_QUERY).toContain('lifecycle == "published"');
     expect(CAREER_VACANCIES_QUERY).toContain('lifecycle == "published"');
+    expect(CAPABILITY_PAGE_QUERY).toContain("pageBuilder[]");
   });
 });

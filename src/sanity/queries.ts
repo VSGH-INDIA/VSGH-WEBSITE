@@ -1,3 +1,35 @@
+export const PUBLIC_MEDIA_PROJECTION = `{
+  alt,
+  caption,
+  credit,
+  usage,
+  approvalStatus,
+  visibility,
+  aspectRatio,
+  cropMode,
+  "src": asset->url,
+  "width": asset->metadata.dimensions.width,
+  "height": asset->metadata.dimensions.height,
+  "focalPoint": hotspot
+}`;
+
+export const PAGE_BUILDER_PROJECTION = `pageBuilder[]{
+  _type,
+  eyebrow,
+  title,
+  emphasis,
+  body,
+  mediaLabel,
+  media${PUBLIC_MEDIA_PROJECTION},
+  paragraphs[]{ title, body },
+  stages[]{ index, title, body },
+  related[]{ href, label, body },
+  primaryLabel,
+  primaryHref,
+  secondaryLabel,
+  secondaryHref
+}`;
+
 const CAPABILITY_PROJECTION = `{
   "slug": slug.current,
   path,
@@ -11,6 +43,8 @@ const CAPABILITY_PROJECTION = `{
   emphasis,
   lede,
   mediaLabel,
+  media${PUBLIC_MEDIA_PROJECTION},
+  ${PAGE_BUILDER_PROJECTION},
   sections[]{ title, body },
   stages[]{ index, title, body },
   principles[]{ index, title, body },
@@ -75,7 +109,7 @@ export const HOMEPAGE_PREVIEW_QUERY = `*[_type == "homepage" && _id == "homepage
 export const CONTACT_PAGE_QUERY = `*[_type == "contactPage" && _id == "contactPage" && lifecycle == "published"][0]${CONTACT_PROJECTION}`;
 export const CONTACT_PAGE_PREVIEW_QUERY = `*[_type == "contactPage" && _id == "contactPage" && lifecycle != "archived"][0]${CONTACT_PROJECTION}`;
 
-export const INSIGHT_ARTICLES_QUERY = `*[_type == "insightArticle" && lifecycle == "published"] | order(publicationDate desc){
+const INSIGHT_ARTICLE_PROJECTION = `{
   "slug": slug.current,
   title,
   category,
@@ -83,26 +117,19 @@ export const INSIGHT_ARTICLES_QUERY = `*[_type == "insightArticle" && lifecycle 
   publicationDate,
   author,
   lifecycle,
-  "status": "published",
   body[]{ title, body },
+  ${PAGE_BUILDER_PROJECTION},
   mediaLabel,
+  media${PUBLIC_MEDIA_PROJECTION},
   seoTitle,
   description
 }`;
-export const INSIGHT_ARTICLES_PREVIEW_QUERY = `*[_type == "insightArticle" && lifecycle != "archived"] | order(publicationDate desc){
-  "slug": slug.current,
-  title,
-  category,
-  summary,
-  publicationDate,
-  author,
-  lifecycle,
-  "status": select(lifecycle == "published" => "published", "draft"),
-  body[]{ title, body },
-  mediaLabel,
-  seoTitle,
-  description
-}`;
+
+export const INSIGHT_ARTICLES_QUERY = `*[_type == "insightArticle" && lifecycle == "published"] | order(publicationDate desc)${INSIGHT_ARTICLE_PROJECTION}`;
+export const INSIGHT_ARTICLES_PREVIEW_QUERY = `*[_type == "insightArticle" && lifecycle != "archived"] | order(publicationDate desc)${INSIGHT_ARTICLE_PROJECTION}`;
+
+export const INSIGHT_ARTICLE_QUERY = `*[_type == "insightArticle" && slug.current == $slug && lifecycle == "published"][0]${INSIGHT_ARTICLE_PROJECTION}`;
+export const INSIGHT_ARTICLE_PREVIEW_QUERY = `*[_type == "insightArticle" && slug.current == $slug && lifecycle != "archived"][0]${INSIGHT_ARTICLE_PROJECTION}`;
 
 export const CAREER_VACANCIES_QUERY = `*[_type == "careerVacancy" && lifecycle == "published" && vacancyStatus == "open"] | order(posted desc){
   "slug": slug.current,

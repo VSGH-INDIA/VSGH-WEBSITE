@@ -22,7 +22,7 @@ export type CmsEntity = (typeof CMS_ENTITIES)[number];
 
 export const CMS_ENTITY_IMPLEMENTATION = {
   page: ["homepage", "aboutPage", "capabilityPage", "contactPage"],
-  section: "object on page documents",
+  section: "pageBuilder blocks + object on page documents",
   technology: "capabilityPage (domain=Technology)",
   materialFamily: "capabilityPage (domain=Materials)",
   application: "capabilityPage (domain=Applications)",
@@ -32,6 +32,6 @@ export const CMS_ENTITY_IMPLEMENTATION = {
   careerPosition: "careerVacancy",
   facility: "aboutPage.facilities",
   leadershipProfile: "aboutPage leadership variant (no invented identities)",
-  mediaAsset: "publicImage",
+  mediaAsset: "publicImage / MediaAsset",
   contactEnquiry: "not implemented — public copy only on contactPage",
 } as const;

@@ -68,14 +68,47 @@
   --vsgh-grid-size: 4.5rem;
   --vsgh-control: 2.75rem;
 
+  --vsgh-radius-none: 0;
+  --vsgh-radius-sm: 0.125rem;
   --vsgh-radius: 0.125rem;
-  --vsgh-border: 1px solid var(--vsgh-color-border);
-  --vsgh-elevation: 0 0 0 1px var(--vsgh-color-border);
+  --vsgh-radius-md: 0.25rem;
+  --vsgh-radius-full: 9999px;
 
+  --vsgh-border-width: 1px;
+  --vsgh-border-width-strong: 2px;
+  --vsgh-border: var(--vsgh-border-width) solid var(--vsgh-color-border);
+
+  --vsgh-shadow-none: none;
+  --vsgh-shadow-hairline: 0 0 0 1px var(--vsgh-color-border);
+  --vsgh-shadow-low: 0 1px 0 rgb(0 0 0 / 0.35);
+  --vsgh-shadow-mid: 0 8px 24px rgb(0 0 0 / 0.28);
+  --vsgh-elevation: var(--vsgh-shadow-hairline);
+
+  --vsgh-bp-sm: 40rem;
+  --vsgh-bp-md: 48rem;
+  --vsgh-bp-lg: 64rem;
+  --vsgh-bp-xl: 80rem;
+
+  --vsgh-duration-instant: 0ms;
   --vsgh-duration-fast: 120ms;
   --vsgh-duration: 200ms;
   --vsgh-duration-reveal: 400ms;
+  --vsgh-duration-slow: 600ms;
   --vsgh-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --vsgh-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --vsgh-ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+
+  --vsgh-z-base: 0;
+  --vsgh-z-raised: 10;
+  --vsgh-z-sticky: 30;
+  --vsgh-z-header: 40;
+  --vsgh-z-overlay: 50;
+  --vsgh-z-skip: 60;
+  --vsgh-z-modal: 70;
+
+  --vsgh-focus-width: 2px;
+  --vsgh-focus-offset: 3px;
+  --vsgh-focus-ring: var(--vsgh-focus-width) solid var(--vsgh-color-focus);
 
   --vsgh-grid-line: rgb(255 255 255 / 0.045);
 }
@@ -92,6 +125,6 @@
 }
 
 :focus-visible {
-  outline: 2px solid var(--vsgh-color-focus);
-  outline-offset: 3px;
+  outline: var(--vsgh-focus-ring);
+  outline-offset: var(--vsgh-focus-offset);
 }

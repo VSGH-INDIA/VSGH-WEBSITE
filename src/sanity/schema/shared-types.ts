@@ -6,7 +6,7 @@ export const publicImage = defineType({
   title: "Public media",
   type: "image",
   description:
-    "Publication-safe imagery only. Not an IP, laboratory, or engineering file store.",
+    "Publication-safe imagery only. Not an IP, laboratory, or engineering file store. Public render requires visibility=public, approval=approved, and alt text.",
   options: { hotspot: true },
   fields: [
     defineField({
@@ -19,6 +19,70 @@ export const publicImage = defineType({
       name: "caption",
       type: "string",
       validation: (rule) => rule.max(160),
+    }),
+    defineField({
+      name: "credit",
+      type: "string",
+      validation: (rule) => rule.max(120),
+    }),
+    defineField({
+      name: "usage",
+      type: "string",
+      options: {
+        list: [
+          { title: "Hero", value: "hero" },
+          { title: "Editorial", value: "editorial" },
+          { title: "Open Graph", value: "og" },
+          { title: "Inline", value: "inline" },
+          { title: "Gallery", value: "gallery" },
+        ],
+      },
+      initialValue: "editorial",
+    }),
+    defineField({
+      name: "approvalStatus",
+      type: "string",
+      options: {
+        list: [
+          { title: "Draft", value: "draft" },
+          { title: "Review", value: "review" },
+          { title: "Approved", value: "approved" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "draft",
+    }),
+    defineField({
+      name: "visibility",
+      type: "string",
+      options: {
+        list: [
+          { title: "Internal", value: "internal" },
+          { title: "Public", value: "public" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "internal",
+    }),
+    defineField({
+      name: "aspectRatio",
+      type: "string",
+      options: {
+        list: ["16/9", "4/5", "4/3", "1/1", "21/9"],
+      },
+      initialValue: "16/9",
+    }),
+    defineField({
+      name: "cropMode",
+      type: "string",
+      options: {
+        list: [
+          { title: "Cover", value: "cover" },
+          { title: "Contain", value: "contain" },
+          { title: "Focal", value: "focal" },
+        ],
+      },
+      initialValue: "cover",
     }),
   ],
 });

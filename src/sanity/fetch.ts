@@ -2,9 +2,11 @@ import type { AboutPageContent } from "@/content/about";
 import type { CareerVacancy } from "@/content/careers";
 import { contactPage } from "@/content/contact";
 import {
+  normalizeInsightArticle,
   normalizeInsightArticles,
   type InsightArticle,
 } from "@/content/insight-articles";
+import { isInsightArticlePath } from "@/lib/sitemap-entries";
 import type { CapabilityPageContent } from "@/content/types";
 import {
   getPreviewSanityClient,
@@ -23,6 +25,8 @@ import {
   CONTACT_PAGE_QUERY,
   HOMEPAGE_PREVIEW_QUERY,
   HOMEPAGE_QUERY,
+  INSIGHT_ARTICLE_PREVIEW_QUERY,
+  INSIGHT_ARTICLE_QUERY,
   INSIGHT_ARTICLES_PREVIEW_QUERY,
   INSIGHT_ARTICLES_QUERY,
 } from "@/sanity/queries";
@@ -145,6 +149,32 @@ export async function fetchPublishedInsightArticles(): Promise<
 export async function fetchPreviewInsightArticles(): Promise<InsightArticle[]> {
   const incoming = await previewQuery<unknown>(INSIGHT_ARTICLES_PREVIEW_QUERY);
   return normalizeInsightArticles(incoming, "preview");
+}
+
+export async function fetchPublishedInsightArticle(
+  slug: string,
+): Promise<InsightArticle | null> {
+  const path = `/insights/${slug}`;
+  if (!isInsightArticlePath(path)) {
+    return null;
+  }
+  const incoming = await cachedPublishedQuery<unknown>(INSIGHT_ARTICLE_QUERY, {
+    slug,
+  });
+  return normalizeInsightArticle(incoming, "published");
+}
+
+export async function fetchPreviewInsightArticle(
+  slug: string,
+): Promise<InsightArticle | null> {
+  const path = `/insights/${slug}`;
+  if (!isInsightArticlePath(path)) {
+    return null;
+  }
+  const incoming = await previewQuery<unknown>(INSIGHT_ARTICLE_PREVIEW_QUERY, {
+    slug,
+  });
+  return normalizeInsightArticle(incoming, "preview");
 }
 
 export async function fetchPublishedCareerVacancies(): Promise<

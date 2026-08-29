@@ -76,9 +76,9 @@ describe("preview authorization", () => {
       headers: { "x-vsgh-preview-secret": secret },
     });
     expect(previewSecretFromRequest(headerRequest, url)).toBe(secret);
-    expect(sameOriginPathUrl(`${SITE_ORIGIN}/api/draft`, "/contact")?.href).toBe(
-      `${SITE_ORIGIN}/contact`,
-    );
+    expect(
+      sameOriginPathUrl(`${SITE_ORIGIN}/api/draft`, "/contact")?.href,
+    ).toBe(`${SITE_ORIGIN}/contact`);
     expect(
       previewExitUrl(
         `${SITE_ORIGIN}/api/draft/disable?next=https://evil.example`,

@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import { insightArticles } from "@/content/insight-articles";
 import { normalizeInsightArticles } from "@/content/insight-articles";
 import {
+  INSIGHT_ARTICLE_PREVIEW_QUERY,
+  INSIGHT_ARTICLE_QUERY,
   INSIGHT_ARTICLES_PREVIEW_QUERY,
   INSIGHT_ARTICLES_QUERY,
 } from "@/sanity/queries";
@@ -38,6 +40,7 @@ describe("insight article publication filter", () => {
     expect(published[0]?.slug).toBe("cms-pipeline-test");
     expect(published[0]?.status).toBe("published");
     expect(published[0]?.body[0]?.body).not.toContain("<script");
+    expect(published[0]?.pageBuilder).toEqual([]);
   });
 
   it("allows non-published rows only in preview mode", () => {
@@ -61,11 +64,14 @@ describe("insight article publication filter", () => {
     expect(preview[0]?.status).toBe("draft");
   });
 
-  it("uses published-only GROQ for the public list", () => {
+  it("uses published-only GROQ for the public list and slug family", () => {
     expect(INSIGHT_ARTICLES_QUERY).toContain('lifecycle == "published"');
+    expect(INSIGHT_ARTICLE_QUERY).toContain("slug.current == $slug");
+    expect(INSIGHT_ARTICLE_QUERY).toContain('lifecycle == "published"');
     expect(INSIGHT_ARTICLES_PREVIEW_QUERY).not.toContain(
       'lifecycle == "published"]',
     );
+    expect(INSIGHT_ARTICLE_PREVIEW_QUERY).toContain('lifecycle != "archived"');
     expect(INSIGHT_ARTICLES_PREVIEW_QUERY).toContain('lifecycle != "archived"');
   });
 });

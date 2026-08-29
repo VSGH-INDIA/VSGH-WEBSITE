@@ -1,5 +1,6 @@
 import { defineField, defineType } from "sanity";
 import { PUBLIC_CONTENT_GUIDANCE } from "@/sanity/constants";
+import { pageBuilderField } from "@/sanity/schema/page-sections";
 import {
   lifecycleField,
   seoFields,
@@ -71,6 +72,7 @@ export const insightArticle = defineType({
         },
       ],
     }),
+    pageBuilderField,
     defineField({
       name: "mediaLabel",
       type: "string",

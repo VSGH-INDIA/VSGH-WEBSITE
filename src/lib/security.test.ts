@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { overlayPublishedContent } from "@/content/sanitize-cms";
+import { PUBLIC_INDEXING_ENABLED } from "@/lib/indexing";
 import { securityHeaders } from "@/lib/security-headers";
 import { parseRevalidatePayload } from "@/sanity/revalidate";
 
@@ -21,6 +22,11 @@ describe("security headers", () => {
     expect(local["Strict-Transport-Security"]).toBeUndefined();
     expect(production["Strict-Transport-Security"]).toContain("max-age=");
     expect(local["Permissions-Policy"]).toContain("camera=()");
+    if (PUBLIC_INDEXING_ENABLED) {
+      expect(production["X-Robots-Tag"]).toBeUndefined();
+    } else {
+      expect(production["X-Robots-Tag"]).toBe("noindex, nofollow, noarchive");
+    }
   });
 });
 

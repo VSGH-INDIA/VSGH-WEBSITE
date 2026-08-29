@@ -1,6 +1,7 @@
 import { contactPage } from "@/content/contact";
 import type { AboutPageContent } from "@/content/about";
 import type { InsightArticle } from "@/content/insight-articles";
+import { normalizePageBuilder } from "@/content/page-builder";
 import { overlayPublishedContent } from "@/content/sanitize-cms";
 import type { CapabilityPageContent } from "@/content/types";
 import {
@@ -8,14 +9,26 @@ import {
   fetchPreviewCapabilityPage,
   fetchPreviewContactPage,
   fetchPreviewHomepage,
+  fetchPreviewInsightArticle,
   fetchPreviewInsightArticles,
   fetchPublishedAboutPage,
   fetchPublishedCapabilityPage,
   fetchPublishedContactPage,
   fetchPublishedHomepage,
+  fetchPublishedInsightArticle,
   fetchPublishedInsightArticles,
 } from "@/sanity/fetch";
 import { isPreviewSession } from "@/sanity/preview-session";
+
+function withPageBuilder<T extends object>(
+  page: T,
+  incoming: Partial<T> | null,
+): T {
+  const pageBuilder = normalizePageBuilder(
+    (incoming as { pageBuilder?: unknown } | null)?.pageBuilder,
+  );
+  return pageBuilder.length ? ({ ...page, pageBuilder } as T) : page;
+}
 
 async function resolveWithPreview<T extends object>(
   fallback: T,
@@ -26,14 +39,14 @@ async function resolveWithPreview<T extends object>(
   if (await isPreviewSession()) {
     const draft = await previewFetch();
     if (isUsable(draft)) {
-      return overlayPublishedContent(fallback, draft);
+      return withPageBuilder(overlayPublishedContent(fallback, draft), draft);
     }
   }
   const incoming = await publishedFetch();
   if (!isUsable(incoming)) {
     return fallback;
   }
-  return overlayPublishedContent(fallback, incoming);
+  return withPageBuilder(overlayPublishedContent(fallback, incoming), incoming);
 }
 
 export async function resolveCapabilityPage(
@@ -74,6 +87,18 @@ export async function resolveInsightArticles(): Promise<InsightArticle[]> {
     return fetchPreviewInsightArticles();
   }
   return fetchPublishedInsightArticles();
+}
+
+export async function resolveInsightArticle(
+  slug: string,
+): Promise<InsightArticle | null> {
+  if (await isPreviewSession()) {
+    const draft = await fetchPreviewInsightArticle(slug);
+    if (draft) {
+      return draft;
+    }
+  }
+  return fetchPublishedInsightArticle(slug);
 }
 
 export async function resolveHomepage<T extends object>(

@@ -7,6 +7,7 @@ import { insightsPage } from "@/content/insights";
 import { materialsPages } from "@/content/materials";
 import { researchPages } from "@/content/research";
 import { sustainabilityPage } from "@/content/sustainability";
+import { homeContent } from "@/content/home";
 import { technologyPages } from "@/content/technology";
 import { IMPLEMENTED_ROUTES, isPublishedPath } from "@/lib/navigation";
 import { breadcrumbItems } from "@/lib/seo";
@@ -49,6 +50,8 @@ const HOME_HREFS = [
   "/applications/aerospace",
   "/research/overview",
   "/materials/overview",
+  "/materials/qualification",
+  "/technology/resource-recovery",
   "/sustainability",
   "/about/company",
   "/about/quality",
@@ -103,6 +106,7 @@ describe("internal links", () => {
       insightsPage,
       careersPage,
       contactPage,
+      homeContent,
       HOME_HREFS,
     });
     for (const href of hrefs) {

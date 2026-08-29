@@ -1,5 +1,6 @@
 import { Heading, Text } from "@/components/ui/primitives";
 import type { InsightArticle } from "@/content/insight-articles";
+import Link from "next/link";
 
 export function InsightsArticleList({
   articles,
@@ -19,25 +20,19 @@ export function InsightsArticleList({
             {article.status === "draft" ? " · preview" : ""}
           </p>
           <Heading as="h3" variant="h3">
-            {article.title}
+            <Link
+              href={`/insights/${article.slug}`}
+              prefetch={article.status === "published"}
+              className="text-foreground no-underline hover:underline"
+            >
+              {article.title}
+            </Link>
           </Heading>
           {article.summary ? (
             <Text size="small" className="text-muted">
               {article.summary}
             </Text>
           ) : null}
-          {article.body.map((block, index) => (
-            <article key={`${article.slug}-${index}`} className="space-y-2">
-              {block.title ? (
-                <Heading as="h3" variant="h3">
-                  {block.title}
-                </Heading>
-              ) : null}
-              <Text size="small" className="text-muted">
-                {block.body}
-              </Text>
-            </article>
-          ))}
         </li>
       ))}
     </ul>

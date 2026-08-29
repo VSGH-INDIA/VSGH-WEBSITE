@@ -1,3 +1,4 @@
+import { PageBuilder } from "@/components/cms/page-builder";
 import { DomainJsonLd } from "@/components/domain/domain-json-ld";
 import { DomainSubnav } from "@/components/domain/domain-subnav";
 import { InsightsArticleList } from "@/components/domain/insights-article-list";
@@ -59,6 +60,9 @@ export function CapabilityPageView({
           </>
         }
       />
+      {page.pageBuilder && page.pageBuilder.length > 0 ? (
+        <PageBuilder blocks={page.pageBuilder} />
+      ) : null}
       <Section className="vsgh-reveal">
         <Container wide className="max-w-3xl space-y-10">
           {page.sections.map((section) => (

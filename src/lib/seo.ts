@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { publicRobotsMetadata } from "@/lib/indexing";
 import { SITE_NAME, SITE_ORIGIN } from "@/lib/site";
 
 export function pageMetadata({
@@ -10,8 +11,9 @@ export function pageMetadata({
   description: string;
   path: string;
 }): Metadata {
+  const isHome = path === "/";
   return {
-    title,
+    title: isHome ? { absolute: title } : title,
     description,
     alternates: {
       canonical: path,
@@ -20,22 +22,22 @@ export function pageMetadata({
       type: "website",
       url: path,
       siteName: SITE_NAME,
-      title: `${title} · ${SITE_NAME}`,
+      title: isHome ? title : `${title} · ${SITE_NAME}`,
       description,
     },
     twitter: {
       card: "summary",
-      title: `${title} · ${SITE_NAME}`,
+      title: isHome ? title : `${title} · ${SITE_NAME}`,
       description,
     },
-    robots: {
-      index: false,
-      follow: false,
-    },
+    robots: publicRobotsMetadata(),
   };
 }
 
 export function absoluteUrl(path: string): string {
+  if (!path || path === "/") {
+    return SITE_ORIGIN;
+  }
   return `${SITE_ORIGIN}${path}`;
 }
 

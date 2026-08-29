@@ -1,6 +1,7 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import { IMPLEMENTED_ROUTES } from "@/lib/navigation";
 import { isSafeInternalPath } from "@/lib/safe-url";
+import { isInsightArticlePath } from "@/lib/sitemap-entries";
 
 export const MAX_REVALIDATE_BODY_BYTES = 65_536;
 
@@ -13,7 +14,8 @@ export function secretsEqual(provided: string, expected: string): boolean {
 export function isRevalidatablePath(path: string): boolean {
   return (
     isSafeInternalPath(path) &&
-    (IMPLEMENTED_ROUTES as readonly string[]).includes(path)
+    ((IMPLEMENTED_ROUTES as readonly string[]).includes(path) ||
+      isInsightArticlePath(path))
   );
 }
 

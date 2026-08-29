@@ -9,6 +9,7 @@ import {
 } from "@/content/resolve";
 import { insightsPage } from "@/content/insights";
 import type { CapabilityPageContent } from "@/content/types";
+import { previewRobotsMetadata } from "@/lib/indexing";
 import { pageMetadata } from "@/lib/seo";
 import { isPreviewSession } from "@/sanity/preview-session";
 
@@ -27,7 +28,7 @@ export function capabilityRoute(
       if (await isPreviewSession()) {
         return {
           ...metadata,
-          robots: { index: false, follow: false, nocache: true },
+          robots: previewRobotsMetadata(),
         };
       }
       return metadata;
@@ -57,7 +58,7 @@ export function insightsRoute() {
       if (await isPreviewSession()) {
         return {
           ...metadata,
-          robots: { index: false, follow: false, nocache: true },
+          robots: previewRobotsMetadata(),
         };
       }
       return metadata;
@@ -88,7 +89,7 @@ export function aboutRoute(fallback: AboutPageContent) {
       if (await isPreviewSession()) {
         return {
           ...metadata,
-          robots: { index: false, follow: false, nocache: true },
+          robots: previewRobotsMetadata(),
         };
       }
       return metadata;

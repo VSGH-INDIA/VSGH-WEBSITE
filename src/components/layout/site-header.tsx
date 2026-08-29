@@ -59,7 +59,7 @@ export function SiteHeader() {
   }, [closeMenu]);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background">
+    <header className="sticky top-0 z-[var(--vsgh-z-header)] border-b border-border bg-background">
       <div
         className="mx-auto flex max-w-[var(--vsgh-content-wide)] items-center justify-between gap-4 py-3"
         style={{ paddingInline: "var(--vsgh-gutter)" }}

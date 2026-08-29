@@ -1,3 +1,6 @@
+import type { PageBuilderBlock } from "@/content/page-builder";
+import { normalizePageBuilder } from "@/content/page-builder";
+
 export type InsightArticleBlock = {
   title?: string;
   body: string;
@@ -13,7 +16,9 @@ export type InsightArticle = {
   lifecycle?: string;
   status: "draft" | "published";
   body: InsightArticleBlock[];
+  pageBuilder: PageBuilderBlock[];
   mediaLabel: string;
+  media?: unknown;
   seoTitle: string;
   description: string;
 };
@@ -77,7 +82,9 @@ export function normalizeInsightArticle(
     lifecycle: lifecycle || undefined,
     status,
     body: asBlocks(row.body),
+    pageBuilder: normalizePageBuilder(row.pageBuilder),
     mediaLabel: asText(row.mediaLabel, 120),
+    media: row.media,
     seoTitle: asText(row.seoTitle, 70) || title,
     description: asText(row.description, 180) || asText(row.summary, 180),
   };

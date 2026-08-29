@@ -37,8 +37,26 @@ body {
   background-size: var(--vsgh-grid-size) var(--vsgh-grid-size);
 }
 
+.vsgh-card-hover {
+  transition:
+    border-color var(--vsgh-duration) var(--vsgh-ease),
+    box-shadow var(--vsgh-duration) var(--vsgh-ease);
+}
+
+.vsgh-nav-transition {
+  transition:
+    color var(--vsgh-duration) var(--vsgh-ease),
+    border-color var(--vsgh-duration) var(--vsgh-ease),
+    background-color var(--vsgh-duration) var(--vsgh-ease);
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .vsgh-reveal {
+  .vsgh-reveal,
+  .vsgh-image-reveal {
+    animation: vsgh-reveal var(--vsgh-duration-reveal) var(--vsgh-ease) both;
+  }
+
+  .vsgh-process-step {
     animation: vsgh-reveal var(--vsgh-duration-reveal) var(--vsgh-ease) both;
   }
 }

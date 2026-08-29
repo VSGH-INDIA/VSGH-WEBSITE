@@ -189,4 +189,35 @@ export const homeContent = {
     title: "Start a technical conversation.",
     body: "Enquiries are welcome for technology collaboration, research discussion, or business contact. A public contact form is not available on this page. Use Contact to reach VSGH.",
   },
+  explorer: {
+    eyebrow: "Capability explorer",
+    title: "Resource to application is a controlled sequence.",
+    body: "The public narrative is a chain of engineering stages. Each stage is a discipline. None of the following is a disclosed process recipe.",
+    stages: [
+      {
+        index: "[01]",
+        title: "Resource",
+        href: "/technology/resource-recovery",
+        body: "Identifying and receiving recovered or resource-derived feedstocks suitable for materials work.",
+      },
+      {
+        index: "[02]",
+        title: "Material",
+        href: "/materials/overview",
+        body: "Developing alloy and process understanding for the intended material family.",
+      },
+      {
+        index: "[03]",
+        title: "Qualification",
+        href: "/materials/qualification",
+        body: "Characterizing and evidencing material behaviour under a defined programme.",
+      },
+      {
+        index: "[04]",
+        title: "Application",
+        href: "/applications/aerospace",
+        body: "Placing capability into aerospace, defense, space, or advanced industrial context.",
+      },
+    ],
+  },
 } as const;
