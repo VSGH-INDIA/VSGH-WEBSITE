@@ -2,7 +2,10 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { overlayPublishedContent } from "@/content/sanitize-cms";
 import { PUBLIC_INDEXING_ENABLED } from "@/lib/indexing";
-import { securityHeaders } from "@/lib/security-headers";
+import {
+  previewSecurityHeaders,
+  securityHeaders,
+} from "@/lib/security-headers";
 import { parseRevalidatePayload } from "@/sanity/revalidate";
 
 describe("security headers", () => {
@@ -42,6 +45,19 @@ describe("security headers", () => {
     } else {
       expect(production["X-Robots-Tag"]).toBe("noindex, nofollow, noarchive");
     }
+  });
+
+  it("relaxes framing only for a caller-supplied Studio preview origin", () => {
+    const previewCsp = previewSecurityHeaders(
+      "https://vsgh-india-cms.sanity.studio",
+    );
+    expect(previewCsp).toContain(
+      "frame-ancestors https://vsgh-india-cms.sanity.studio",
+    );
+    expect(previewCsp).toContain("default-src 'self'");
+    expect(
+      securityHeaders(false).find(({ key }) => key === "X-Frame-Options"),
+    ).toMatchObject({ value: "DENY" });
   });
 });
 

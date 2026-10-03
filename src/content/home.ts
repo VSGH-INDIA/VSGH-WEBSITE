@@ -66,9 +66,9 @@ export const homeContent = {
     ],
   },
   positioning: {
-    eyebrow: "What we do",
-    title: "A materials company, not a commodity channel.",
-    body: "VSGH sits on the path from recovered resource to engineered material. Recovery is the starting condition. The work is metallurgy, process development, characterization, and controlled qualification toward aerospace, defense, space, and advanced industrial use.",
+    eyebrow: "Advanced materials",
+    title: "A technical pillar within the VSGH platform.",
+    body: "Alongside aerospace business development, industrial machinery trade, and global programmes, VSGH develops advanced materials capability from recovered resource to engineering and application context. Recovery is the starting condition; metallurgy, process development, characterization, and qualification discipline shape the work.",
     points: [
       {
         index: "[01]",

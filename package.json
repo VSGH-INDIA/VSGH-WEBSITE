@@ -17,11 +17,18 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:e2e": "playwright test --project=desktop --project=mobile",
+    "test:a11y": "playwright test --project=accessibility",
+    "verify:production": "node scripts/verify-production.mjs",
+    "verify:pagespeed": "node scripts/verify-pagespeed.mjs",
     "studio": "sanity dev --port 3333",
+    "studio:build": "sanity build --output-path .sanity-build",
+    "cms:seed": "tsx scripts/sanity/seed-public-content.ts",
     "sbom": "npm sbom --sbom-format cyclonedx --sbom-type application"
   },
   "dependencies": {
     "@sanity/client": "^7.26.2",
+    "@sanity/preview-url-secret": "^4.1.5",
     "@types/three": "^0.186.0",
     "@upstash/ratelimit": "^2.2.0",
     "@upstash/redis": "^1.39.0",
@@ -37,6 +44,8 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.63.0",
     "@sanity/vision": "^4.22.1",
     "@tailwindcss/postcss": "4.3.3",
     "@types/node": "^20",
@@ -49,7 +58,9 @@
     "prettier": "^3.6.2",
     "sanity": "^4.22.1",
     "tailwindcss": "4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "5.9.3",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "wait-on": "^8.0.5"
   }
 }

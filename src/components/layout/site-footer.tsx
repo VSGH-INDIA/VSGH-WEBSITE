@@ -23,7 +23,7 @@ export function SiteFooter() {
           </p>
         </div>
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <nav aria-label="Footer" className="max-w-2xl">
+          <nav aria-label="Footer navigation" className="max-w-2xl">
             <ul className="grid grid-cols-2 gap-x-8 gap-y-1 sm:grid-cols-3">
               {PRIMARY_NAV.map((item) => (
                 <li key={item.label}>

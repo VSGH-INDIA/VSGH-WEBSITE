@@ -21,6 +21,10 @@ import {
 } from "@/sanity/queries";
 import { canSetPublished, VSGH_ROLE_IDS } from "@/sanity/rbac";
 import { parseRevalidatePayload } from "@/sanity/revalidate";
+import {
+  approvedStudioOrigins,
+  isApprovedStudioOrigin,
+} from "@/sanity/studio-origin";
 
 const secret = "a".repeat(MIN_SECRET_LENGTH);
 
@@ -96,6 +100,38 @@ describe("preview authorization", () => {
         `${SITE_ORIGIN}/api/draft/disable?next=https://evil.example`,
       ),
     ).toEqual(new URL(`${SITE_ORIGIN}/`));
+  });
+});
+
+describe("Presentation Tool framing", () => {
+  it("limits draft preview framing to the hosted Studio or an explicit local origin", () => {
+    expect(approvedStudioOrigins(undefined, false)).toEqual([
+      "https://vsgh-india-cms.sanity.studio",
+    ]);
+    expect(
+      isApprovedStudioOrigin(
+        "https://vsgh-india-cms.sanity.studio",
+        undefined,
+        false,
+      ),
+    ).toBe(true);
+    expect(
+      isApprovedStudioOrigin("https://evil.example", undefined, false),
+    ).toBe(false);
+    expect(
+      isApprovedStudioOrigin("http://localhost:3333", undefined, true),
+    ).toBe(true);
+  });
+
+  it("keeps the Presentation handshake secret-validated and route-allowlisted", async () => {
+    const source = await import("node:fs/promises").then((fs) =>
+      fs.readFile("src/app/api/draft/presentation/route.ts", "utf8"),
+    );
+    expect(source).toContain("validatePreviewUrl");
+    expect(source).toContain("isApprovedStudioOrigin");
+    expect(source).toContain("isRevalidatablePath");
+    expect(source).toContain("draft.enable()");
+    expect(source).toContain("private, no-store");
   });
 });
 

@@ -5,6 +5,11 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+    inputs:
+      pagespeed_url:
+        description: Public HTTPS URL for optional Lighthouse / PageSpeed budget verification
+        required: false
+        type: string
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
@@ -34,10 +39,36 @@ jobs:
       - name: Dependency audit (report)
         continue-on-error: true
         run: npm audit --audit-level=high
+      - name: Build Sanity Studio
+        run: npm run studio:build
       - run: npm run build
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Public route E2E
+        run: npm run test:e2e
+      - name: Accessibility regression scan
+        run: npm run test:a11y
       - name: Generate SBOM
         run: npm run sbom > sbom.cdx.json
       - uses: actions/upload-artifact@v4
         with:
-          name: sbom
-          path: sbom.cdx.json
+          name: release-evidence
+          path: |
+            sbom.cdx.json
+            playwright-report
+            test-results
+          if-no-files-found: warn
+  pagespeed:
+    name: Lighthouse budget check
+    if: github.event_name == 'workflow_dispatch' && inputs.pagespeed_url != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+      - name: Verify PageSpeed / Lighthouse budgets
+        env:
+          PAGESPEED_URL: ${{ inputs.pagespeed_url }}
+        run: npm run verify:pagespeed

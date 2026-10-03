@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -67,7 +68,10 @@ export function SiteHeader() {
         className="mx-auto flex max-w-[var(--vsgh-content-wide)] items-center justify-between gap-4 border-b border-border py-3"
         style={{ paddingInline: "var(--vsgh-gutter)" }}
       >
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <nav
+          className="hidden items-center gap-1 lg:flex"
+          aria-label="Primary navigation"
+        >
           {leftNav.map((item) => (
             <Link
               key={item.label}
@@ -84,13 +88,21 @@ export function SiteHeader() {
         </nav>
         <Link
           href="/"
-          className="flex min-h-[var(--vsgh-control)] items-center gap-3.5 no-underline lg:absolute lg:left-1/2 lg:-translate-x-1/2"
+          className="flex min-h-[var(--vsgh-control)] items-center gap-3 no-underline lg:absolute lg:left-1/2 lg:-translate-x-1/2"
           aria-label="VSGH India Pvt Ltd home"
         >
-          <span aria-hidden className="relative size-9 shrink-0">
-            <span className="absolute inset-0 rounded-sm bg-[#1a8dff]/15 blur-md" />
-            <span className="absolute inset-[3px] bg-gradient-to-br from-[#1556b1] via-[#0872de] to-[#061f64] [clip-path:polygon(0_0,47%_32%,47%_100%,18%_70%)]" />
-            <span className="absolute inset-[3px] bg-gradient-to-br from-[#9ee5ff] via-[#35aaff] to-[#0474dd] [clip-path:polygon(100%_0,53%_32%,53%_100%,82%_70%)]" />
+          <span
+            aria-hidden
+            className="relative size-10 shrink-0 overflow-hidden border border-[#315b82] bg-[#02060d] shadow-[0_0_1.2rem_rgba(35,139,255,.2)]"
+          >
+            <Image
+              src="/images/vsgh-india-logo.png"
+              alt=""
+              fill
+              priority
+              sizes="40px"
+              className="scale-[1.32] object-cover object-[50%_22%]"
+            />
           </span>
           <span aria-hidden className="h-7 w-px bg-[#315b82]" />
           <span className="leading-[1.15]" aria-hidden>
@@ -105,7 +117,7 @@ export function SiteHeader() {
 
         <nav
           className="ml-auto hidden items-center gap-1 lg:flex"
-          aria-label="Primary"
+          aria-label="Utility navigation"
         >
           {rightNav.map((item) => (
             <Link
@@ -149,7 +161,7 @@ export function SiteHeader() {
         id="mobile-nav"
         hidden={!open}
         className="fixed inset-x-0 bottom-0 top-[4.31rem] overflow-y-auto border-b border-border bg-[#080c14]/95 px-[var(--vsgh-gutter)] py-8 backdrop-blur-xl"
-        aria-label="Primary"
+        aria-label="Mobile navigation"
       >
         <div className="mx-auto flex max-w-[var(--vsgh-content-wide)] flex-col gap-10">
           <div className="flex items-center justify-between font-mono text-[length:var(--vsgh-text-label)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted">

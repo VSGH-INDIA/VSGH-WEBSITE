@@ -25,6 +25,10 @@ const mono = IBM_Plex_Mono({
   preload: false,
 });
 
+// The Vercel packages request platform-served scripts. Rendering them only on
+// Vercel keeps local and self-hosted verification free of false 404 errors.
+const isVercelRuntime = process.env.VERCEL === "1";
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -81,8 +85,8 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
-        <Analytics />
-        <SpeedInsights />
+        {isVercelRuntime ? <Analytics /> : null}
+        {isVercelRuntime ? <SpeedInsights /> : null}
       </body>
     </html>
   );

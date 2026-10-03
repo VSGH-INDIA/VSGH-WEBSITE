@@ -1,4 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { previewSecurityHeaders } from "@/lib/security-headers";
+import { approvedStudioOrigins } from "@/sanity/studio-origin";
 
 const PREVIEW_COOKIE = "__prerender_bypass";
 
@@ -9,6 +11,15 @@ export function proxy(request: NextRequest) {
   const response = NextResponse.next();
   response.headers.set("Cache-Control", "private, no-store");
   response.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+  // Draft mode is only ever framed by the approved Studio origin. Public pages
+  // retain the static DENY / frame-ancestors 'none' policy from next.config.ts.
+  const studioOrigin =
+    approvedStudioOrigins()[0] ?? "https://vsgh-india-cms.sanity.studio";
+  response.headers.delete("X-Frame-Options");
+  response.headers.set(
+    "Content-Security-Policy",
+    previewSecurityHeaders(studioOrigin),
+  );
   return response;
 }
 

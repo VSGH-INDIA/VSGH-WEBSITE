@@ -45,6 +45,46 @@ export const contactPage = defineType({
     }),
     defineField({ name: "media", type: "publicImage" }),
     defineField({
+      name: "leadership",
+      title: "Public leadership contact",
+      type: "object",
+      fields: [
+        defineField({
+          name: "name",
+          type: "string",
+          validation: (rule) => rule.max(120),
+        }),
+        defineField({
+          name: "role",
+          type: "string",
+          validation: (rule) => rule.max(120),
+        }),
+      ],
+    }),
+    defineField({
+      name: "locations",
+      title: "Public company locations",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            defineField({
+              name: "region",
+              type: "string",
+              validation: (rule) => rule.required().max(80),
+            }),
+            defineField({
+              name: "address",
+              type: "array",
+              of: [{ type: "string" }],
+              validation: (rule) => rule.required().min(1).max(4),
+            }),
+          ],
+        },
+      ],
+    }),
+    defineField({
       name: "notice",
       type: "text",
       rows: 3,

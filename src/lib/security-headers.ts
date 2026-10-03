@@ -13,6 +13,7 @@ export function securityHeaders(
   isProduction: boolean,
   isDevelopment = false,
   turnstileEnabled = Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY),
+  frameAncestors = "'none'",
 ): {
   key: string;
   value: string;
@@ -21,7 +22,7 @@ export function securityHeaders(
     "default-src 'self'",
     "base-uri 'self'",
     "form-action 'self'",
-    "frame-ancestors 'none'",
+    `frame-ancestors ${frameAncestors}`,
     "object-src 'none'",
     `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ""}${turnstileEnabled ? " https://challenges.cloudflare.com" : ""}`,
     "style-src 'self' 'unsafe-inline'",
@@ -61,4 +62,15 @@ export function securityHeaders(
   }
 
   return headers;
+}
+
+/** The only relaxed framing policy is attached to authenticated draft previews. */
+export function previewSecurityHeaders(studioOrigin: string): string {
+  const header = securityHeaders(
+    process.env.VERCEL_ENV === "production",
+    process.env.NODE_ENV === "development",
+    Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY),
+    studioOrigin,
+  ).find(({ key }) => key === "Content-Security-Policy");
+  return header?.value ?? "default-src 'self'; frame-ancestors 'none'";
 }

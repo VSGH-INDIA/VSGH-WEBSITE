@@ -93,6 +93,8 @@ const CONTACT_PROJECTION = `{
   lede,
   mediaLabel,
   notice,
+  leadership{ name, role },
+  locations[]{ region, address },
   categories[]{ id, title, body },
   fields[]{ id, label, hint },
   related[]{ href, label, body }

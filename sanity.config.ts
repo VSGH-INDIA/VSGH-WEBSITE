@@ -1,9 +1,14 @@
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
+import { presentationTool } from "sanity/presentation";
 import { structureTool } from "sanity/structure";
 import { isSafeInternalPath } from "@/lib/safe-url";
 import { VSGHDashboard } from "@/sanity/dashboard";
 import { resolveSanityDataset, resolveSanityProjectId } from "@/sanity/project";
+import {
+  presentationDocuments,
+  presentationLocations,
+} from "@/sanity/presentation";
 import { schemaTypes } from "@/sanity/schema";
 import { deskStructure } from "@/sanity/structure";
 
@@ -20,6 +25,22 @@ export default defineConfig({
   plugins: [
     structureTool({ structure: deskStructure }),
     visionTool({ defaultApiVersion: "2026-08-19" }),
+    presentationTool({
+      title: "Visual preview",
+      previewUrl: {
+        initial: previewOrigin ?? "https://vsghindia.com",
+        previewMode: {
+          enable: "/api/draft/presentation",
+          disable: "/api/draft/disable",
+          shareAccess: false,
+        },
+      },
+      allowOrigins: previewOrigin ? [previewOrigin] : ["https://vsghindia.com"],
+      resolve: {
+        mainDocuments: presentationDocuments,
+        locations: presentationLocations,
+      },
+    }),
   ],
   tools: (previous) => [
     ...previous,
