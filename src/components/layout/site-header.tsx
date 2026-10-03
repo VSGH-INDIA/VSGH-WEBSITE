@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -88,25 +87,17 @@ export function SiteHeader() {
           className="flex min-h-[var(--vsgh-control)] items-center gap-3.5 no-underline lg:absolute lg:left-1/2 lg:-translate-x-1/2"
           aria-label="VSGH India Pvt Ltd home"
         >
-          <span
-            aria-hidden
-            className="relative h-10 w-12 shrink-0 overflow-hidden"
-          >
-            <Image
-              src="/images/vsgh-india-logo.png"
-              alt=""
-              width={124}
-              height={124}
-              sizes="124px"
-              className="absolute left-1/2 top-[-7px] max-w-none -translate-x-1/2"
-            />
+          <span aria-hidden className="relative size-9 shrink-0">
+            <span className="absolute inset-0 rounded-sm bg-[#1a8dff]/15 blur-md" />
+            <span className="absolute inset-[3px] bg-gradient-to-br from-[#1556b1] via-[#0872de] to-[#061f64] [clip-path:polygon(0_0,47%_32%,47%_100%,18%_70%)]" />
+            <span className="absolute inset-[3px] bg-gradient-to-br from-[#9ee5ff] via-[#35aaff] to-[#0474dd] [clip-path:polygon(100%_0,53%_32%,53%_100%,82%_70%)]" />
           </span>
-          <span aria-hidden className="h-8 w-px bg-[#315b82]" />
+          <span aria-hidden className="h-7 w-px bg-[#315b82]" />
           <span className="leading-[1.15]" aria-hidden>
-            <span className="block font-display text-[11px] font-semibold uppercase tracking-[.18em] text-foreground">
+            <span className="block font-display text-[10px] font-semibold uppercase tracking-[.24em] text-foreground">
               VSGH
             </span>
-            <span className="mt-1 block font-mono text-[9px] uppercase tracking-[.15em] text-[#9fb7cf]">
+            <span className="mt-1 block font-mono text-[8px] uppercase tracking-[.2em] text-[#9fb7cf]">
               India Pvt Ltd
             </span>
           </span>

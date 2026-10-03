@@ -34,6 +34,7 @@ export type MediaAsset = {
   usage: MediaUsage;
   approvalStatus: MediaApproval;
   visibility: MediaVisibility;
+  decorative: boolean;
   width?: number;
   height?: number;
 };
@@ -104,7 +105,8 @@ export function normalizeMediaAsset(incoming: unknown): MediaAsset | null {
   const row = incoming as Record<string, unknown>;
   const src = asSrc(row.src ?? row.url);
   const altText = asTrimmed(row.altText ?? row.alt, 160);
-  if (!src || !altText) {
+  const decorative = row.decorative === true;
+  if (!src || (!altText && !decorative)) {
     return null;
   }
   const caption = asTrimmed(row.caption, 160) || undefined;
@@ -120,6 +122,7 @@ export function normalizeMediaAsset(incoming: unknown): MediaAsset | null {
     usage: asEnum(row.usage, MEDIA_USAGES, "editorial"),
     approvalStatus: asEnum(row.approvalStatus, MEDIA_APPROVAL, "draft"),
     visibility: asEnum(row.visibility, MEDIA_VISIBILITY, "internal"),
+    decorative,
     width: asPositiveInt(row.width),
     height: asPositiveInt(row.height),
   };
@@ -133,7 +136,7 @@ export function isPublicMedia(
     asset.visibility === "public" &&
     asset.approvalStatus === "approved" &&
     asset.src &&
-    asset.altText,
+    (asset.altText || asset.decorative),
   );
 }
 

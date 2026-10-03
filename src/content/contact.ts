@@ -8,7 +8,7 @@ export const contactPage = {
   lede: "VSGH India Pvt Ltd maintains India and Europe offices for company correspondence, technology, materials, research, business, and corporate enquiries.",
   mediaLabel: "Contact visual",
   notice:
-    "Enquiry channel not connected. Nothing entered on this page is transmitted or stored. Do not include confidential, personal, or restricted information.",
+    "Business enquiries are accepted through the form below when the VSGH delivery service is configured. Do not include confidential technical data, drawings, restricted information, or files.",
   leadership: {
     name: "Dr. Subramanya S",
     role: "Managing Director",
@@ -25,29 +25,29 @@ export const contactPage = {
   ],
   categories: [
     {
-      id: "technology",
-      title: "Technology collaboration",
-      body: "Engineering sequence, processing, and manufacturing development as public capability classes.",
+      id: "aerospace-systems-components",
+      title: "Aerospace systems & components",
+      body: "Business-development, promotion, and distribution connections for approved manufacturing capability.",
     },
     {
-      id: "materials",
-      title: "Materials enquiry",
-      body: "Material development, metallurgy, and qualification — without a catalogue.",
+      id: "advanced-materials",
+      title: "Advanced materials",
+      body: "Public capability and material-development discussion without a published catalogue.",
     },
     {
-      id: "research",
-      title: "Research collaboration",
-      body: "Scientific direction. Unpublished results stay unpublished.",
+      id: "technology-r-and-d",
+      title: "Technology / R&D",
+      body: "Scientific and engineering direction. Unpublished results stay unpublished.",
     },
     {
-      id: "business",
-      title: "Business enquiry",
-      body: "Corporate discussion that does not require a named customer story.",
+      id: "machinery-imports-exports",
+      title: "Machinery imports & exports",
+      body: "Industrial machinery opportunities and legitimate international trade context.",
     },
     {
-      id: "general",
-      title: "General corporate enquiry",
-      body: "Identity, careers interest, or other public questions.",
+      id: "global-partnership-programme",
+      title: "Global partnership / programme",
+      body: "Strategic relationships, international programmes, and routes to market.",
     },
   ],
   fields: [

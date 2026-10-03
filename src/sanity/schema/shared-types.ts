@@ -13,7 +13,27 @@ export const publicImage = defineType({
       name: "alt",
       type: "string",
       title: "Accessible alternative text",
-      validation: (rule) => rule.max(160),
+      description:
+        "Describe what this image contributes to the page. Leave empty only when Decorative is explicitly selected.",
+      validation: (rule) =>
+        rule.max(160).custom((value, context) => {
+          const decorative =
+            typeof context.parent === "object" &&
+            context.parent !== null &&
+            (context.parent as { decorative?: unknown }).decorative === true;
+          return decorative ||
+            (typeof value === "string" && value.trim().length > 0)
+            ? true
+            : "Add alternative text, or mark the image Decorative if it conveys no information.";
+        }),
+    }),
+    defineField({
+      name: "decorative",
+      title: "Decorative image",
+      type: "boolean",
+      description:
+        "Use only when the image adds no information beyond nearby text. Decorative images have empty alternative text.",
+      initialValue: false,
     }),
     defineField({
       name: "caption",
@@ -41,6 +61,7 @@ export const publicImage = defineType({
     }),
     defineField({
       name: "approvalStatus",
+      title: "Publication approval",
       type: "string",
       options: {
         list: [
@@ -54,6 +75,7 @@ export const publicImage = defineType({
     }),
     defineField({
       name: "visibility",
+      title: "Visibility",
       type: "string",
       options: {
         list: [

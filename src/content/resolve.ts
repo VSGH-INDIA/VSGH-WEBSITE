@@ -1,4 +1,6 @@
 import { contactPage } from "@/content/contact";
+import { businessPage, type BusinessPageContent } from "@/content/business";
+import { siteSettings, type SiteSettings } from "@/content/site-settings";
 import type { CareerVacancy } from "@/content/careers";
 import type { AboutPageContent } from "@/content/about";
 import type { InsightArticle } from "@/content/insight-articles";
@@ -7,6 +9,7 @@ import { overlayPublishedContent } from "@/content/sanitize-cms";
 import type { CapabilityPageContent } from "@/content/types";
 import {
   fetchPreviewAboutPage,
+  fetchPreviewBusinessPage,
   fetchPreviewCapabilityPage,
   fetchPreviewCareerVacancies,
   fetchPreviewContactPage,
@@ -14,12 +17,14 @@ import {
   fetchPreviewInsightArticle,
   fetchPreviewInsightArticles,
   fetchPublishedAboutPage,
+  fetchPublishedBusinessPage,
   fetchPublishedCapabilityPage,
   fetchPublishedCareerVacancies,
   fetchPublishedContactPage,
   fetchPublishedHomepage,
   fetchPublishedInsightArticle,
   fetchPublishedInsightArticles,
+  fetchPublishedSiteSettings,
 } from "@/sanity/fetch";
 import { isPreviewSession } from "@/sanity/preview-session";
 
@@ -83,6 +88,31 @@ export async function resolveContactPage(
     () => fetchPublishedContactPage(),
     (incoming) => Boolean(incoming?.headline),
   );
+}
+
+export async function resolveBusinessPage(): Promise<BusinessPageContent> {
+  return resolveWithPreview(
+    businessPage,
+    fetchPreviewBusinessPage,
+    fetchPublishedBusinessPage,
+    (incoming) =>
+      Boolean(
+        incoming?.headline && incoming?.cta && incoming?.lines?.length === 3,
+      ),
+  );
+}
+
+export async function resolveSiteSettings(): Promise<SiteSettings> {
+  const incoming = await fetchPublishedSiteSettings();
+  if (
+    !incoming?.companyName ||
+    !incoming.shortName ||
+    !incoming.defaultDescription ||
+    !incoming.titleSuffix
+  ) {
+    return siteSettings;
+  }
+  return { ...siteSettings, ...incoming };
 }
 
 export async function resolveInsightArticles(): Promise<InsightArticle[]> {

@@ -16,6 +16,12 @@ describe("security headers", () => {
     const development = Object.fromEntries(
       securityHeaders(false, true).map((header) => [header.key, header.value]),
     );
+    const withTurnstile = Object.fromEntries(
+      securityHeaders(false, false, true).map((header) => [
+        header.key,
+        header.value,
+      ]),
+    );
     expect(local["X-Content-Type-Options"]).toBe("nosniff");
     expect(local["X-Frame-Options"]).toBe("DENY");
     expect(local["Content-Security-Policy"]).toContain(
@@ -26,6 +32,9 @@ describe("security headers", () => {
     expect(development["Content-Security-Policy"]).toContain("unsafe-eval");
     expect(production["Content-Security-Policy"]).not.toContain("unsafe-eval");
     expect(local["Strict-Transport-Security"]).toBeUndefined();
+    expect(withTurnstile["Content-Security-Policy"]).toContain(
+      "https://challenges.cloudflare.com",
+    );
     expect(production["Strict-Transport-Security"]).toContain("max-age=");
     expect(local["Permissions-Policy"]).toContain("camera=()");
     if (PUBLIC_INDEXING_ENABLED) {

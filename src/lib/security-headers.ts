@@ -12,6 +12,7 @@ export function isConfiguredSecret(value: string | undefined): value is string {
 export function securityHeaders(
   isProduction: boolean,
   isDevelopment = false,
+  turnstileEnabled = Boolean(process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY),
 ): {
   key: string;
   value: string;
@@ -22,11 +23,14 @@ export function securityHeaders(
     "form-action 'self'",
     "frame-ancestors 'none'",
     "object-src 'none'",
-    `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ""}`,
+    `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ""}${turnstileEnabled ? " https://challenges.cloudflare.com" : ""}`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https://cdn.sanity.io",
     "font-src 'self'",
-    "connect-src 'self'",
+    `connect-src 'self'${turnstileEnabled ? " https://challenges.cloudflare.com" : ""}`,
+    ...(turnstileEnabled
+      ? ["frame-src 'self' https://challenges.cloudflare.com"]
+      : []),
     ...(isProduction ? ["upgrade-insecure-requests"] : []),
   ].join("; ");
 

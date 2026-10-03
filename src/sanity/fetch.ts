@@ -1,4 +1,5 @@
 import type { AboutPageContent } from "@/content/about";
+import type { BusinessPageContent } from "@/content/business";
 import type { CareerVacancy } from "@/content/careers";
 import { contactPage } from "@/content/contact";
 import {
@@ -17,6 +18,8 @@ import { isRevalidatablePath } from "@/sanity/revalidate";
 import {
   ABOUT_PAGE_PREVIEW_QUERY,
   ABOUT_PAGE_QUERY,
+  BUSINESS_PAGE_PREVIEW_QUERY,
+  BUSINESS_PAGE_QUERY,
   CAPABILITY_PAGE_PREVIEW_QUERY,
   CAPABILITY_PAGE_QUERY,
   CAREER_VACANCIES_PREVIEW_QUERY,
@@ -29,7 +32,9 @@ import {
   INSIGHT_ARTICLE_QUERY,
   INSIGHT_ARTICLES_PREVIEW_QUERY,
   INSIGHT_ARTICLES_QUERY,
+  SITE_SETTINGS_QUERY,
 } from "@/sanity/queries";
+import type { SiteSettings } from "@/content/site-settings";
 import type { SanityClient } from "@sanity/client";
 
 async function queryWithClient<T>(
@@ -125,6 +130,18 @@ export function fetchPreviewHomepage(): Promise<Record<
   unknown
 > | null> {
   return previewQuery(HOMEPAGE_PREVIEW_QUERY);
+}
+
+export function fetchPublishedBusinessPage(): Promise<Partial<BusinessPageContent> | null> {
+  return cachedPublishedQuery(BUSINESS_PAGE_QUERY);
+}
+
+export function fetchPreviewBusinessPage(): Promise<Partial<BusinessPageContent> | null> {
+  return previewQuery(BUSINESS_PAGE_PREVIEW_QUERY);
+}
+
+export function fetchPublishedSiteSettings(): Promise<Partial<SiteSettings> | null> {
+  return cachedPublishedQuery(SITE_SETTINGS_QUERY);
 }
 
 export function fetchPublishedContactPage(): Promise<Partial<

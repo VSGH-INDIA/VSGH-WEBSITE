@@ -1,4 +1,5 @@
 import { DomainJsonLd } from "@/components/domain/domain-json-ld";
+import { ContactEnquiryForm } from "@/components/domain/contact-enquiry-form";
 import { MediaPlaceholder } from "@/components/home/media-placeholder";
 import { ButtonLink } from "@/components/ui/button";
 import { CtaBlock } from "@/components/ui/card";
@@ -77,6 +78,11 @@ export function ContactPageView({
               </li>
             ))}
           </ul>
+        </Container>
+      </Section>
+      <Section className="vsgh-reveal">
+        <Container wide>
+          <ContactEnquiryForm />
         </Container>
       </Section>
       <Section tone="surface" className="vsgh-reveal">

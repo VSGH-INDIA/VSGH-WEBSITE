@@ -10,6 +10,8 @@ import {
 import {
   ABOUT_PAGE_PREVIEW_QUERY,
   ABOUT_PAGE_QUERY,
+  BUSINESS_PAGE_PREVIEW_QUERY,
+  BUSINESS_PAGE_QUERY,
   CAPABILITY_PAGE_PREVIEW_QUERY,
   CAPABILITY_PAGE_QUERY,
   HOMEPAGE_PREVIEW_QUERY,
@@ -25,6 +27,7 @@ describe("publication filtering", () => {
     expect(CAPABILITY_PAGE_QUERY).toContain('lifecycle == "published"');
     expect(ABOUT_PAGE_QUERY).toContain('lifecycle == "published"');
     expect(HOMEPAGE_QUERY).toContain('lifecycle == "published"');
+    expect(BUSINESS_PAGE_QUERY).toContain('lifecycle == "published"');
   });
 
   it("does not require published lifecycle for preview GROQ", () => {
@@ -33,6 +36,9 @@ describe("publication filtering", () => {
     );
     expect(ABOUT_PAGE_PREVIEW_QUERY).not.toContain('lifecycle == "published"');
     expect(HOMEPAGE_PREVIEW_QUERY).not.toContain('lifecycle == "published"');
+    expect(BUSINESS_PAGE_PREVIEW_QUERY).not.toContain(
+      'lifecycle == "published"',
+    );
     expect(CAPABILITY_PAGE_PREVIEW_QUERY).toContain('lifecycle != "archived"');
   });
 });

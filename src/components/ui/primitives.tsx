@@ -95,13 +95,19 @@ export function Heading({
   variant,
   children,
   className,
+  id,
 }: {
   as?: "h1" | "h2" | "h3" | "p";
   variant: HeadingLevel;
   children: ReactNode;
   className?: string;
+  id?: string;
 }) {
-  return <Tag className={cn(headingClass[variant], className)}>{children}</Tag>;
+  return (
+    <Tag id={id} className={cn(headingClass[variant], className)}>
+      {children}
+    </Tag>
+  );
 }
 
 export function Text({

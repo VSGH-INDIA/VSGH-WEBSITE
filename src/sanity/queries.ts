@@ -1,5 +1,6 @@
 export const PUBLIC_MEDIA_PROJECTION = `{
   alt,
+  decorative,
   caption,
   credit,
   usage,
@@ -97,6 +98,33 @@ const CONTACT_PROJECTION = `{
   related[]{ href, label, body }
 }`;
 
+const BUSINESS_PAGE_PROJECTION = `{
+  path,
+  seoTitle,
+  description,
+  eyebrow,
+  headline,
+  lede,
+  mediaLabel,
+  media${PUBLIC_MEDIA_PROJECTION},
+  lines[]{ id, index, title, body },
+  cta{
+    title,
+    body,
+    "primary": { "label": primaryLabel, "href": primaryHref },
+    "secondary": { "label": secondaryLabel, "href": secondaryHref }
+  }
+}`;
+
+const SITE_SETTINGS_PROJECTION = `{
+  companyName,
+  shortName,
+  defaultDescription,
+  titleSuffix,
+  googleSiteVerification,
+  bingSiteVerification
+}`;
+
 export const CAPABILITY_PAGE_QUERY = `*[_type == "capabilityPage" && path == $path && lifecycle == "published"][0]${CAPABILITY_PROJECTION}`;
 export const CAPABILITY_PAGE_PREVIEW_QUERY = `*[_type == "capabilityPage" && path == $path && lifecycle != "archived"][0]${CAPABILITY_PROJECTION}`;
 
@@ -105,6 +133,10 @@ export const ABOUT_PAGE_PREVIEW_QUERY = `*[_type == "aboutPage" && path == $path
 
 export const HOMEPAGE_QUERY = `*[_type == "homepage" && _id == "homepage" && lifecycle == "published"][0]`;
 export const HOMEPAGE_PREVIEW_QUERY = `*[_type == "homepage" && _id == "homepage" && lifecycle != "archived"][0]`;
+
+export const BUSINESS_PAGE_QUERY = `*[_type == "businessPage" && _id == "businessPage" && lifecycle == "published"][0]${BUSINESS_PAGE_PROJECTION}`;
+export const BUSINESS_PAGE_PREVIEW_QUERY = `*[_type == "businessPage" && _id == "businessPage" && lifecycle != "archived"][0]${BUSINESS_PAGE_PROJECTION}`;
+export const SITE_SETTINGS_QUERY = `*[_type == "siteSettings" && _id == "siteSettings" && lifecycle == "published"][0]${SITE_SETTINGS_PROJECTION}`;
 
 export const CONTACT_PAGE_QUERY = `*[_type == "contactPage" && _id == "contactPage" && lifecycle == "published"][0]${CONTACT_PROJECTION}`;
 export const CONTACT_PAGE_PREVIEW_QUERY = `*[_type == "contactPage" && _id == "contactPage" && lifecycle != "archived"][0]${CONTACT_PROJECTION}`;

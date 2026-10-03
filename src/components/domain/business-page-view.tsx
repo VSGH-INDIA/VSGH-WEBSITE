@@ -10,15 +10,25 @@ import {
   Section,
   Text,
 } from "@/components/ui/primitives";
-import { businessPage } from "@/content/business";
+import { businessPage, type BusinessPageContent } from "@/content/business";
 
-export function BusinessPageView() {
+const enquiryByBusinessLine: Record<string, string> = {
+  "aerospace-systems": "aerospace-systems-components",
+  "imports-exports": "machinery-imports-exports",
+  "global-programmes": "global-partnership-programme",
+};
+
+export function BusinessPageView({
+  page = businessPage,
+}: {
+  page?: BusinessPageContent;
+}) {
   return (
     <main id="main">
       <DomainJsonLd
-        title={businessPage.seoTitle}
-        description={businessPage.description}
-        path={businessPage.path}
+        title={page.seoTitle}
+        description={page.description}
+        path={page.path}
         navLabel="Business"
         parentName="Business"
         parentPath="/business"
@@ -26,19 +36,19 @@ export function BusinessPageView() {
       <Hero
         compact
         heading="hero"
-        eyebrow={businessPage.eyebrow}
-        headline={businessPage.headline}
-        body={businessPage.lede}
+        eyebrow={page.eyebrow}
+        headline={page.headline}
+        body={page.lede}
         media={
           <MediaPlaceholder
-            label={businessPage.mediaLabel}
+            label={page.mediaLabel}
             className="aspect-[16/10] lg:aspect-[4/5]"
           />
         }
         actions={
           <>
-            <ButtonLink href="/contact" variant="primary">
-              Discuss a programme
+            <ButtonLink href={page.cta.primary.href} variant="primary">
+              {page.cta.primary.label}
             </ButtonLink>
             <ButtonLink href="/about/company" variant="secondary">
               Company
@@ -55,7 +65,7 @@ export function BusinessPageView() {
             </Heading>
           </div>
           <ol className="divide-y divide-border border-y border-border">
-            {businessPage.lines.map((line) => (
+            {page.lines.map((line) => (
               <li
                 key={line.id}
                 id={line.id}
@@ -67,7 +77,17 @@ export function BusinessPageView() {
                 <Heading as="h3" variant="h3">
                   {line.title}
                 </Heading>
-                <Text className="max-w-2xl text-muted">{line.body}</Text>
+                <div className="space-y-5">
+                  <Text className="max-w-2xl text-muted">{line.body}</Text>
+                  <ButtonLink
+                    href={`/contact?enquiry=${enquiryByBusinessLine[line.id] ?? "other"}`}
+                    variant="ghost"
+                    size="sm"
+                    className="border-b border-border px-0 hover:bg-transparent"
+                  >
+                    Discuss this business line
+                  </ButtonLink>
+                </div>
               </li>
             ))}
           </ol>
@@ -76,15 +96,15 @@ export function BusinessPageView() {
       <Section tone="surface" className="vsgh-reveal">
         <Container wide>
           <CtaBlock
-            title={businessPage.cta.title}
-            body={businessPage.cta.body}
+            title={page.cta.title}
+            body={page.cta.body}
             actions={
               <>
-                <ButtonLink href="/contact" variant="primary">
-                  Discuss a programme
+                <ButtonLink href={page.cta.primary.href} variant="primary">
+                  {page.cta.primary.label}
                 </ButtonLink>
-                <ButtonLink href="/materials/overview" variant="secondary">
-                  Materials capability
+                <ButtonLink href={page.cta.secondary.href} variant="secondary">
+                  {page.cta.secondary.label}
                 </ButtonLink>
               </>
             }

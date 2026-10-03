@@ -53,4 +53,14 @@ describe("media model", () => {
       }),
     ).toBeNull();
   });
+
+  it("allows an explicitly decorative approved image with empty alt text", () => {
+    expect(
+      publicMediaOrNull({
+        ...approvedPublic,
+        altText: "",
+        decorative: true,
+      }),
+    ).toMatchObject({ decorative: true, altText: "" });
+  });
 });

@@ -11,7 +11,7 @@ export const contactPage = defineType({
   title: "Contact page",
   type: "document",
   description:
-    "Public contact copy only. Does not collect, store, or send enquiries. No CRM.",
+    "Public contact copy and enquiry labels. Delivery configuration stays in server-only environment variables, never in the CMS.",
   fields: [
     lifecycleField,
     ...seoFields,
@@ -61,7 +61,7 @@ export const contactPage = defineType({
               name: "id",
               type: "string",
               validation: (rule) =>
-                rule.required().regex(/^[a-z]+$/, { name: "id" }),
+                rule.required().regex(/^[a-z0-9-]+$/, { name: "id" }),
             }),
             defineField({
               name: "title",

@@ -1,4 +1,26 @@
-export const businessPage = {
+export type BusinessPageContent = {
+  path: "/business";
+  seoTitle: string;
+  description: string;
+  eyebrow: string;
+  headline: string;
+  lede: string;
+  mediaLabel: string;
+  lines: readonly {
+    id: string;
+    index: string;
+    title: string;
+    body: string;
+  }[];
+  cta: {
+    title: string;
+    body: string;
+    primary: { label: string; href: string };
+    secondary: { label: string; href: string };
+  };
+};
+
+export const businessPage: BusinessPageContent = {
   path: "/business",
   seoTitle: "Business",
   description:
@@ -31,5 +53,7 @@ export const businessPage = {
   cta: {
     title: "Start with the right connection.",
     body: "For conversations about aerospace supply, industrial machinery, or strategic partnerships, contact VSGH India Pvt Ltd through the published company locations.",
+    primary: { label: "Discuss a programme", href: "/contact" },
+    secondary: { label: "Materials capability", href: "/materials/overview" },
   },
-} as const;
+};

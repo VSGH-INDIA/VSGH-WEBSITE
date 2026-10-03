@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { resolveSiteSettings } from "@/content/resolve";
 import { publicRobotsMetadata } from "@/lib/indexing";
 import { SITE_DESCRIPTION, SITE_ORIGIN, SITE_TITLE } from "@/lib/site";
 import "./globals.css";
@@ -28,23 +31,34 @@ export const viewport: Viewport = {
   themeColor: "#080c14",
 };
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_ORIGIN),
-  title: {
-    default: SITE_TITLE,
-    template: "%s · VSGH",
-  },
-  description: SITE_DESCRIPTION,
-  openGraph: {
-    type: "website",
-    siteName: "VSGH",
-    locale: "en",
-  },
-  twitter: {
-    card: "summary",
-  },
-  robots: publicRobotsMetadata(),
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await resolveSiteSettings();
+  const google =
+    process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+    settings.googleSiteVerification;
+  const bing =
+    process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION ||
+    settings.bingSiteVerification;
+  return {
+    metadataBase: new URL(SITE_ORIGIN),
+    title: {
+      default: SITE_TITLE,
+      template: `%s · ${settings.titleSuffix}`,
+    },
+    description: settings.defaultDescription || SITE_DESCRIPTION,
+    openGraph: {
+      type: "website",
+      siteName: settings.shortName,
+      locale: "en",
+    },
+    twitter: { card: "summary" },
+    robots: publicRobotsMetadata(),
+    verification: {
+      google: google || undefined,
+      other: bing ? { "msvalidate.01": bing } : undefined,
+    },
+  };
+}
 
 export default function RootLayout({
   children,
@@ -67,6 +81,8 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

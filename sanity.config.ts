@@ -2,6 +2,7 @@ import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { isSafeInternalPath } from "@/lib/safe-url";
+import { VSGHDashboard } from "@/sanity/dashboard";
 import { resolveSanityDataset, resolveSanityProjectId } from "@/sanity/project";
 import { schemaTypes } from "@/sanity/schema";
 import { deskStructure } from "@/sanity/structure";
@@ -19,6 +20,10 @@ export default defineConfig({
   plugins: [
     structureTool({ structure: deskStructure }),
     visionTool({ defaultApiVersion: "2026-08-19" }),
+  ],
+  tools: (previous) => [
+    ...previous,
+    { name: "vsgh-dashboard", title: "Dashboard", component: VSGHDashboard },
   ],
   schema: {
     types: schemaTypes,

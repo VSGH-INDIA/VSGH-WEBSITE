@@ -4,7 +4,7 @@ Implementation repository for the VSGH external corporate website.
 
 **Stack:** Next.js 16.3.8 · React 19.2.x · TypeScript · Tailwind CSS · Sanity · Vercel · GitHub Actions.
 
-The public-site application includes the V1 route set, CMS-backed content resolution with static fallbacks, preview/revalidation endpoints, public sitemap/robots generation, and an interactive homepage capability navigator. It does not invent business facts, contact channels, customer claims, or technical results.
+The public-site application includes the V1 route set, CMS-backed content resolution with typed fallbacks, preview/revalidation endpoints, public sitemap/robots generation, an interactive homepage capability navigator, and the international-business sequence for VSGH India Pvt Ltd. It does not invent business facts, contact channels, customer claims, certifications, or technical results.
 
 **V1 sitemap authority:** [WEB-081](docs/decisions/VSGH-WEB-081_V1_SITEMAP_AND_INFORMATION_ARCHITECTURE_DECISION_RECORD.md). Public indexing is enabled in source; production publication still requires the release gates below.
 
@@ -36,7 +36,7 @@ npm run build
 The repository is not evidence that the public domain has been deployed. Before a production release, complete and record:
 
 - Approved photography, company/contact details, and any legal/privacy content.
-- A real public enquiry channel with recipient, spam protection, privacy/retention policy, and delivery testing.
+- Contact delivery configuration: verified Resend sender/recipient, Upstash rate limiting, optional Turnstile pair, privacy/retention policy, and end-to-end delivery testing. The form deliberately fails closed until these exist.
 - Sanity administrator, MFA, editorial workflow, deployed Studio, preview credentials, and revalidation webhook.
 - Vercel/Cloudflare/domain configuration, production environment secrets, preview/UAT, and release approval.
 - E2E, accessibility, and performance verification against the actual deployment.
@@ -51,6 +51,10 @@ See [launch readiness](docs/LAUNCH-READINESS.md) for the operational checklist.
 - [CMS](docs/CMS.md)
 - [Security](docs/SECURITY.md)
 - [Deployment](docs/DEPLOYMENT.md)
+- [Production CMS completion audit](docs/PRODUCTION-CMS-COMPLETION-AUDIT.md)
+- [CMS editor guide](docs/CMS-EDITOR-GUIDE.md)
+- [Contact enquiry operations](docs/CONTACT-ENQUIRY-OPERATIONS.md)
+- [Production validation](docs/PRODUCTION-VALIDATION.md)
 - [Specification conflicts](docs/CONFLICTS.md) — **read before adding pages**
 
 ## Rules
