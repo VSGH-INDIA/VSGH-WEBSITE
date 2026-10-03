@@ -38,7 +38,7 @@ export function BusinessPageView() {
         actions={
           <>
             <ButtonLink href="/contact" variant="primary">
-              Contact VSGH
+              Discuss a programme
             </ButtonLink>
             <ButtonLink href="/about/company" variant="secondary">
               Company
@@ -58,7 +58,8 @@ export function BusinessPageView() {
             {businessPage.lines.map((line) => (
               <li
                 key={line.id}
-                className="grid gap-5 py-8 md:grid-cols-[5rem_minmax(0,20rem)_minmax(0,1fr)] md:gap-8"
+                id={line.id}
+                className="scroll-mt-32 grid gap-5 py-8 md:grid-cols-[5rem_minmax(0,20rem)_minmax(0,1fr)] md:gap-8"
               >
                 <p className="font-mono text-[length:var(--vsgh-text-meta)] text-[#9fb7cf]">
                   /{line.index}
@@ -80,7 +81,7 @@ export function BusinessPageView() {
             actions={
               <>
                 <ButtonLink href="/contact" variant="primary">
-                  View company locations
+                  Discuss a programme
                 </ButtonLink>
                 <ButtonLink href="/materials/overview" variant="secondary">
                   Materials capability

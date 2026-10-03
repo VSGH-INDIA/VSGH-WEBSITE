@@ -1,4 +1,5 @@
 import { HomeApplications } from "@/components/home/home-applications";
+import { HomeBusiness } from "@/components/home/home-business";
 import { HomeCapability } from "@/components/home/home-capability";
 import { HomeCompany } from "@/components/home/home-company";
 import { HomeCta } from "@/components/home/home-cta";
@@ -10,6 +11,7 @@ import { HomeQuality } from "@/components/home/home-quality";
 import { HomeResearch } from "@/components/home/home-research";
 import { HomeSustainability } from "@/components/home/home-sustainability";
 import { HomeTransformation } from "@/components/home/home-transformation";
+import { HomeWhyVSGH } from "@/components/home/home-why-vsgh";
 import { homeContent } from "@/content/home";
 import { resolveHomepage } from "@/content/resolve";
 import { pageMetadata } from "@/lib/seo";
@@ -30,6 +32,8 @@ export default async function HomePage() {
     <main id="main">
       <HomeJsonLd description={content.description} title={content.seoTitle} />
       <HomeHero content={content} />
+      <HomeBusiness content={content} />
+      <HomeWhyVSGH content={content} />
       <HomePositioning content={content} />
       <HomeExplorer content={content} />
       <HomeTransformation content={content} />

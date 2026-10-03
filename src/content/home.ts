@@ -5,10 +5,65 @@ export const homeContent = {
   seoTitle: SITE_TITLE,
   description: SITE_DESCRIPTION,
   hero: {
-    eyebrow: "[ V-S-G-H ] · materials technology · public overview",
-    headline: "Engineered material capability for",
+    eyebrow: "[ V-S-G-H ] · India Pvt Ltd · international business platform",
+    headline: "Connecting industrial capability to",
     emphasis: "aerospace programmes.",
-    body: "VSGH develops advanced materials from recovered and resource-derived feedstocks — through metallurgy, processing, and qualification — into application-ready capability. This site describes direction and discipline. It does not disclose process windows, formulations, or unpublished data.",
+    body: "VSGH India Pvt Ltd connects Indian manufacturing capability, industrial machinery opportunities, and strategic partners across international markets. Our public platform explains the business lines, materials direction, and evidence-led approach behind those connections.",
+  },
+  business: {
+    eyebrow: "Business platform",
+    title: "Three business lines. One international point of connection.",
+    body: "VSGH works between capable manufacturers, programme requirements, and global counterparties. We do not represent ourselves as the manufacturer of aerospace systems or components.",
+    lines: [
+      {
+        index: "01",
+        title: "Aerospace systems & components",
+        body: "Promoting and distributing Indian manufacturing capability by connecting manufacturers with relevant companies, programmes, and markets worldwide.",
+        href: "/business#aerospace-systems",
+        action: "Explore aerospace connections",
+      },
+      {
+        index: "02",
+        title: "Imports & exports",
+        body: "Supporting import and export opportunities for manufacturing machines and other industrial machinery.",
+        href: "/business#imports-exports",
+        action: "Explore machinery trade",
+      },
+      {
+        index: "03",
+        title: "Global programmes",
+        body: "Developing strategic partnerships and long-term industrial relationships across markets.",
+        href: "/business#global-programmes",
+        action: "Explore global programmes",
+      },
+    ],
+  },
+  whyVSGH: {
+    eyebrow: "Why VSGH",
+    title: "International connection, grounded in industrial context.",
+    body: "The platform is designed for organisations seeking a considered route into conversation—not a catalogue of unverified claims.",
+    points: [
+      {
+        index: "01",
+        title: "India-based access",
+        body: "A published India location provides a clear point of contact for company correspondence and commercial discussion.",
+      },
+      {
+        index: "02",
+        title: "Global manufacturer connections",
+        body: "VSGH connects capable Indian manufacturers with prospective counterparties in international markets.",
+      },
+      {
+        index: "03",
+        title: "Programme coordination",
+        body: "Business conversations are organized around the right industrial relationship, market context, and programme direction.",
+      },
+      {
+        index: "04",
+        title: "Quality-led commercial approach",
+        body: "Public statements distinguish direction from validated results and keep unsupported technical claims out of the conversation.",
+      },
+    ],
   },
   positioning: {
     eyebrow: "What we do",
@@ -157,25 +212,27 @@ export const homeContent = {
     ],
   },
   quality: {
-    eyebrow: "Quality & trust",
-    title: "Discipline before declaration.",
-    body: "Trust is built by how material is developed and evidenced. This page does not list certifications, accreditations, or standard numbers. Those claims, when true and authorized, belong on dedicated quality communication — not as homepage decoration.",
+    eyebrow: "Trust pillars",
+    title: "Trust is an operating posture, not homepage decoration.",
+    body: "Scientific integrity, quality discipline, and clear global points of contact make the platform more useful to serious counterparties. VSGH does not list certifications, accreditations, or standard numbers unless they are true and authorized for publication.",
     items: [
       {
         title: "Scientific integrity",
-        body: "Statements are limited to what can be supported. Absence of a number is intentional.",
+        body: "Statements are limited to what the public record can support. Absence of a number is intentional.",
+        href: "/about/scientific-integrity",
+        action: "Scientific integrity",
       },
       {
-        title: "Engineering control",
-        body: "Development proceeds under defined review, not opportunistic specification.",
+        title: "Quality discipline",
+        body: "Development and communication proceed under defined review, not opportunistic specification.",
+        href: "/about/quality",
+        action: "Quality approach",
       },
       {
-        title: "Characterization",
-        body: "Material behaviour is measured before it is offered as capability.",
-      },
-      {
-        title: "Qualification mindset",
-        body: "Fitness for use is a programme, not a slogan.",
+        title: "Global presence",
+        body: "Published company locations in India and Europe create clear routes for international business correspondence.",
+        href: "/contact",
+        action: "Company locations",
       },
     ],
   },
@@ -191,8 +248,8 @@ export const homeContent = {
     body: "VSGH exists to develop materials technology — from feedstock to application — with the restraint required of aerospace-adjacent work. Company identity, leadership posture, and facilities language live on dedicated About pages.",
   },
   cta: {
-    title: "Start with the right VSGH route.",
-    body: "For technology collaboration, research discussion, or business context, review the Business page and published company locations.",
+    title: "Discuss the right programme, not a generic enquiry.",
+    body: "For aerospace supply connections, industrial machinery trade, or strategic partnerships, begin with VSGH Business and the published India and Europe company locations.",
   },
   explorer: {
     eyebrow: "Capability explorer",

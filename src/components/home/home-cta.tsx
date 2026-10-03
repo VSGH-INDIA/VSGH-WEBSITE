@@ -15,10 +15,10 @@ export function HomeCta({ content }: { content: HomeContent }) {
           actions={
             <>
               <ButtonLink href="/contact" variant="primary">
-                Company locations
+                Discuss a programme
               </ButtonLink>
               <ButtonLink href="/business" variant="secondary">
-                Business
+                VSGH Business
               </ButtonLink>
             </>
           }

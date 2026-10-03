@@ -20,22 +20,32 @@ export function HomeQuality({ content }: { content: HomeContent }) {
             {quality.title}
           </Heading>
           <Text className="text-muted">{quality.body}</Text>
-          <ButtonLink href="/about/quality" variant="secondary">
-            Quality
+          <ButtonLink href="/about/scientific-integrity" variant="secondary">
+            How VSGH builds trust
           </ButtonLink>
         </div>
-        <ul>
+        <ul className="border-y border-border">
           {quality.items.map((item) => (
             <li
               key={item.title}
-              className="border-t border-border py-5 last:border-b"
+              className="grid gap-3 border-border py-6 first:border-t md:grid-cols-[minmax(0,1fr)_auto] md:items-end"
             >
-              <Heading as="h3" variant="h3">
-                {item.title}
-              </Heading>
-              <Text size="small" className="mt-2 text-muted">
-                {item.body}
-              </Text>
+              <div>
+                <Heading as="h3" variant="h3">
+                  {item.title}
+                </Heading>
+                <Text size="small" className="mt-2 text-muted">
+                  {item.body}
+                </Text>
+              </div>
+              <ButtonLink
+                href={item.href}
+                variant="ghost"
+                size="sm"
+                className="w-fit border-b border-border px-0 hover:bg-transparent"
+              >
+                {item.action}
+              </ButtonLink>
             </li>
           ))}
         </ul>

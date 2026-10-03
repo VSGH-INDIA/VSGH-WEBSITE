@@ -61,6 +61,70 @@ export const homepage = defineType({
       ],
     }),
     defineField({
+      name: "business",
+      type: "object",
+      fields: [
+        ...block,
+        defineField({
+          name: "lines",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({ name: "index", type: "string" }),
+                defineField({ name: "title", type: "string" }),
+                defineField({
+                  name: "body",
+                  type: "text",
+                  rows: 3,
+                  description: PUBLIC_CONTENT_GUIDANCE,
+                }),
+                defineField({
+                  name: "href",
+                  type: "string",
+                  validation: (rule) =>
+                    rule.custom((value) =>
+                      typeof value === "string" && isSafeInternalPath(value)
+                        ? true
+                        : "Use an internal site path or fragment",
+                    ),
+                }),
+                defineField({ name: "action", type: "string" }),
+              ],
+            },
+          ],
+        }),
+      ],
+    }),
+    defineField({
+      name: "whyVSGH",
+      title: "Why VSGH",
+      type: "object",
+      fields: [
+        ...block,
+        defineField({
+          name: "points",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({ name: "index", type: "string" }),
+                defineField({ name: "title", type: "string" }),
+                defineField({
+                  name: "body",
+                  type: "text",
+                  rows: 3,
+                  description: PUBLIC_CONTENT_GUIDANCE,
+                }),
+              ],
+            },
+          ],
+        }),
+      ],
+    }),
+    defineField({
       name: "transformation",
       type: "object",
       fields: [
@@ -139,6 +203,17 @@ export const homepage = defineType({
               fields: [
                 defineField({ name: "title", type: "string" }),
                 defineField({ name: "body", type: "text", rows: 2 }),
+                defineField({
+                  name: "href",
+                  type: "string",
+                  validation: (rule) =>
+                    rule.custom((value) =>
+                      typeof value === "string" && isSafeInternalPath(value)
+                        ? true
+                        : "Use an internal site path",
+                    ),
+                }),
+                defineField({ name: "action", type: "string" }),
               ],
             },
           ],

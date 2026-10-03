@@ -42,18 +42,18 @@ export function HomeHero({ content }: { content: HomeContent }) {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <ButtonLink
-                href="#explorer"
+                href="#business"
                 variant="primary"
                 className="!rounded-full !bg-[#e9eff3] !px-5 !text-[#080c14] hover:!bg-white"
               >
-                Explore programme path <span aria-hidden>↘</span>
+                Explore VSGH business <span aria-hidden>↘</span>
               </ButtonLink>
               <ButtonLink
                 href="/contact"
                 variant="secondary"
                 className="!rounded-full !border-white/30 !px-5 hover:!border-white hover:!bg-white/10"
               >
-                Start a conversation
+                Discuss a programme
               </ButtonLink>
             </div>
           </div>
