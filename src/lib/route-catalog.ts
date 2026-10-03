@@ -2,6 +2,7 @@ import { aboutPageList } from "@/content/about";
 import { applicationsPageList } from "@/content/applications";
 import { careersPage } from "@/content/careers";
 import { businessPage } from "@/content/business";
+import { businessLines } from "@/content/business-lines";
 import { contactPage } from "@/content/contact";
 import { insightsPage } from "@/content/insights";
 import { materialsPageList } from "@/content/materials";
@@ -24,6 +25,7 @@ const leafPages = [
   ...applicationsPageList,
   ...researchPageList,
   businessPage,
+  ...businessLines,
   sustainabilityPage,
   insightsPage,
   careersPage,

@@ -11,12 +11,7 @@ import {
   Text,
 } from "@/components/ui/primitives";
 import { businessPage, type BusinessPageContent } from "@/content/business";
-
-const enquiryByBusinessLine: Record<string, string> = {
-  "aerospace-systems": "aerospace-systems-components",
-  "imports-exports": "machinery-imports-exports",
-  "global-programmes": "global-partnership-programme",
-};
+import { businessLinePathForOverviewId } from "@/content/business-lines";
 
 export function BusinessPageView({
   page = businessPage,
@@ -80,7 +75,7 @@ export function BusinessPageView({
                 <div className="space-y-5">
                   <Text className="max-w-2xl text-muted">{line.body}</Text>
                   <ButtonLink
-                    href={`/contact?enquiry=${enquiryByBusinessLine[line.id] ?? "other"}`}
+                    href={businessLinePathForOverviewId(line.id)}
                     variant="ghost"
                     size="sm"
                     className="border-b border-border px-0 hover:bg-transparent"

@@ -1,5 +1,10 @@
 import { contactPage } from "@/content/contact";
 import { businessPage, type BusinessPageContent } from "@/content/business";
+import {
+  businessLineForSlug,
+  isBusinessLineSlug,
+  type BusinessLineContent,
+} from "@/content/business-lines";
 import { siteSettings, type SiteSettings } from "@/content/site-settings";
 import type { CareerVacancy } from "@/content/careers";
 import type { AboutPageContent } from "@/content/about";
@@ -10,6 +15,7 @@ import type { CapabilityPageContent } from "@/content/types";
 import {
   fetchPreviewAboutPage,
   fetchPreviewBusinessPage,
+  fetchPreviewBusinessLine,
   fetchPreviewCapabilityPage,
   fetchPreviewCareerVacancies,
   fetchPreviewContactPage,
@@ -18,6 +24,7 @@ import {
   fetchPreviewInsightArticles,
   fetchPublishedAboutPage,
   fetchPublishedBusinessPage,
+  fetchPublishedBusinessLine,
   fetchPublishedCapabilityPage,
   fetchPublishedCareerVacancies,
   fetchPublishedContactPage,
@@ -98,6 +105,30 @@ export async function resolveBusinessPage(): Promise<BusinessPageContent> {
     (incoming) =>
       Boolean(
         incoming?.headline && incoming?.cta && incoming?.lines?.length === 3,
+      ),
+  );
+}
+
+export async function resolveBusinessLine(
+  slug: string,
+): Promise<BusinessLineContent | null> {
+  const fallback = businessLineForSlug(slug);
+  if (!fallback) {
+    return null;
+  }
+  return resolveWithPreview(
+    fallback,
+    () => fetchPreviewBusinessLine(fallback.slug),
+    () => fetchPublishedBusinessLine(fallback.slug),
+    (incoming) =>
+      Boolean(
+        incoming?.headline &&
+        incoming?.cta &&
+        incoming?.focus?.length === 3 &&
+        incoming?.connectionFlow?.length === 3 &&
+        (!incoming.relatedSlugs ||
+          (incoming.relatedSlugs.length === 2 &&
+            incoming.relatedSlugs.every(isBusinessLineSlug))),
       ),
   );
 }

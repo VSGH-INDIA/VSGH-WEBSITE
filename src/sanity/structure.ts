@@ -34,7 +34,7 @@ const lifecycleList = (
     .title(title)
     .schemaType("insightArticle")
     .filter(
-      '_type in ["homepage", "businessPage", "aboutPage", "capabilityPage", "contactPage", "insightArticle", "careerVacancy", "siteSettings"] && lifecycle == $lifecycle',
+      '_type in ["homepage", "businessPage", "businessLine", "aboutPage", "capabilityPage", "contactPage", "insightArticle", "careerVacancy", "siteSettings"] && lifecycle == $lifecycle',
     )
     .params({ lifecycle });
 
@@ -53,6 +53,9 @@ export const deskStructure: StructureResolver = (S) =>
             .title("Website pages")
             .items([
               S.documentTypeListItem("aboutPage").title("About"),
+              S.documentTypeListItem("businessLine").title(
+                "Business line pages",
+              ),
               capabilityDomain(S, "Materials", "Materials"),
               capabilityDomain(S, "Technology", "Technology"),
               capabilityDomain(S, "Applications", "Applications"),

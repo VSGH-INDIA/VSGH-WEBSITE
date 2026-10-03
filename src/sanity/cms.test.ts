@@ -3,6 +3,7 @@ import { isSanityConfigured } from "./env";
 import { VSGH_SANITY_DATASET, VSGH_SANITY_PROJECT_ID } from "./project";
 import {
   BUSINESS_PAGE_QUERY,
+  BUSINESS_LINE_QUERY,
   CAPABILITY_PAGE_QUERY,
   CAREER_VACANCIES_QUERY,
   INSIGHT_ARTICLES_QUERY,
@@ -38,6 +39,7 @@ describe("Sanity public CMS foundation", () => {
       "siteSettings",
       "homepage",
       "businessPage",
+      "businessLine",
       "aboutPage",
       "capabilityPage",
       "contactPage",
@@ -58,6 +60,7 @@ describe("Sanity public CMS foundation", () => {
   it("requires published lifecycle in public GROQ", () => {
     expect(CAPABILITY_PAGE_QUERY).toContain('lifecycle == "published"');
     expect(BUSINESS_PAGE_QUERY).toContain('lifecycle == "published"');
+    expect(BUSINESS_LINE_QUERY).toContain('lifecycle == "published"');
     expect(SITE_SETTINGS_QUERY).toContain('lifecycle == "published"');
     expect(INSIGHT_ARTICLES_QUERY).toContain('lifecycle == "published"');
     expect(CAREER_VACANCIES_QUERY).toContain('lifecycle == "published"');

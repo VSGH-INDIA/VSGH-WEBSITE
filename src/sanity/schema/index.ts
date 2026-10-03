@@ -1,5 +1,6 @@
 import { aboutPage } from "@/sanity/schema/about-page";
 import { businessPage } from "@/sanity/schema/business-page";
+import { businessLine } from "@/sanity/schema/business-line";
 import { capabilityPage } from "@/sanity/schema/capability-page";
 import { careerVacancy } from "@/sanity/schema/career-vacancy";
 import { contactPage } from "@/sanity/schema/contact-page";
@@ -16,6 +17,7 @@ export const schemaTypes = [
   siteSettings,
   homepage,
   businessPage,
+  businessLine,
   aboutPage,
   capabilityPage,
   contactPage,

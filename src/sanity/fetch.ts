@@ -1,5 +1,9 @@
 import type { AboutPageContent } from "@/content/about";
 import type { BusinessPageContent } from "@/content/business";
+import {
+  isBusinessLineSlug,
+  type BusinessLineContent,
+} from "@/content/business-lines";
 import type { CareerVacancy } from "@/content/careers";
 import { contactPage } from "@/content/contact";
 import {
@@ -20,6 +24,8 @@ import {
   ABOUT_PAGE_QUERY,
   BUSINESS_PAGE_PREVIEW_QUERY,
   BUSINESS_PAGE_QUERY,
+  BUSINESS_LINE_PREVIEW_QUERY,
+  BUSINESS_LINE_QUERY,
   CAPABILITY_PAGE_PREVIEW_QUERY,
   CAPABILITY_PAGE_QUERY,
   CAREER_VACANCIES_PREVIEW_QUERY,
@@ -138,6 +144,24 @@ export function fetchPublishedBusinessPage(): Promise<Partial<BusinessPageConten
 
 export function fetchPreviewBusinessPage(): Promise<Partial<BusinessPageContent> | null> {
   return previewQuery(BUSINESS_PAGE_PREVIEW_QUERY);
+}
+
+export function fetchPublishedBusinessLine(
+  slug: string,
+): Promise<Partial<BusinessLineContent> | null> {
+  if (!isBusinessLineSlug(slug)) {
+    return Promise.resolve(null);
+  }
+  return cachedPublishedQuery(BUSINESS_LINE_QUERY, { slug });
+}
+
+export function fetchPreviewBusinessLine(
+  slug: string,
+): Promise<Partial<BusinessLineContent> | null> {
+  if (!isBusinessLineSlug(slug)) {
+    return Promise.resolve(null);
+  }
+  return previewQuery(BUSINESS_LINE_PREVIEW_QUERY, { slug });
 }
 
 export function fetchPublishedSiteSettings(): Promise<Partial<SiteSettings> | null> {

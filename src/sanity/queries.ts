@@ -116,6 +116,26 @@ const BUSINESS_PAGE_PROJECTION = `{
   }
 }`;
 
+const BUSINESS_LINE_PROJECTION = `{
+  slug,
+  seoTitle,
+  description,
+  eyebrow,
+  headline,
+  lede,
+  mediaLabel,
+  media${PUBLIC_MEDIA_PROJECTION},
+  focus[]{ index, title, body },
+  connectionFlow[]{ index, title, body },
+  relatedSlugs,
+  cta{
+    title,
+    body,
+    "primary": { "label": primaryLabel, "href": primaryHref },
+    "secondary": { "label": secondaryLabel, "href": secondaryHref }
+  }
+}`;
+
 const SITE_SETTINGS_PROJECTION = `{
   companyName,
   shortName,
@@ -136,6 +156,8 @@ export const HOMEPAGE_PREVIEW_QUERY = `*[_type == "homepage" && _id == "homepage
 
 export const BUSINESS_PAGE_QUERY = `*[_type == "businessPage" && _id == "businessPage" && lifecycle == "published"][0]${BUSINESS_PAGE_PROJECTION}`;
 export const BUSINESS_PAGE_PREVIEW_QUERY = `*[_type == "businessPage" && _id == "businessPage" && lifecycle != "archived"][0]${BUSINESS_PAGE_PROJECTION}`;
+export const BUSINESS_LINE_QUERY = `*[_type == "businessLine" && slug == $slug && lifecycle == "published"][0]${BUSINESS_LINE_PROJECTION}`;
+export const BUSINESS_LINE_PREVIEW_QUERY = `*[_type == "businessLine" && slug == $slug && lifecycle != "archived"][0]${BUSINESS_LINE_PROJECTION}`;
 export const SITE_SETTINGS_QUERY = `*[_type == "siteSettings" && _id == "siteSettings" && lifecycle == "published"][0]${SITE_SETTINGS_PROJECTION}`;
 
 export const CONTACT_PAGE_QUERY = `*[_type == "contactPage" && _id == "contactPage" && lifecycle == "published"][0]${CONTACT_PROJECTION}`;

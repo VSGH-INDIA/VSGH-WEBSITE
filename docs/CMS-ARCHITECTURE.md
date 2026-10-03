@@ -19,6 +19,7 @@ Published queries require `lifecycle == "published"`. Preview uses a server-only
 | Content                                       | Purpose                                                               |
 | --------------------------------------------- | --------------------------------------------------------------------- |
 | Home / Business / Contact                     | controlled public singletons                                          |
+| Business-line landing pages                   | three fixed-route documents with lifecycle and preview controls       |
 | Site settings                                 | limited public company identity, metadata, verification, and labels   |
 | Capability pages / insight articles / careers | existing public-content documents                                     |
 | Image assets                                  | public-media metadata, approval, visibility, alt/decorative semantics |

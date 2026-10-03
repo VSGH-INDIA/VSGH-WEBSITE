@@ -22,14 +22,14 @@ type DashboardData = {
 
 const QUERY = `{
   "lifecycle": {
-    "draft": count(*[_type in ["homepage", "businessPage", "aboutPage", "capabilityPage", "contactPage", "insightArticle", "careerVacancy", "siteSettings"] && lifecycle == "draft"]),
-    "review": count(*[_type in ["homepage", "businessPage", "aboutPage", "capabilityPage", "contactPage", "insightArticle", "careerVacancy", "siteSettings"] && lifecycle == "review"]),
-    "approved": count(*[_type in ["homepage", "businessPage", "aboutPage", "capabilityPage", "contactPage", "insightArticle", "careerVacancy", "siteSettings"] && lifecycle == "approved"]),
-    "published": count(*[_type in ["homepage", "businessPage", "aboutPage", "capabilityPage", "contactPage", "insightArticle", "careerVacancy", "siteSettings"] && lifecycle == "published"])
+    "draft": count(*[_type in ["homepage", "businessPage", "businessLine", "aboutPage", "capabilityPage", "contactPage", "insightArticle", "careerVacancy", "siteSettings"] && lifecycle == "draft"]),
+    "review": count(*[_type in ["homepage", "businessPage", "businessLine", "aboutPage", "capabilityPage", "contactPage", "insightArticle", "careerVacancy", "siteSettings"] && lifecycle == "review"]),
+    "approved": count(*[_type in ["homepage", "businessPage", "businessLine", "aboutPage", "capabilityPage", "contactPage", "insightArticle", "careerVacancy", "siteSettings"] && lifecycle == "approved"]),
+    "published": count(*[_type in ["homepage", "businessPage", "businessLine", "aboutPage", "capabilityPage", "contactPage", "insightArticle", "careerVacancy", "siteSettings"] && lifecycle == "published"])
   },
-  "missingSeo": count(*[_type in ["homepage", "businessPage", "aboutPage", "capabilityPage", "contactPage", "insightArticle"] && (!defined(seoTitle) || !defined(description))]),
-  "missingAlt": count(*[_type in ["businessPage", "contactPage", "insightArticle", "capabilityPage"] && defined(media) && !defined(media.alt)]),
-  "recent": *[_type in ["homepage", "businessPage", "aboutPage", "capabilityPage", "contactPage", "insightArticle", "careerVacancy", "siteSettings"]] | order(_updatedAt desc)[0...8]{ _id, _type, title, headline, _updatedAt, lifecycle }
+  "missingSeo": count(*[_type in ["homepage", "businessPage", "businessLine", "aboutPage", "capabilityPage", "contactPage", "insightArticle"] && (!defined(seoTitle) || !defined(description))]),
+  "missingAlt": count(*[_type in ["businessPage", "businessLine", "contactPage", "insightArticle", "capabilityPage"] && defined(media) && !defined(media.alt)]),
+  "recent": *[_type in ["homepage", "businessPage", "businessLine", "aboutPage", "capabilityPage", "contactPage", "insightArticle", "careerVacancy", "siteSettings"]] | order(_updatedAt desc)[0...8]{ _id, _type, title, headline, _updatedAt, lifecycle }
 }`;
 
 const empty: DashboardData = {
@@ -141,6 +141,17 @@ export function VSGHDashboard() {
           }}
         >
           Edit Business
+        </a>
+        <a
+          href="#/structure/businessLine"
+          style={{
+            border: "1px solid #2c6fb7",
+            color: "#174d84",
+            padding: "10px 14px",
+            textDecoration: "none",
+          }}
+        >
+          Edit Business Lines
         </a>
         <a
           href="#/structure/contactPage"

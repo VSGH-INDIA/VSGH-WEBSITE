@@ -3,6 +3,7 @@ import { aboutPages } from "@/content/about";
 import { applicationsPages } from "@/content/applications";
 import { careersPage } from "@/content/careers";
 import { businessPage } from "@/content/business";
+import { businessLines } from "@/content/business-lines";
 import { contactPage } from "@/content/contact";
 import { insightsPage } from "@/content/insights";
 import { materialsPages } from "@/content/materials";
@@ -14,7 +15,7 @@ import { IMPLEMENTED_ROUTES, isPublishedPath } from "@/lib/navigation";
 import { breadcrumbItems } from "@/lib/seo";
 import { SITE_ORIGIN } from "@/lib/site";
 
-const WEB_081_PAGES = [
+const APPROVED_PUBLIC_PAGES = [
   "/",
   "/about/company",
   "/about/vision",
@@ -41,6 +42,9 @@ const WEB_081_PAGES = [
   "/research/research-areas",
   "/research/publications",
   "/business",
+  "/business/aerospace-systems-components",
+  "/business/imports-exports",
+  "/business/global-programmes",
   "/sustainability",
   "/insights",
   "/careers",
@@ -80,10 +84,12 @@ function collectHrefs(value: unknown, acc: string[] = []): string[] {
   return acc;
 }
 
-describe("WEB-081 route inventory", () => {
-  it("implements exactly the approved public pages", () => {
-    expect([...IMPLEMENTED_ROUTES].sort()).toEqual([...WEB_081_PAGES].sort());
-    expect(IMPLEMENTED_ROUTES).toHaveLength(30);
+describe("public route inventory", () => {
+  it("implements the approved public pages and business-line extension", () => {
+    expect([...IMPLEMENTED_ROUTES].sort()).toEqual(
+      [...APPROVED_PUBLIC_PAGES].sort(),
+    );
+    expect(IMPLEMENTED_ROUTES).toHaveLength(33);
   });
 
   it("does not treat unpublished parent indexes as published", () => {
@@ -105,6 +111,7 @@ describe("internal links", () => {
       applicationsPages,
       researchPages,
       businessPage,
+      businessLines,
       sustainabilityPage,
       insightsPage,
       careersPage,

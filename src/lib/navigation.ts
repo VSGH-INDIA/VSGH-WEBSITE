@@ -1,3 +1,5 @@
+import { BUSINESS_LINE_PATHS } from "@/content/business-lines";
+
 export const PRIMARY_NAV = [
   { label: "About", href: "/about/company" },
   { label: "Business", href: "/business" },
@@ -58,6 +60,7 @@ export const IMPLEMENTED_ROUTES = [
   ...APPLICATIONS_NAV.map((item) => item.href),
   ...RESEARCH_NAV.map((item) => item.href),
   "/business",
+  ...BUSINESS_LINE_PATHS,
   "/sustainability",
   "/insights",
   "/careers",

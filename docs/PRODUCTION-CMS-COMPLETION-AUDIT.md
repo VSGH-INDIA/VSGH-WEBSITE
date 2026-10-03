@@ -4,7 +4,7 @@ Date: 2026-10-03. Baseline inspected: `5d30b7b` (the public interactive-site rel
 
 ## Delivered in the repository
 
-- Sanity has controlled singleton documents for Home, Business, Contact, and Site settings. Business is modelled as exactly three approved commercial lines: Aerospace Systems & Components, Imports & Exports, and Global Programmes.
+- Sanity has controlled singleton documents for Home, Business, Contact, and Site settings, plus three fixed-route Business landing documents. Business is modelled as exactly three approved commercial lines: Aerospace Systems & Components, Imports & Exports, and Global Programmes.
 - The public server resolves published CMS content first and keeps typed code fallbacks for incomplete or unconfigured Sanity content. Draft preview remains server-only and no-store.
 - Studio has a task-oriented structure, publishing/review lists, asset library, and a dashboard for lifecycle, SEO, image-alt, and recent-edit checks. `sanity.cli.ts` explicitly shares the app `@/` alias with Studio builds.
 - Public media supports approval status, visibility, decorative images, and conditional alt text. A CMS image is not public unless it is approved, public, and has alt text unless marked decorative.
