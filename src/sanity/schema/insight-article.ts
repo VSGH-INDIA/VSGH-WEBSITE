@@ -59,7 +59,7 @@ export const insightArticle = defineType({
       of: [
         {
           type: "object",
-          name: "block",
+          name: "insightBodySection",
           fields: [
             defineField({ name: "title", type: "string" }),
             defineField({
