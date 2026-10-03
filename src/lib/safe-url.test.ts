@@ -6,6 +6,9 @@ describe("URL safety", () => {
     expect(isSafeInternalPath("/")).toBe(true);
     expect(isSafeInternalPath("/about/company")).toBe(true);
     expect(isSafeInternalPath("/contact")).toBe(true);
+    expect(
+      isSafeInternalPath("/contact?enquiry=global-partnership-programme"),
+    ).toBe(true);
   });
 
   it("rejects protocol and protocol-relative hrefs", () => {
@@ -16,6 +19,7 @@ describe("URL safety", () => {
     expect(isSafeInternalPath("/\\evil")).toBe(false);
     expect(isSafeInternalPath("/about/../contact")).toBe(false);
     expect(isSafeInternalPath("https://example.com")).toBe(false);
+    expect(isSafeInternalPath("/contact?next=https://example.com")).toBe(false);
   });
 
   it("accepts same-page fragments used by the homepage", () => {

@@ -1,5 +1,6 @@
-const INTERNAL_PATH = /^\/[a-z0-9/#?-]*$/;
+const INTERNAL_PATH = /^\/[a-z0-9/_-]*$/i;
 const FRAGMENT = /^#[a-z0-9_-]+$/i;
+const QUERY_PAIR = /^[a-z0-9_-]+=[a-z0-9_-]+$/i;
 
 export function isSafeInternalPath(path: string): boolean {
   if (typeof path !== "string" || path.length === 0 || path.length > 180) {
@@ -8,13 +9,34 @@ export function isSafeInternalPath(path: string): boolean {
   if (!path.startsWith("/") || path.startsWith("//")) {
     return false;
   }
-  if (path.includes("\\") || path.includes("..") || path.includes("://")) {
+  if (
+    path.includes("\\") ||
+    path.includes("..") ||
+    path.includes("://") ||
+    (path.match(/\?/g)?.length ?? 0) > 1 ||
+    (path.match(/#/g)?.length ?? 0) > 1
+  ) {
     return false;
   }
   if (/^[a-z][a-z0-9+.-]*:/i.test(path)) {
     return false;
   }
-  return INTERNAL_PATH.test(path);
+  const [pathAndQuery, fragment] = path.split("#", 2);
+  if (
+    !pathAndQuery ||
+    (fragment !== undefined && !FRAGMENT.test(`#${fragment}`))
+  ) {
+    return false;
+  }
+  const [pathname, query] = pathAndQuery.split("?", 2);
+  if (!pathname || !INTERNAL_PATH.test(pathname)) {
+    return false;
+  }
+  return (
+    query === undefined ||
+    (query.length > 0 &&
+      query.split("&").every((pair) => QUERY_PAIR.test(pair)))
+  );
 }
 
 export function isSafeHref(href: string): boolean {
