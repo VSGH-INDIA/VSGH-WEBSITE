@@ -9,7 +9,10 @@ export function isConfiguredSecret(value: string | undefined): value is string {
   return Boolean(value && value.length >= MIN_SECRET_LENGTH);
 }
 
-export function securityHeaders(isProduction: boolean): {
+export function securityHeaders(
+  isProduction: boolean,
+  isDevelopment = false,
+): {
   key: string;
   value: string;
 }[] {
@@ -19,7 +22,7 @@ export function securityHeaders(isProduction: boolean): {
     "form-action 'self'",
     "frame-ancestors 'none'",
     "object-src 'none'",
-    "script-src 'self' 'unsafe-inline'",
+    `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ""}`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https://cdn.sanity.io",
     "font-src 'self'",

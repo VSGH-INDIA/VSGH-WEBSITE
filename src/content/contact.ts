@@ -2,13 +2,27 @@ export const contactPage = {
   path: "/contact",
   seoTitle: "Contact",
   description:
-    "VSGH public contact page for future technology, materials, research, business, and corporate enquiries. No messages are sent; no address, telephone, or email is published.",
+    "VSGH India Pvt Ltd contact page with India and Europe office addresses for technology, materials, research, business, and corporate enquiries.",
   eyebrow: "[ Contact ] · public enquiry",
-  headline: "A channel for conversation, when a channel exists.",
-  lede: "This page names legitimate enquiry classes and reserves the shape of a future form. It does not send mail, store data, or connect to a CRM. No office address, telephone number, or email address is published here because none is approved for this site.",
-  mediaLabel: "Contact visual · placeholder",
+  headline: "Company locations for business correspondence.",
+  lede: "VSGH India Pvt Ltd maintains India and Europe offices for company correspondence, technology, materials, research, business, and corporate enquiries.",
+  mediaLabel: "Contact visual",
   notice:
     "Enquiry channel not connected. Nothing entered on this page is transmitted or stored. Do not include confidential, personal, or restricted information.",
+  leadership: {
+    name: "Dr. Subramanya S",
+    role: "Managing Director",
+  },
+  locations: [
+    {
+      region: "India",
+      address: ["B116, DS Max Signatures", "Devi Nagar, Bangalore - 560094"],
+    },
+    {
+      region: "Europe",
+      address: ["Corso Pietro Ronaldi, 68", "Quarona-13017, Italy"],
+    },
+  ],
   categories: [
     {
       id: "technology",
@@ -55,9 +69,9 @@ export const contactPage = {
   ],
   related: [
     {
-      href: "/materials/overview",
-      label: "Materials",
-      body: "Capability language without a catalogue.",
+      href: "/business",
+      label: "Business",
+      body: "Global connections across aerospace, machinery, and partnerships.",
     },
     {
       href: "/research/overview",

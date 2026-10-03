@@ -53,7 +53,7 @@ export const aboutPages = {
     eyebrow: "[ About ] · company",
     headline: "A materials organization, not a commodity channel.",
     lede: "VSGH develops engineered material capability from recovered and resource-derived feedstocks. Recovery is the starting condition. The work is metallurgy, process development, characterization, and controlled qualification toward demanding applications.",
-    mediaLabel: "Company identity visual · placeholder",
+    mediaLabel: "Company identity visual",
     variant: "standard",
     sections: [
       {
@@ -103,7 +103,7 @@ export const aboutPages = {
     eyebrow: "[ About ] · vision",
     headline: "Materials that earn their place in demanding environments.",
     lede: "VSGH looks toward a future in which recovered and resource-derived feedstocks are routinely developed into engineered material capability — not treated as scrap, and not described with claims the evidence cannot carry.",
-    mediaLabel: "Vision visual · placeholder",
+    mediaLabel: "Vision visual",
     variant: "standard",
     sections: [
       {
@@ -154,7 +154,7 @@ export const aboutPages = {
     eyebrow: "[ About ] · mission",
     headline: "Execute the chain from feedstock to fitness.",
     lede: "The mission is practical: turn recovered and resource-derived inputs into material capability that can be characterized, reviewed, and discussed in application context — without treating slogans as engineering.",
-    mediaLabel: "Mission visual · placeholder",
+    mediaLabel: "Mission visual",
     variant: "standard",
     sections: [
       {
@@ -208,7 +208,7 @@ export const aboutPages = {
     eyebrow: "[ About ] · leadership",
     headline: "Leadership, when it is ready for the public record.",
     lede: "Approved public biographies, roles, and portraits are not available on this site yet. VSGH does not invent credentials, positions, or affiliations to fill a layout.",
-    mediaLabel: "Leadership visual · placeholder",
+    mediaLabel: "Leadership visual",
     variant: "leadership",
     sections: [
       {
@@ -217,7 +217,7 @@ export const aboutPages = {
       },
     ],
     leadershipNote:
-      "Placeholder frames only. No names, titles, or achievements are implied.",
+      "Profile details are intentionally withheld. No names, titles, or achievements are implied.",
     cta: {
       title: "Company direction lives in the public narrative.",
       body: "Vision, mission, and scientific integrity describe how VSGH intends to work until individual profiles are released.",
@@ -235,7 +235,7 @@ export const aboutPages = {
     eyebrow: "[ About ] · scientific integrity",
     headline: "Evidence before declaration.",
     lede: "Scientific integrity at VSGH is the habit of saying only what the record can carry. Engineering claims on this website stay at the level of principle. Laboratory procedures and experimental datasets are not published here.",
-    mediaLabel: "Scientific integrity visual · placeholder",
+    mediaLabel: "Scientific integrity visual",
     variant: "standard",
     sections: [
       {
@@ -296,7 +296,7 @@ export const aboutPages = {
     eyebrow: "[ About ] · quality",
     headline: "Control first. Certificates later, if authorized.",
     lede: "Quality at VSGH is a way of developing and evidencing material — not a list of standard numbers on a homepage. This page does not claim ISO, AS, EN, NADCAP, or any other certification status.",
-    mediaLabel: "Quality visual · placeholder",
+    mediaLabel: "Quality visual",
     variant: "standard",
     sections: [
       {
@@ -356,8 +356,8 @@ export const aboutPages = {
       "VSGH facility concept: materials development, characterization, metallurgy, processing, engineering, testing, and manufacturing development. No addresses, inventories, or capacities.",
     eyebrow: "[ About ] · facilities",
     headline: "Places of work, described as capability classes.",
-    lede: "VSGH develops material capability in controlled settings. This page names categories of work — not sites, equipment lists, or production quantities. Approved photography can replace the frames without changing the layout.",
-    mediaLabel: "Facilities overview visual · placeholder",
+    lede: "VSGH develops material capability in controlled settings. This page names categories of work — not sites, equipment lists, or production quantities. The imagery is illustrative and does not identify a site, equipment list, or production capacity.",
+    mediaLabel: "Facilities overview visual",
     variant: "facilities",
     sections: [
       {
@@ -370,43 +370,43 @@ export const aboutPages = {
         index: "[01]",
         title: "Materials development",
         body: "Composition, processing, and structure iterated toward a usable material state.",
-        mediaLabel: "Materials development · placeholder",
+        mediaLabel: "Materials development",
       },
       {
         index: "[02]",
         title: "Laboratory characterization",
         body: "Measurement that makes qualification possible. Methods remain unpublished.",
-        mediaLabel: "Characterization · placeholder",
+        mediaLabel: "Characterization",
       },
       {
         index: "[03]",
         title: "Metallurgy",
         body: "Structure–process–property thinking applied to recovered and refined feedstocks.",
-        mediaLabel: "Metallurgy · placeholder",
+        mediaLabel: "Metallurgy",
       },
       {
         index: "[04]",
         title: "Processing",
         body: "Conversion from purified feedstock toward a controlled material form.",
-        mediaLabel: "Processing · placeholder",
+        mediaLabel: "Processing",
       },
       {
         index: "[05]",
         title: "Engineering",
         body: "Application context and design constraints treated as part of material work.",
-        mediaLabel: "Engineering · placeholder",
+        mediaLabel: "Engineering",
       },
       {
         index: "[06]",
         title: "Testing",
         body: "Evaluation under defined questions. Results are not posted here.",
-        mediaLabel: "Testing · placeholder",
+        mediaLabel: "Testing",
       },
       {
         index: "[07]",
         title: "Manufacturing development",
         body: "Scale-up thinking that remains subordinate to material integrity and control.",
-        mediaLabel: "Manufacturing development · placeholder",
+        mediaLabel: "Manufacturing development",
       },
     ],
     cta: {

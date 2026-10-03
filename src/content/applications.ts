@@ -13,7 +13,7 @@ export const applicationsPages = {
     eyebrow: "[ Applications ] · aerospace",
     headline: "Aerospace as a fitness question, not a heritage claim.",
     lede: "Aerospace is where mass, temperature, structure, and manufacturing discipline meet. VSGH describes that meeting as a materials and qualification need. This page does not say that VSGH materials are flying or used on named programmes.",
-    mediaLabel: "Aerospace application visual · placeholder",
+    mediaLabel: "Aerospace application visual",
     sections: [
       {
         title: "Material capability to engineering requirement",
@@ -87,7 +87,7 @@ export const applicationsPages = {
     eyebrow: "[ Applications ] · defense",
     headline: "Defense relevance without operational claims.",
     lede: "Defense environments can be severe, regulated, and information-sensitive. VSGH’s public statement is limited: materials and engineering work may be relevant. This page does not describe weapon systems, named programmes, customers, or fielded use.",
-    mediaLabel: "Defense application visual · placeholder",
+    mediaLabel: "Defense application visual",
     sections: [
       {
         title: "Controlled language",
@@ -149,7 +149,7 @@ export const applicationsPages = {
     eyebrow: "[ Applications ] · space",
     headline: "Extreme environment as a materials question.",
     lede: "Space systems punish mass, temperature extremes, and unattended reliability. VSGH names those as reasons materials work is hard. It does not claim programme history, launches, or proven flight status.",
-    mediaLabel: "Space application visual · placeholder",
+    mediaLabel: "Space application visual",
     sections: [
       {
         title: "Themes, not specifications",
@@ -157,7 +157,7 @@ export const applicationsPages = {
       },
       {
         title: "Heritage is not implied",
-        body: "A placeholder image is not a satellite. A sentence about vacuum or thermal cycling is not a test report.",
+        body: "An illustrative visual is not a satellite. A sentence about vacuum or thermal cycling is not a test report.",
       },
     ],
     stages: [
@@ -216,7 +216,7 @@ export const applicationsPages = {
     eyebrow: "[ Applications ] · advanced industrial",
     headline: "High-duty industry, still a materials company.",
     lede: "Advanced industrial use is where recovered feedstock can become engineered material for severe industrial duty. VSGH does not use this page to become a generic metals merchant or a recycling brochure.",
-    mediaLabel: "Advanced industrial visual · placeholder",
+    mediaLabel: "Advanced industrial visual",
     sections: [
       {
         title: "Same chain, different context",

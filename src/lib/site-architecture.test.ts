@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { aboutPages } from "@/content/about";
 import { applicationsPages } from "@/content/applications";
 import { careersPage } from "@/content/careers";
+import { businessPage } from "@/content/business";
 import { contactPage } from "@/content/contact";
 import { insightsPage } from "@/content/insights";
 import { materialsPages } from "@/content/materials";
@@ -39,6 +40,7 @@ const WEB_081_PAGES = [
   "/research/overview",
   "/research/research-areas",
   "/research/publications",
+  "/business",
   "/sustainability",
   "/insights",
   "/careers",
@@ -81,7 +83,7 @@ function collectHrefs(value: unknown, acc: string[] = []): string[] {
 describe("WEB-081 route inventory", () => {
   it("implements exactly the approved public pages", () => {
     expect([...IMPLEMENTED_ROUTES].sort()).toEqual([...WEB_081_PAGES].sort());
-    expect(IMPLEMENTED_ROUTES).toHaveLength(29);
+    expect(IMPLEMENTED_ROUTES).toHaveLength(30);
   });
 
   it("does not treat unpublished parent indexes as published", () => {
@@ -102,6 +104,7 @@ describe("internal links", () => {
       technologyPages,
       applicationsPages,
       researchPages,
+      businessPage,
       sustainabilityPage,
       insightsPage,
       careersPage,

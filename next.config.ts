@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import { securityHeaders } from "./src/lib/security-headers";
 
 const isProduction = process.env.VERCEL_ENV === "production";
+const isDevelopment = process.env.NODE_ENV === "development";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -19,7 +20,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/:path*",
-        headers: securityHeaders(isProduction),
+        headers: securityHeaders(isProduction, isDevelopment),
       },
     ];
   },

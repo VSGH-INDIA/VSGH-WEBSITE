@@ -1,6 +1,7 @@
 import { defineField, defineType } from "sanity";
 import { PUBLIC_CONTENT_GUIDANCE } from "@/sanity/constants";
 import { lifecycleField, seoFields } from "@/sanity/schema/objects";
+import { isSafeInternalPath } from "@/lib/safe-url";
 
 const block = [
   defineField({
@@ -186,6 +187,42 @@ export const homepage = defineType({
     }),
     defineField({ name: "sustainability", type: "object", fields: [...block] }),
     defineField({ name: "company", type: "object", fields: [...block] }),
+    defineField({
+      name: "explorer",
+      type: "object",
+      fields: [
+        ...block,
+        defineField({
+          name: "stages",
+          type: "array",
+          of: [
+            {
+              type: "object",
+              fields: [
+                defineField({ name: "index", type: "string" }),
+                defineField({ name: "title", type: "string" }),
+                defineField({
+                  name: "body",
+                  type: "text",
+                  rows: 3,
+                  description: PUBLIC_CONTENT_GUIDANCE,
+                }),
+                defineField({
+                  name: "href",
+                  type: "string",
+                  validation: (rule) =>
+                    rule.custom((value) =>
+                      typeof value === "string" && isSafeInternalPath(value)
+                        ? true
+                        : "Use an internal site path beginning with a single /",
+                    ),
+                }),
+              ],
+            },
+          ],
+        }),
+      ],
+    }),
     defineField({
       name: "cta",
       type: "object",

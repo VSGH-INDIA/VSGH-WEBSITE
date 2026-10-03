@@ -11,7 +11,7 @@ export function DomainSubnav({
   currentPath: string;
 }) {
   return (
-    <nav aria-label={label} className="border-b border-border bg-surface">
+    <nav aria-label={label} className="border-b border-border bg-[#0b1119]">
       <ul
         className="mx-auto flex max-w-[var(--vsgh-content-wide)] gap-1 overflow-x-auto py-2"
         style={{ paddingInline: "var(--vsgh-gutter)" }}
@@ -24,9 +24,9 @@ export function DomainSubnav({
                 href={item.href}
                 prefetch={false}
                 className={cn(
-                  "inline-flex min-h-11 items-center px-3 py-2 text-[length:var(--vsgh-text-nav)] no-underline transition-colors duration-[var(--vsgh-duration)]",
+                  "inline-flex min-h-11 items-center border-b border-transparent px-3 py-2 font-mono text-[length:var(--vsgh-text-meta)] uppercase tracking-[.11em] no-underline transition-colors duration-[var(--vsgh-duration)]",
                   current
-                    ? "text-foreground"
+                    ? "border-[#8ec0ff] text-[#b9d9ff]"
                     : "text-muted hover:text-foreground",
                 )}
                 aria-current={current ? "page" : undefined}

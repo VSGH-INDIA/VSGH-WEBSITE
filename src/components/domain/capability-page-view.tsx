@@ -2,6 +2,7 @@ import { PageBuilder } from "@/components/cms/page-builder";
 import { DomainJsonLd } from "@/components/domain/domain-json-ld";
 import { DomainSubnav } from "@/components/domain/domain-subnav";
 import { InsightsArticleList } from "@/components/domain/insights-article-list";
+import { VacancyList } from "@/components/domain/vacancy-list";
 import { ProcessFlow } from "@/components/domain/process-flow";
 import { MediaPlaceholder } from "@/components/home/media-placeholder";
 import { ButtonLink } from "@/components/ui/button";
@@ -9,6 +10,7 @@ import { CtaBlock } from "@/components/ui/card";
 import { Hero } from "@/components/ui/hero";
 import { Container, Heading, Section, Text } from "@/components/ui/primitives";
 import type { InsightArticle } from "@/content/insight-articles";
+import type { CareerVacancy } from "@/content/careers";
 import type { CapabilityPageContent } from "@/content/types";
 import { isPublishedPath } from "@/lib/navigation";
 import { isSafeHref } from "@/lib/safe-url";
@@ -18,10 +20,12 @@ export function CapabilityPageView({
   page,
   nav = [],
   articles,
+  vacancies,
 }: {
   page: CapabilityPageContent;
   nav?: readonly { label: string; href: string }[];
   articles?: readonly InsightArticle[];
+  vacancies?: readonly CareerVacancy[];
 }) {
   return (
     <main id="main">
@@ -64,13 +68,19 @@ export function CapabilityPageView({
         <PageBuilder blocks={page.pageBuilder} />
       ) : null}
       <Section className="vsgh-reveal">
-        <Container wide className="max-w-3xl space-y-10">
-          {page.sections.map((section) => (
-            <article key={section.title} className="space-y-3">
-              <Heading as="h2" variant="h2">
+        <Container wide className="space-y-3">
+          {page.sections.map((section, index) => (
+            <article
+              key={section.title}
+              className="grid gap-5 border-t border-border py-8 last:border-b md:grid-cols-[5rem_minmax(0,.8fr)_minmax(0,1.2fr)] md:items-start md:py-12"
+            >
+              <p className="font-mono text-[length:var(--vsgh-text-meta)] text-[#9fb7cf]">
+                /{String(index + 1).padStart(2, "0")}
+              </p>
+              <Heading as="h2" variant="h2" className="max-w-md">
                 {section.title}
               </Heading>
-              <Text className="text-muted">{section.body}</Text>
+              <Text className="max-w-2xl text-muted">{section.body}</Text>
             </article>
           ))}
         </Container>
@@ -82,6 +92,16 @@ export function CapabilityPageView({
               Articles
             </h2>
             <InsightsArticleList articles={articles} />
+          </Container>
+        </Section>
+      ) : null}
+      {vacancies && vacancies.length > 0 ? (
+        <Section tone="surface" className="vsgh-reveal">
+          <Container wide className="space-y-6">
+            <h2 className="font-mono text-[length:var(--vsgh-text-label)] font-normal uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
+              Open roles
+            </h2>
+            <VacancyList vacancies={vacancies} />
           </Container>
         </Section>
       ) : null}
@@ -105,12 +125,16 @@ export function CapabilityPageView({
               {page.principles.map((item) => (
                 <li
                   key={item.title}
-                  className="grid gap-3 py-6 md:grid-cols-[5rem_minmax(0,14rem)_minmax(0,1fr)] md:items-baseline"
+                  className="group grid gap-4 py-7 transition-colors hover:bg-white/[.025] md:grid-cols-[5rem_minmax(0,14rem)_minmax(0,1fr)] md:items-baseline"
                 >
                   <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
                     {item.index}
                   </p>
-                  <Heading as="h3" variant="h3">
+                  <Heading
+                    as="h3"
+                    variant="h3"
+                    className="group-hover:text-[#b9d9ff]"
+                  >
                     {item.title}
                   </Heading>
                   <Text size="small" className="text-muted">
@@ -130,7 +154,10 @@ export function CapabilityPageView({
             </h2>
             <ol className="grid gap-px bg-border md:grid-cols-2">
               {page.statuses.map((item) => (
-                <li key={item.label} className="bg-background p-6">
+                <li
+                  key={item.label}
+                  className="bg-background p-6 transition-colors hover:bg-surface-elevated"
+                >
                   <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
                     {item.label}
                   </p>
@@ -173,17 +200,29 @@ export function CapabilityPageView({
               {page.related
                 .filter((item) => isSafeHref(item.href))
                 .map((item) => (
-                  <li key={item.href} className="py-5">
+                  <li
+                    key={item.href}
+                    className="group grid gap-3 py-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center"
+                  >
                     <Link
                       href={item.href}
                       prefetch={isPublishedPath(item.href)}
-                      className="text-foreground no-underline hover:underline"
+                      className="text-[length:var(--vsgh-text-h3)] font-medium text-foreground no-underline transition-colors group-hover:text-[#b9d9ff]"
                     >
                       {item.label}
                     </Link>
-                    <Text size="small" className="mt-2 text-muted">
+                    <Text
+                      size="small"
+                      className="mt-2 text-muted md:col-start-1"
+                    >
                       {item.body}
                     </Text>
+                    <span
+                      aria-hidden
+                      className="hidden font-mono text-lg text-muted md:block"
+                    >
+                      ↗
+                    </span>
                   </li>
                 ))}
             </ul>

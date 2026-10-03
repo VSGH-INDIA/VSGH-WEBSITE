@@ -13,7 +13,7 @@ export const technologyPages = {
     eyebrow: "[ Technology ] · resource recovery",
     headline: "Recovery is the start of an engineering sequence.",
     lede: "Resource recovery at VSGH is feedstock preparation: identifying, receiving, and concentrating value-bearing streams so that purification and metallurgy can follow. This is not a municipal recycling narrative and not a disclosure of plant design.",
-    mediaLabel: "Resource recovery visual · placeholder",
+    mediaLabel: "Resource recovery visual",
     sections: [
       {
         title: "Feedstock, not an end-product",
@@ -77,7 +77,7 @@ export const technologyPages = {
     eyebrow: "[ Technology ] · purification",
     headline: "Purity as a requirement for metallurgy, not a slogan.",
     lede: "Purification sits between recovery and alloy or process development. The public statement is the purpose: make a feedstock suitable for materials work. The public statement is not a flowsheet.",
-    mediaLabel: "Purification visual · placeholder",
+    mediaLabel: "Purification visual",
     sections: [
       {
         title: "Why it is separate from recovery",
@@ -142,7 +142,7 @@ export const technologyPages = {
     eyebrow: "[ Technology ] · alloy development",
     headline: "Study alloys. Do not publish a catalogue.",
     lede: "Alloy development is an engineering class: change composition and processing with a question in mind, then measure. Designations, recipes, and intellectual property are not listed on this site.",
-    mediaLabel: "Alloy development visual · placeholder",
+    mediaLabel: "Alloy development visual",
     sections: [
       {
         title: "Capability, not a product line",
@@ -204,7 +204,7 @@ export const technologyPages = {
     eyebrow: "[ Technology ] · advanced materials",
     headline: "Demanding service as a question, not a data sheet.",
     lede: "Advanced materials here means: develop material systems intended for severe thermal, mechanical, or environmental service. Intended is not demonstrated. Demonstrated belongs in a record that is not this website.",
-    mediaLabel: "Advanced materials visual · placeholder",
+    mediaLabel: "Advanced materials visual",
     sections: [
       {
         title: "What “advanced” is allowed to mean",
@@ -263,7 +263,7 @@ export const technologyPages = {
     eyebrow: "[ Technology ] · manufacturing",
     headline: "Scale-up thinking, not a factory tour.",
     lede: "Manufacturing development asks how a material state might be produced with integrity. This page does not list machines, sites, throughputs, or order books.",
-    mediaLabel: "Manufacturing development visual · placeholder",
+    mediaLabel: "Manufacturing development visual",
     sections: [
       {
         title: "Subordinate to material integrity",

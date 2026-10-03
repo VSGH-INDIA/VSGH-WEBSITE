@@ -6,7 +6,7 @@ import {
   Section,
   Text,
 } from "@/components/ui/primitives";
-import { homeContent } from "@/content/home";
+import type { HomeContent } from "@/content/home";
 
 const chain = [
   "Resource recovery",
@@ -16,8 +16,8 @@ const chain = [
   "Advanced application",
 ] as const;
 
-export function HomeSustainability() {
-  const { sustainability } = homeContent;
+export function HomeSustainability({ content }: { content: HomeContent }) {
+  const { sustainability } = content;
 
   return (
     <Section id="sustainability" className="vsgh-reveal">

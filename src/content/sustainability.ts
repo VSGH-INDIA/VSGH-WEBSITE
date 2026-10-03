@@ -12,7 +12,7 @@ export const sustainabilityPage = {
   eyebrow: "[ Sustainability ] · resource efficiency",
   headline: "Recovery is the input. Engineering is the value.",
   lede: "Sustainability at VSGH is not a separate green brand. It is the same materials chain: recovered resource becomes feedstock, feedstock becomes engineered material, and value is judged in application. This page publishes no carbon, energy, water, or diversion figures.",
-  mediaLabel: "Sustainability visual · placeholder",
+  mediaLabel: "Sustainability visual",
   sections: [
     {
       title: "Engineering, not environmental marketing",

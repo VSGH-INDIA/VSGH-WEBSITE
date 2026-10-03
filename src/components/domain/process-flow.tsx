@@ -17,12 +17,16 @@ export function ProcessFlow({
         {stages.map((stage, index) => (
           <li
             key={stage.title}
-            className="flex flex-col gap-3 bg-background p-5"
+            className="group flex min-h-56 flex-col gap-3 bg-background p-5 transition-colors hover:bg-surface-elevated"
           >
             <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
               {stage.index}
             </p>
-            <Heading as="h3" variant="h3">
+            <Heading
+              as="h3"
+              variant="h3"
+              className="group-hover:text-[#b9d9ff]"
+            >
               {stage.title}
             </Heading>
             <Text size="small" className="text-muted">
@@ -30,7 +34,7 @@ export function ProcessFlow({
             </Text>
             {index < stages.length - 1 ? (
               <p
-                className="mt-auto font-mono text-[length:var(--vsgh-text-meta)] text-muted"
+                className="mt-auto font-mono text-[length:var(--vsgh-text-meta)] text-[#9fb7cf]"
                 aria-hidden
               >
                 <span className="xl:hidden">↓</span>

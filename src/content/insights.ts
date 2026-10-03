@@ -18,7 +18,7 @@ export const insightsPage = {
   eyebrow: "[ Insights ] · editorial surface",
   headline: "A public record for writing that is ready to be public.",
   lede: "Insights will hold authorized articles, technical perspectives, company updates, and engineering commentary. The list is empty because nothing in that class has been approved for this site. Empty is preferable to invented posts.",
-  mediaLabel: "Insights visual · placeholder",
+  mediaLabel: "Insights visual",
   sections: [
     {
       title: "What this domain is for",
@@ -26,7 +26,7 @@ export const insightsPage = {
     },
     {
       title: "What will not appear by invention",
-      body: "No lorem ipsum, no fabricated research, no placeholder names, no false dates, no statistics invented to fill a grid.",
+      body: "No lorem ipsum, no fabricated research, no invented names, no false dates, no statistics invented to fill a grid.",
     },
   ],
   emptyState: {

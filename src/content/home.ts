@@ -1,4 +1,9 @@
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/lib/site";
+
 export const homeContent = {
+  path: "/",
+  seoTitle: SITE_TITLE,
+  description: SITE_DESCRIPTION,
   hero: {
     eyebrow: "[ V-S-G-H ] · materials technology · public overview",
     headline: "Engineered material capability for",
@@ -29,8 +34,8 @@ export const homeContent = {
   },
   transformation: {
     eyebrow: "How capability is developed",
-    title: "Resource to application is a controlled sequence.",
-    body: "The public narrative is a chain of engineering stages. Each stage is a discipline. None of the following is a disclosed process recipe.",
+    title: "A disciplined path from feedstock to application.",
+    body: "This wider sequence shows the engineering disciplines that connect resource-derived inputs to application context. It is a public overview, not a disclosed process recipe.",
     stages: [
       {
         index: "[01]",
@@ -186,8 +191,8 @@ export const homeContent = {
     body: "VSGH exists to develop materials technology — from feedstock to application — with the restraint required of aerospace-adjacent work. Company identity, leadership posture, and facilities language live on dedicated About pages.",
   },
   cta: {
-    title: "Start a technical conversation.",
-    body: "Enquiries are welcome for technology collaboration, research discussion, or business contact. A public contact form is not available on this page. Use Contact to reach VSGH.",
+    title: "Start with the right VSGH route.",
+    body: "For technology collaboration, research discussion, or business context, review the Business page and published company locations.",
   },
   explorer: {
     eyebrow: "Capability explorer",
@@ -221,3 +226,5 @@ export const homeContent = {
     ],
   },
 } as const;
+
+export type HomeContent = typeof homeContent;

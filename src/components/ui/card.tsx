@@ -10,12 +10,7 @@ export function Card({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        "rounded-[var(--vsgh-radius)] border border-border bg-surface p-6",
-        className,
-      )}
-    >
+    <div className={cn("border border-border bg-surface p-6", className)}>
       {children}
     </div>
   );
@@ -31,11 +26,15 @@ export function FeatureCard({
   children: ReactNode;
 }) {
   return (
-    <article className="vsgh-card-hover flex flex-col gap-4 border border-border bg-surface p-6 hover:border-foreground">
+    <article className="vsgh-card-hover group flex flex-col gap-4 border border-border bg-surface p-6 hover:-translate-y-1 hover:border-[#8ec0ff] hover:bg-surface-elevated">
       <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
         {index}
       </p>
-      <Heading as="h3" variant="h3">
+      <Heading
+        as="h3"
+        variant="h3"
+        className="transition-colors group-hover:text-[#b9d9ff]"
+      >
         {title}
       </Heading>
       <Text size="small" className="text-muted">
@@ -77,7 +76,11 @@ export function CtaBlock({
   actions: ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-6 border border-border bg-surface-elevated p-8 md:flex-row md:items-end md:justify-between">
+    <div className="relative isolate flex flex-col gap-8 overflow-hidden border border-border bg-[#0d1620] p-8 md:flex-row md:items-end md:justify-between md:p-12">
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_88%_12%,rgba(142,192,255,.17),transparent_27%),linear-gradient(135deg,transparent_0%,rgba(255,255,255,.025)_100%)]"
+      />
       <div className="max-w-xl space-y-3">
         <Heading as="h2" variant="h2">
           {title}
@@ -99,21 +102,18 @@ export function MediaFrame({
   children?: ReactNode;
 }) {
   return (
-    <div
+    <figure
       className={cn(
-        "relative flex aspect-[16/9] items-end overflow-hidden border border-border bg-surface-elevated p-4",
+        "group relative flex aspect-[16/9] items-end overflow-hidden border border-border bg-surface-elevated p-4",
         className,
       )}
-      role="img"
-      aria-label={label}
     >
       {children}
-      <p
+      <span className="sr-only">{label}</span>
+      <div
         aria-hidden
-        className="relative font-mono text-[length:var(--vsgh-text-meta)] text-muted"
-      >
-        {label}
-      </p>
-    </div>
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,transparent_55%,rgba(5,8,13,.45))]"
+      />
+    </figure>
   );
 }

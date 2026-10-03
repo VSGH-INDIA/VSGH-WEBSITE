@@ -13,7 +13,7 @@ export const researchPages = {
     eyebrow: "[ Research ] · overview",
     headline: "Scientific direction, labelled by how sure we are.",
     lede: "Research at VSGH exists to make materials work understandable. This domain describes scientific and engineering direction. It does not publish experimental parameters, datasets, or papers that have not been authorized for the public record.",
-    mediaLabel: "Research overview visual · placeholder",
+    mediaLabel: "Research overview visual",
     sections: [
       {
         title: "A development environment, not a results feed",
@@ -77,7 +77,7 @@ export const researchPages = {
     eyebrow: "[ Research ] · areas",
     headline: "A map of questions, not a library of answers.",
     lede: "Each area is a legitimate scientific or engineering attention. None is a claim that a paper, a dataset, or a validated process window is available here.",
-    mediaLabel: "Research areas visual · placeholder",
+    mediaLabel: "Research areas visual",
     sections: [
       {
         title: "How areas are listed",
@@ -157,7 +157,7 @@ export const researchPages = {
     eyebrow: "[ Research ] · publications",
     headline: "The public record, when there is one.",
     lede: "This page is the place for authorized public papers, technical notes, and disclosures. Today the list is empty on purpose. VSGH does not invent titles, journals, or dates to look active.",
-    mediaLabel: "Publications visual · placeholder",
+    mediaLabel: "Publications visual",
     sections: [
       {
         title: "What will appear",

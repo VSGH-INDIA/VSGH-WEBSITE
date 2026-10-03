@@ -1,4 +1,5 @@
 import { contactPage } from "@/content/contact";
+import type { CareerVacancy } from "@/content/careers";
 import type { AboutPageContent } from "@/content/about";
 import type { InsightArticle } from "@/content/insight-articles";
 import { normalizePageBuilder } from "@/content/page-builder";
@@ -7,12 +8,14 @@ import type { CapabilityPageContent } from "@/content/types";
 import {
   fetchPreviewAboutPage,
   fetchPreviewCapabilityPage,
+  fetchPreviewCareerVacancies,
   fetchPreviewContactPage,
   fetchPreviewHomepage,
   fetchPreviewInsightArticle,
   fetchPreviewInsightArticles,
   fetchPublishedAboutPage,
   fetchPublishedCapabilityPage,
+  fetchPublishedCareerVacancies,
   fetchPublishedContactPage,
   fetchPublishedHomepage,
   fetchPublishedInsightArticle,
@@ -99,6 +102,13 @@ export async function resolveInsightArticle(
     }
   }
   return fetchPublishedInsightArticle(slug);
+}
+
+export async function resolveCareerVacancies(): Promise<CareerVacancy[]> {
+  if (await isPreviewSession()) {
+    return fetchPreviewCareerVacancies();
+  }
+  return fetchPublishedCareerVacancies();
 }
 
 export async function resolveHomepage<T extends object>(

@@ -17,15 +17,19 @@ export function InsightArticleView({
     <main id="main">
       {preview ? <PreviewBanner /> : null}
       <InsightArticleJsonLd article={article} />
-      <Section className="vsgh-reveal">
-        <Container wide className="max-w-3xl space-y-6">
+      <Section className="vsgh-reveal border-b border-border bg-surface">
+        <Container wide className="max-w-4xl space-y-6 py-4">
           <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
             {article.category || "Insight"}
             {article.status === "draft" ? " · preview" : ""}
             {article.publicationDate ? ` · ${article.publicationDate}` : ""}
             {article.author ? ` · ${article.author}` : ""}
           </p>
-          <Heading as="h1" variant="h1">
+          <Heading
+            as="h1"
+            variant="display"
+            className="text-[clamp(2.7rem,6.8vw,6.5rem)] leading-[.92]"
+          >
             {article.title}
           </Heading>
           {article.summary ? (
@@ -46,15 +50,23 @@ export function InsightArticleView({
       ) : null}
       {article.body.length > 0 ? (
         <Section className="vsgh-reveal">
-          <Container wide className="max-w-3xl space-y-8">
+          <Container wide className="max-w-4xl space-y-0">
             {article.body.map((block, index) => (
-              <article key={`${article.slug}-${index}`} className="space-y-3">
-                {block.title ? (
-                  <Heading as="h2" variant="h2">
-                    {block.title}
-                  </Heading>
-                ) : null}
-                <Text className="text-muted">{block.body}</Text>
+              <article
+                key={`${article.slug}-${index}`}
+                className="grid gap-4 border-t border-border py-8 last:border-b md:grid-cols-[5rem_minmax(0,1fr)]"
+              >
+                <p className="font-mono text-[length:var(--vsgh-text-meta)] text-[#9fb7cf]">
+                  /{String(index + 1).padStart(2, "0")}
+                </p>
+                <div className="max-w-3xl space-y-3">
+                  {block.title ? (
+                    <Heading as="h2" variant="h2">
+                      {block.title}
+                    </Heading>
+                  ) : null}
+                  <Text className="text-muted">{block.body}</Text>
+                </div>
               </article>
             ))}
           </Container>

@@ -6,11 +6,11 @@ import {
   Section,
   Text,
 } from "@/components/ui/primitives";
-import { homeContent } from "@/content/home";
+import type { HomeContent } from "@/content/home";
 import { MediaPlaceholder } from "@/components/home/media-placeholder";
 
-export function HomeCompany() {
-  const { company } = homeContent;
+export function HomeCompany({ content }: { content: HomeContent }) {
+  const { company } = content;
 
   return (
     <Section id="company" tone="surface" className="vsgh-reveal">
@@ -28,7 +28,7 @@ export function HomeCompany() {
             Company
           </ButtonLink>
         </div>
-        <MediaPlaceholder label="Company / facilities visual · placeholder" />
+        <MediaPlaceholder label="VSGH facilities visual" />
       </Container>
     </Section>
   );

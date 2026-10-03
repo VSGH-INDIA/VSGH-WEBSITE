@@ -6,10 +6,10 @@ import {
   Section,
   Text,
 } from "@/components/ui/primitives";
-import { homeContent } from "@/content/home";
+import type { HomeContent } from "@/content/home";
 
-export function HomeResearch() {
-  const { research } = homeContent;
+export function HomeResearch({ content }: { content: HomeContent }) {
+  const { research } = content;
 
   return (
     <Section id="research" className="vsgh-reveal">

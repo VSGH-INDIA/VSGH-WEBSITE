@@ -1,5 +1,6 @@
 export const PRIMARY_NAV = [
   { label: "About", href: "/about/company" },
+  { label: "Business", href: "/business" },
   { label: "Materials", href: "/materials/overview" },
   { label: "Technology", href: "/technology/resource-recovery" },
   { label: "Applications", href: "/applications/aerospace" },
@@ -56,6 +57,7 @@ export const IMPLEMENTED_ROUTES = [
   ...TECHNOLOGY_NAV.map((item) => item.href),
   ...APPLICATIONS_NAV.map((item) => item.href),
   ...RESEARCH_NAV.map((item) => item.href),
+  "/business",
   "/sustainability",
   "/insights",
   "/careers",
@@ -64,6 +66,7 @@ export const IMPLEMENTED_ROUTES = [
 
 const CURRENT_DOMAINS = [
   { hrefPrefix: "/about", pathPrefix: "/about/" },
+  { hrefPrefix: "/business", pathPrefix: "/business" },
   { hrefPrefix: "/materials", pathPrefix: "/materials/" },
   { hrefPrefix: "/technology", pathPrefix: "/technology/" },
   { hrefPrefix: "/applications", pathPrefix: "/applications/" },

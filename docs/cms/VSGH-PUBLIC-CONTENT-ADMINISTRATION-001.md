@@ -77,10 +77,10 @@ Webhook (Sanity → Vercel) must send the revalidate secret. Not auto-wired with
 
 ## Environments
 
-| Env             | Dataset (typical) | Notes                                            |
-| --------------- | ----------------- | ------------------------------------------------ |
-| development     | `development`     | Local Studio + `.env.local`                      |
-| preview/staging | `staging`         | Vercel Preview; remain noindex                   |
+| Env             | Dataset (typical) | Notes                                             |
+| --------------- | ----------------- | ------------------------------------------------- |
+| development     | `development`     | Local Studio + `.env.local`                       |
+| preview/staging | `staging`         | Vercel Preview; remain noindex                    |
 | production      | `production`      | vsghindia.com; noindex until launch authorization |
 
 Do not point production at a development dataset.

@@ -50,27 +50,35 @@ function PageBuilderSection({ block }: { block: PageBuilderBlock }) {
     case "introBlock":
       return (
         <Section className="vsgh-reveal">
-          <Container wide className="max-w-3xl space-y-4">
-            {block.eyebrow ? (
-              <p className="font-mono text-[length:var(--vsgh-text-label)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
-                {block.eyebrow}
-              </p>
-            ) : null}
-            {block.title ? (
-              <Heading as="h2" variant="h2">
-                {block.title}
-              </Heading>
-            ) : null}
-            {block.body ? (
-              <Text className="text-muted">{block.body}</Text>
-            ) : null}
+          <Container
+            wide
+            className="grid gap-6 md:grid-cols-[5rem_minmax(0,1fr)] md:items-start"
+          >
+            <p className="font-mono text-[length:var(--vsgh-text-meta)] text-[#9fb7cf]">
+              /NOTE
+            </p>
+            <div className="max-w-3xl space-y-4">
+              {block.eyebrow ? (
+                <p className="font-mono text-[length:var(--vsgh-text-label)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
+                  {block.eyebrow}
+                </p>
+              ) : null}
+              {block.title ? (
+                <Heading as="h2" variant="h2">
+                  {block.title}
+                </Heading>
+              ) : null}
+              {block.body ? (
+                <Text className="text-muted">{block.body}</Text>
+              ) : null}
+            </div>
           </Container>
         </Section>
       );
     case "richTextBlock":
       return (
         <Section className="vsgh-reveal">
-          <Container wide className="max-w-3xl space-y-8">
+          <Container wide className="space-y-0">
             {block.title ? (
               <Heading as="h2" variant="h2">
                 {block.title}
@@ -79,14 +87,19 @@ function PageBuilderSection({ block }: { block: PageBuilderBlock }) {
             {block.paragraphs?.map((paragraph, index) => (
               <article
                 key={`${paragraph.title ?? "p"}-${index}`}
-                className="space-y-3"
+                className="grid gap-4 border-t border-border py-8 last:border-b md:grid-cols-[5rem_minmax(0,1fr)]"
               >
-                {paragraph.title ? (
-                  <Heading as="h3" variant="h3">
-                    {paragraph.title}
-                  </Heading>
-                ) : null}
-                <Text className="text-muted">{paragraph.body}</Text>
+                <p className="font-mono text-[length:var(--vsgh-text-meta)] text-[#9fb7cf]">
+                  /{String(index + 1).padStart(2, "0")}
+                </p>
+                <div className="max-w-3xl space-y-3">
+                  {paragraph.title ? (
+                    <Heading as="h3" variant="h3">
+                      {paragraph.title}
+                    </Heading>
+                  ) : null}
+                  <Text className="text-muted">{paragraph.body}</Text>
+                </div>
               </article>
             ))}
           </Container>
@@ -130,19 +143,31 @@ function PageBuilderSection({ block }: { block: PageBuilderBlock }) {
               {block.related
                 ?.filter((item) => isSafeHref(item.href))
                 .map((item) => (
-                  <li key={item.href} className="py-5">
+                  <li
+                    key={item.href}
+                    className="group grid gap-2 py-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-center"
+                  >
                     <Link
                       href={item.href}
                       prefetch={isPublishedPath(item.href)}
-                      className="text-foreground no-underline hover:underline"
+                      className="text-[length:var(--vsgh-text-h3)] text-foreground no-underline transition-colors group-hover:text-[#b9d9ff]"
                     >
                       {item.label}
                     </Link>
                     {item.body ? (
-                      <Text size="small" className="mt-2 text-muted">
+                      <Text
+                        size="small"
+                        className="mt-2 text-muted md:col-start-1"
+                      >
                         {item.body}
                       </Text>
                     ) : null}
+                    <span
+                      aria-hidden
+                      className="hidden font-mono text-lg text-muted md:block"
+                    >
+                      ↗
+                    </span>
                   </li>
                 ))}
             </ul>

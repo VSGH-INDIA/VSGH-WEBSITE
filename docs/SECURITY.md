@@ -15,9 +15,11 @@
 
 Unapproved analytics/tracking is prohibited (VSGH-CURSOR-003). WEB-014 and WEB-036 list analytics as a requirement/candidate but do not select a vendor. None is installed.
 
-## Known dependency findings (bootstrap)
+## Dependency posture
 
-`npm audit` on Next.js 16.2.12 currently reports high issues via `postcss` and `sharp` (transitive). They are inside the approved framework line. Do not jump to Next 16.3 without a WP03 deviation. Track and re-audit on each dependency update.
+Next.js is pinned to 16.3.8 after the former 16.2.12 line reported a critical advisory. Sanity Studio and Vision are development-only packages; the public runtime uses `@sanity/client` only. `npm audit --omit=dev --audit-level=critical` currently reports no production vulnerabilities. Re-run it for every dependency update and investigate any production dependency finding before release. Do not use a forced audit upgrade without compatibility testing.
+
+The development CSP includes `unsafe-eval` only while `NODE_ENV=development`, as required by React's debugging tooling. Production and preview CSPs do not include it.
 
 ## Internal systems
 

@@ -24,30 +24,38 @@ export function Hero({
   heading?: "display" | "hero";
 }) {
   return (
-    <div
+    <section
       className={cn(
-        "vsgh-grid-bg flex flex-col justify-center border-b border-border",
-        compact ? "min-h-0" : "min-h-[var(--vsgh-hero-min)]",
+        "relative isolate overflow-hidden border-b border-border bg-background",
+        compact ? "min-h-[min(44rem,78svh)]" : "min-h-[var(--vsgh-hero-min)]",
         align === "center" && "text-center",
       )}
     >
       <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-70 [background-image:linear-gradient(var(--vsgh-grid-line)_1px,transparent_1px),linear-gradient(90deg,var(--vsgh-grid-line)_1px,transparent_1px)] [background-size:var(--vsgh-grid-size)_var(--vsgh-grid-size)]"
+      />
+      <div
         className={cn(
-          "mx-auto grid w-full max-w-[var(--vsgh-content-wide)] items-center gap-12",
-          compact ? "py-14 md:py-16" : "py-20",
-          media ? "lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]" : "",
+          "relative mx-auto grid w-full max-w-[var(--vsgh-content-wide)] items-end gap-10",
+          compact ? "py-16 md:py-24" : "py-20",
+          media ? "lg:grid-cols-[minmax(0,1.13fr)_minmax(20rem,.87fr)]" : "",
           align === "center" && "justify-items-center",
         )}
         style={{ paddingInline: "var(--vsgh-gutter)" }}
       >
         <div
           className={cn(
-            "flex flex-col gap-8",
+            "flex flex-col gap-7",
             align === "center" && "items-center",
           )}
         >
           <Badge>{eyebrow}</Badge>
-          <Heading as="h1" variant={heading} className="max-w-5xl">
+          <Heading
+            as="h1"
+            variant={heading}
+            className="max-w-5xl text-[clamp(2.75rem,6vw,6.5rem)] leading-[.94]"
+          >
             {headline}
             {emphasis ? (
               <>
@@ -56,7 +64,9 @@ export function Hero({
               </>
             ) : null}
           </Heading>
-          <Text className="max-w-2xl text-muted">{body}</Text>
+          <Text className="max-w-2xl border-l border-border pl-5 text-muted">
+            {body}
+          </Text>
           <div
             className={cn(
               "flex flex-col gap-3 sm:flex-row sm:flex-wrap",
@@ -66,8 +76,14 @@ export function Hero({
             {actions}
           </div>
         </div>
-        {media ? <div className="min-w-0">{media}</div> : null}
+        {media ? (
+          <div className="min-w-0 lg:pb-1">
+            <div className="relative before:absolute before:-inset-3 before:border before:border-border before:content-['']">
+              {media}
+            </div>
+          </div>
+        ) : null}
       </div>
-    </div>
+    </section>
   );
 }

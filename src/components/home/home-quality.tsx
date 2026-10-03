@@ -6,10 +6,10 @@ import {
   Section,
   Text,
 } from "@/components/ui/primitives";
-import { homeContent } from "@/content/home";
+import type { HomeContent } from "@/content/home";
 
-export function HomeQuality() {
-  const { quality } = homeContent;
+export function HomeQuality({ content }: { content: HomeContent }) {
+  const { quality } = content;
 
   return (
     <Section id="quality" tone="surface" className="vsgh-reveal">

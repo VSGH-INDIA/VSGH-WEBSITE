@@ -5,11 +5,11 @@ import {
   Section,
   Text,
 } from "@/components/ui/primitives";
-import { homeContent } from "@/content/home";
+import type { HomeContent } from "@/content/home";
 import { MediaPlaceholder } from "@/components/home/media-placeholder";
 
-export function HomePositioning() {
-  const { positioning } = homeContent;
+export function HomePositioning({ content }: { content: HomeContent }) {
+  const { positioning } = content;
 
   return (
     <Section id="positioning" className="vsgh-reveal">
@@ -39,7 +39,7 @@ export function HomePositioning() {
             ))}
           </ol>
         </div>
-        <MediaPlaceholder label="Positioning visual · placeholder frame" />
+        <MediaPlaceholder label="Materials positioning visual" />
       </Container>
     </Section>
   );

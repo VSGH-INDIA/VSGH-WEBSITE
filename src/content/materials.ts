@@ -51,7 +51,7 @@ export const materialsPages = {
     eyebrow: "[ Materials ] · overview",
     headline: "Material capability, not a catalogue of grades.",
     lede: "VSGH develops materials as a programme: resource becomes feedstock, feedstock becomes material, material is characterized, and only then is application discussed. This domain does not list alloy numbers, compositions, or performance data.",
-    mediaLabel: "Materials pathway visual · placeholder",
+    mediaLabel: "Materials pathway visual",
     sections: [
       {
         title: "What this domain covers",
@@ -102,7 +102,7 @@ export const materialsPages = {
     eyebrow: "[ Materials ] · development",
     headline: "Iterate toward a usable material state.",
     lede: "Development is a controlled loop: ask a materials question, process a candidate state, measure, review, and decide. Public pages describe that loop. They do not publish windows, recipes, or target values.",
-    mediaLabel: "Material development visual · placeholder",
+    mediaLabel: "Material development visual",
     sections: [
       {
         title: "Resource-derived development",
@@ -166,7 +166,7 @@ export const materialsPages = {
     eyebrow: "[ Materials ] · metallurgy",
     headline: "Structure, process, and property as one problem.",
     lede: "Metallurgy at VSGH is the discipline that keeps feedstock history, processing, and measured behaviour connected. This page names the discipline. It does not name alloys.",
-    mediaLabel: "Metallurgy visual · placeholder",
+    mediaLabel: "Metallurgy visual",
     sections: [
       {
         title: "Why metallurgy is public as a capability",
@@ -225,7 +225,7 @@ export const materialsPages = {
     eyebrow: "[ Materials ] · processing",
     headline: "Conversion under control, not a disclosed recipe.",
     lede: "Processing is the work of moving a purified feedstock toward a form that can be characterized. Routes are described as classes of capability. Temperatures, times, atmospheres, and equipment lists are not published.",
-    mediaLabel: "Processing visual · placeholder",
+    mediaLabel: "Processing visual",
     sections: [
       {
         title: "What processing means here",
@@ -284,7 +284,7 @@ export const materialsPages = {
     eyebrow: "[ Materials ] · qualification",
     headline: "Evidence before application language.",
     lede: "Qualification is the discipline of deciding what may be said about fitness for a use class. This page describes that discipline. It does not claim that any material is qualified, certified, or approved for flight or defence use.",
-    mediaLabel: "Qualification visual · placeholder",
+    mediaLabel: "Qualification visual",
     sections: [
       {
         title: "A programme, not a badge",

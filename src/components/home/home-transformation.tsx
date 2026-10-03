@@ -5,10 +5,10 @@ import {
   Section,
   Text,
 } from "@/components/ui/primitives";
-import { homeContent } from "@/content/home";
+import type { HomeContent } from "@/content/home";
 
-export function HomeTransformation() {
-  const { transformation } = homeContent;
+export function HomeTransformation({ content }: { content: HomeContent }) {
+  const { transformation } = content;
 
   return (
     <Section id="technology" tone="surface" className="vsgh-reveal">

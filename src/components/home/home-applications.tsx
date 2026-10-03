@@ -6,11 +6,11 @@ import {
   Section,
   Text,
 } from "@/components/ui/primitives";
-import { homeContent } from "@/content/home";
+import type { HomeContent } from "@/content/home";
 import { MediaPlaceholder } from "@/components/home/media-placeholder";
 
-export function HomeApplications() {
-  const { applications } = homeContent;
+export function HomeApplications({ content }: { content: HomeContent }) {
+  const { applications } = content;
 
   return (
     <Section id="applications" tone="surface" className="vsgh-reveal">
@@ -23,7 +23,7 @@ export function HomeApplications() {
         </div>
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
           <article className="flex flex-col gap-6 border border-border p-6 md:p-10">
-            <MediaPlaceholder label="Aerospace application visual · placeholder" />
+            <MediaPlaceholder label="Aerospace application visual" />
             <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
               [01]
             </p>

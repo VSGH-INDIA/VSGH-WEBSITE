@@ -1,6 +1,12 @@
 import { SITE_DESCRIPTION, SITE_NAME, SITE_ORIGIN } from "@/lib/site";
 
-export function HomeJsonLd() {
+export function HomeJsonLd({
+  description = SITE_DESCRIPTION,
+  title = SITE_NAME,
+}: {
+  description?: string;
+  title?: string;
+}) {
   const data = {
     "@context": "https://schema.org",
     "@graph": [
@@ -8,12 +14,12 @@ export function HomeJsonLd() {
         "@type": "Organization",
         name: SITE_NAME,
         url: SITE_ORIGIN,
-        description: SITE_DESCRIPTION,
+        description,
       },
       {
         "@type": "WebPage",
-        name: SITE_NAME,
-        description: SITE_DESCRIPTION,
+        name: title,
+        description,
         url: SITE_ORIGIN,
         isPartOf: {
           "@type": "WebSite",

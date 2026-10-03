@@ -24,7 +24,7 @@ export const careersPage = {
   eyebrow: "[ Careers ] · engineering and science",
   headline: "Work on materials as a programme, not as a slogan.",
   lede: "VSGH is an aerospace and materials technology organisation. Public careers language names disciplines — metallurgy, engineering, manufacturing development, scientific research, quality, operations, and digital engineering — not invented openings.",
-  mediaLabel: "Careers visual · placeholder",
+  mediaLabel: "Careers visual",
   sections: [
     {
       title: "Why this page exists without vacancies",

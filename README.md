@@ -1,12 +1,12 @@
 # VSGH Website
 
-Private implementation repository for the VSGH external corporate website.
+Implementation repository for the VSGH external corporate website.
 
-**Stack (WEB-060 Rev B):** Next.js 16.2.x · React 19.2.x · TypeScript · Tailwind CSS · Sanity (not wired until a VSGH project exists) · Vercel · GitHub Actions.
+**Stack:** Next.js 16.3.8 · React 19.2.x · TypeScript · Tailwind CSS · Sanity · Vercel · GitHub Actions.
 
-This bootstrap satisfies VSGH-CURSOR-003. It does **not** authorize production launch or public indexing.
+The public-site application includes the V1 route set, CMS-backed content resolution with static fallbacks, preview/revalidation endpoints, public sitemap/robots generation, and an interactive homepage capability navigator. It does not invent business facts, contact channels, customer claims, or technical results.
 
-**V1 sitemap authority:** [WEB-081](docs/decisions/VSGH-WEB-081_V1_SITEMAP_AND_INFORMATION_ARCHITECTURE_DECISION_RECORD.md) (routes are **not** implemented yet).
+**V1 sitemap authority:** [WEB-081](docs/decisions/VSGH-WEB-081_V1_SITEMAP_AND_INFORMATION_ARCHITECTURE_DECISION_RECORD.md). Public indexing is enabled in source; production publication still requires the release gates below.
 
 **Design tokens in `src/styles/tokens.css`:** PROVISIONAL — NOT FINAL VSGH BRAND TOKENS.
 
@@ -30,6 +30,18 @@ npm run format:check
 npm test
 npm run build
 ```
+
+## Release gates
+
+The repository is not evidence that the public domain has been deployed. Before a production release, complete and record:
+
+- Approved photography, company/contact details, and any legal/privacy content.
+- A real public enquiry channel with recipient, spam protection, privacy/retention policy, and delivery testing.
+- Sanity administrator, MFA, editorial workflow, deployed Studio, preview credentials, and revalidation webhook.
+- Vercel/Cloudflare/domain configuration, production environment secrets, preview/UAT, and release approval.
+- E2E, accessibility, and performance verification against the actual deployment.
+
+See [launch readiness](docs/LAUNCH-READINESS.md) for the operational checklist.
 
 ## Documentation
 

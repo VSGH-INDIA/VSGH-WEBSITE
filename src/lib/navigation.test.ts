@@ -11,9 +11,10 @@ import {
 } from "./navigation";
 
 describe("WEB-081 primary navigation", () => {
-  it("uses the nine approved V1 labels", () => {
+  it("uses the approved primary labels", () => {
     expect(PRIMARY_NAV.map((item) => item.label)).toEqual([
       "About",
+      "Business",
       "Materials",
       "Technology",
       "Applications",
@@ -27,10 +28,11 @@ describe("WEB-081 primary navigation", () => {
 
   it("lands implemented domains on first published children", () => {
     expect(PRIMARY_NAV[0]?.href).toBe("/about/company");
-    expect(PRIMARY_NAV[1]?.href).toBe("/materials/overview");
-    expect(PRIMARY_NAV[2]?.href).toBe("/technology/resource-recovery");
-    expect(PRIMARY_NAV[3]?.href).toBe("/applications/aerospace");
-    expect(PRIMARY_NAV[4]?.href).toBe("/research/overview");
+    expect(PRIMARY_NAV[1]?.href).toBe("/business");
+    expect(PRIMARY_NAV[2]?.href).toBe("/materials/overview");
+    expect(PRIMARY_NAV[3]?.href).toBe("/technology/resource-recovery");
+    expect(PRIMARY_NAV[4]?.href).toBe("/applications/aerospace");
+    expect(PRIMARY_NAV[5]?.href).toBe("/research/overview");
   });
 });
 
@@ -58,6 +60,7 @@ describe("nav helpers", () => {
     expect(isPublishedPath("/applications/aerospace")).toBe(true);
     expect(isPublishedPath("/research/publications")).toBe(true);
     expect(isPublishedPath("/sustainability")).toBe(true);
+    expect(isPublishedPath("/business")).toBe(true);
     expect(isPublishedPath("/insights")).toBe(true);
     expect(isPublishedPath("/careers")).toBe(true);
     expect(isPublishedPath("/contact")).toBe(true);

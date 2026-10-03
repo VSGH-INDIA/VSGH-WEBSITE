@@ -1,10 +1,10 @@
 import { ButtonLink } from "@/components/ui/button";
 import { CtaBlock } from "@/components/ui/card";
 import { Container, Section } from "@/components/ui/primitives";
-import { homeContent } from "@/content/home";
+import type { HomeContent } from "@/content/home";
 
-export function HomeCta() {
-  const { cta } = homeContent;
+export function HomeCta({ content }: { content: HomeContent }) {
+  const { cta } = content;
 
   return (
     <Section id="contact-cta" className="vsgh-reveal">
@@ -15,10 +15,10 @@ export function HomeCta() {
           actions={
             <>
               <ButtonLink href="/contact" variant="primary">
-                Contact VSGH
+                Company locations
               </ButtonLink>
-              <ButtonLink href="/research/overview" variant="secondary">
-                Research
+              <ButtonLink href="/business" variant="secondary">
+                Business
               </ButtonLink>
             </>
           }

@@ -34,13 +34,19 @@ function StandardBody({ page }: { page: AboutPageContent }) {
   return (
     <>
       <Section className="vsgh-reveal">
-        <Container wide className="max-w-3xl space-y-10">
-          {page.sections.map((section) => (
-            <article key={section.title} className="space-y-3">
-              <Heading as="h2" variant="h2">
+        <Container wide className="space-y-3">
+          {page.sections.map((section, index) => (
+            <article
+              key={section.title}
+              className="grid gap-5 border-t border-border py-8 last:border-b md:grid-cols-[5rem_minmax(0,.8fr)_minmax(0,1.2fr)] md:items-start md:py-12"
+            >
+              <p className="font-mono text-[length:var(--vsgh-text-meta)] text-[#9fb7cf]">
+                /{String(index + 1).padStart(2, "0")}
+              </p>
+              <Heading as="h2" variant="h2" className="max-w-md">
                 {section.title}
               </Heading>
-              <Text className="text-muted">{section.body}</Text>
+              <Text className="max-w-2xl text-muted">{section.body}</Text>
             </article>
           ))}
         </Container>
@@ -55,12 +61,16 @@ function StandardBody({ page }: { page: AboutPageContent }) {
               {page.principles.map((item) => (
                 <li
                   key={item.title}
-                  className="grid gap-3 py-6 md:grid-cols-[5rem_minmax(0,14rem)_minmax(0,1fr)] md:items-baseline"
+                  className="group grid gap-3 py-7 transition-colors hover:bg-white/[.025] md:grid-cols-[5rem_minmax(0,14rem)_minmax(0,1fr)] md:items-baseline"
                 >
                   <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
                     {item.index}
                   </p>
-                  <Heading as="h3" variant="h3">
+                  <Heading
+                    as="h3"
+                    variant="h3"
+                    className="group-hover:text-[#b9d9ff]"
+                  >
                     {item.title}
                   </Heading>
                   <Text size="small" className="text-muted">
@@ -95,7 +105,7 @@ function LeadershipBody({ page }: { page: AboutPageContent }) {
           {["[01]", "[02]", "[03]"].map((index) => (
             <li key={index} className="space-y-4">
               <MediaPlaceholder
-                label={`Leadership portrait ${index} · placeholder`}
+                label={`Leadership profile ${index}`}
                 className="aspect-[3/4]"
               />
               <p className="font-mono text-[length:var(--vsgh-text-meta)] text-muted">
