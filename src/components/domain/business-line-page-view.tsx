@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BusinessConnectionExplorer } from "@/components/domain/business-connection-explorer";
+import { GlobalPartnerDirectory } from "@/components/domain/global-partner-directory";
 import { DomainJsonLd } from "@/components/domain/domain-json-ld";
 import { MediaPlaceholder } from "@/components/home/media-placeholder";
 import { ButtonLink } from "@/components/ui/button";
@@ -10,9 +11,18 @@ import {
   businessLineRelated,
   type BusinessLineContent,
 } from "@/content/business-lines";
+import { resolveGlobalProgrammePartners } from "@/content/resolve";
 
-export function BusinessLinePageView({ line }: { line: BusinessLineContent }) {
+export async function BusinessLinePageView({
+  line,
+}: {
+  line: BusinessLineContent;
+}) {
   const related = businessLineRelated(line);
+  const globalProgrammePartners =
+    line.slug === "global-programmes"
+      ? await resolveGlobalProgrammePartners()
+      : [];
 
   return (
     <main id="main">
@@ -47,6 +57,9 @@ export function BusinessLinePageView({ line }: { line: BusinessLineContent }) {
           </>
         }
       />
+      {line.slug === "global-programmes" ? (
+        <GlobalPartnerDirectory partners={globalProgrammePartners} />
+      ) : null}
       <Section className="vsgh-reveal">
         <Container wide className="space-y-8">
           <div className="max-w-3xl space-y-3">

@@ -126,6 +126,7 @@ export async function deliverContactEnquiry(
       `Work email: ${cleanHeader(enquiry.email)}`,
       `Country / region: ${cleanHeader(enquiry.country || "Not supplied")}`,
       `Enquiry type: ${cleanHeader(category)}`,
+      `Partner profile: ${cleanHeader(enquiry.partner || "Not supplied")}`,
       "",
       "Message:",
       cleanMessage(enquiry.message),

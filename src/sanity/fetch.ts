@@ -5,6 +5,10 @@ import {
   type BusinessLineContent,
 } from "@/content/business-lines";
 import type { CareerVacancy } from "@/content/careers";
+import {
+  normalizeGlobalProgrammePartners,
+  type GlobalProgrammePartner,
+} from "@/content/global-programme-partners";
 import { contactPage } from "@/content/contact";
 import {
   normalizeInsightArticle,
@@ -34,6 +38,8 @@ import {
   CONTACT_PAGE_QUERY,
   HOMEPAGE_PREVIEW_QUERY,
   HOMEPAGE_QUERY,
+  GLOBAL_PROGRAMME_PARTNERS_PREVIEW_QUERY,
+  GLOBAL_PROGRAMME_PARTNERS_QUERY,
   INSIGHT_ARTICLE_PREVIEW_QUERY,
   INSIGHT_ARTICLE_QUERY,
   INSIGHT_ARTICLES_PREVIEW_QUERY,
@@ -162,6 +168,24 @@ export function fetchPreviewBusinessLine(
     return Promise.resolve(null);
   }
   return previewQuery(BUSINESS_LINE_PREVIEW_QUERY, { slug });
+}
+
+export async function fetchPublishedGlobalProgrammePartners(): Promise<
+  GlobalProgrammePartner[]
+> {
+  const incoming = await cachedPublishedQuery<unknown>(
+    GLOBAL_PROGRAMME_PARTNERS_QUERY,
+  );
+  return normalizeGlobalProgrammePartners(incoming);
+}
+
+export async function fetchPreviewGlobalProgrammePartners(): Promise<
+  GlobalProgrammePartner[]
+> {
+  const incoming = await previewQuery<unknown>(
+    GLOBAL_PROGRAMME_PARTNERS_PREVIEW_QUERY,
+  );
+  return normalizeGlobalProgrammePartners(incoming);
 }
 
 export function fetchPublishedSiteSettings(): Promise<Partial<SiteSettings> | null> {

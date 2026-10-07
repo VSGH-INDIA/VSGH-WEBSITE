@@ -13,6 +13,7 @@ const validPayload = {
   email: "contact@example.com",
   country: "India",
   enquiryType: ENQUIRY_TYPES[0],
+  partner: "",
   message: "We would like to discuss an approved business opportunity.",
   consent: true,
   website: "",
@@ -40,6 +41,21 @@ describe("contact enquiry validation", () => {
     expect(
       contactEnquirySchema.safeParse({ ...validPayload, consent: false })
         .success,
+    ).toBe(false);
+  });
+
+  it("accepts an optional partner context only when it is a safe slug", () => {
+    expect(
+      contactEnquirySchema.safeParse({
+        ...validPayload,
+        partner: "example-industries",
+      }).success,
+    ).toBe(true);
+    expect(
+      contactEnquirySchema.safeParse({
+        ...validPayload,
+        partner: "example industries",
+      }).success,
     ).toBe(false);
   });
 

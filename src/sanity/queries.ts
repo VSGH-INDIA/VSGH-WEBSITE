@@ -138,6 +138,18 @@ const BUSINESS_LINE_PROJECTION = `{
   }
 }`;
 
+const PARTNER_COMPANY_PROJECTION = `{
+  "id": _id,
+  "slug": slug.current,
+  companyName,
+  overview,
+  logo${PUBLIC_MEDIA_PROJECTION},
+  services,
+  contact{ name, role, email, phone },
+  locations[]{ label, address },
+  website
+}`;
+
 const SITE_SETTINGS_PROJECTION = `{
   companyName,
   shortName,
@@ -160,6 +172,8 @@ export const BUSINESS_PAGE_QUERY = `*[_type == "businessPage" && _id == "busines
 export const BUSINESS_PAGE_PREVIEW_QUERY = `*[_type == "businessPage" && _id == "businessPage" && lifecycle != "archived"][0]${BUSINESS_PAGE_PROJECTION}`;
 export const BUSINESS_LINE_QUERY = `*[_type == "businessLine" && slug == $slug && lifecycle == "published"][0]${BUSINESS_LINE_PROJECTION}`;
 export const BUSINESS_LINE_PREVIEW_QUERY = `*[_type == "businessLine" && slug == $slug && lifecycle != "archived"][0]${BUSINESS_LINE_PROJECTION}`;
+export const GLOBAL_PROGRAMME_PARTNERS_QUERY = `*[_type == "partnerCompany" && lifecycle == "published" && displayOnGlobalProgrammes == true] | order(globalProgrammesOrder asc, companyName asc)${PARTNER_COMPANY_PROJECTION}`;
+export const GLOBAL_PROGRAMME_PARTNERS_PREVIEW_QUERY = `*[_type == "partnerCompany" && lifecycle != "archived" && displayOnGlobalProgrammes == true] | order(globalProgrammesOrder asc, companyName asc)${PARTNER_COMPANY_PROJECTION}`;
 export const SITE_SETTINGS_QUERY = `*[_type == "siteSettings" && _id == "siteSettings" && lifecycle == "published"][0]${SITE_SETTINGS_PROJECTION}`;
 
 export const CONTACT_PAGE_QUERY = `*[_type == "contactPage" && _id == "contactPage" && lifecycle == "published"][0]${CONTACT_PROJECTION}`;

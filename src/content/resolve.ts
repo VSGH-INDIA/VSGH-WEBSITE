@@ -19,6 +19,7 @@ import {
   fetchPreviewCapabilityPage,
   fetchPreviewCareerVacancies,
   fetchPreviewContactPage,
+  fetchPreviewGlobalProgrammePartners,
   fetchPreviewHomepage,
   fetchPreviewInsightArticle,
   fetchPreviewInsightArticles,
@@ -28,11 +29,13 @@ import {
   fetchPublishedCapabilityPage,
   fetchPublishedCareerVacancies,
   fetchPublishedContactPage,
+  fetchPublishedGlobalProgrammePartners,
   fetchPublishedHomepage,
   fetchPublishedInsightArticle,
   fetchPublishedInsightArticles,
   fetchPublishedSiteSettings,
 } from "@/sanity/fetch";
+import type { GlobalProgrammePartner } from "@/content/global-programme-partners";
 import { isPreviewSession } from "@/sanity/preview-session";
 
 function withPageBuilder<T extends object>(
@@ -131,6 +134,15 @@ export async function resolveBusinessLine(
             incoming.relatedSlugs.every(isBusinessLineSlug))),
       ),
   );
+}
+
+export async function resolveGlobalProgrammePartners(): Promise<
+  GlobalProgrammePartner[]
+> {
+  if (await isPreviewSession()) {
+    return fetchPreviewGlobalProgrammePartners();
+  }
+  return fetchPublishedGlobalProgrammePartners();
 }
 
 export async function resolveSiteSettings(): Promise<SiteSettings> {

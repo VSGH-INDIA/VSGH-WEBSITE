@@ -39,6 +39,12 @@ function initialEnquiryType(): EnquiryType {
   return isEnquiryType(enquiry) ? enquiry : ENQUIRY_TYPES[0];
 }
 
+function initialPartner(): string {
+  if (typeof window === "undefined") return "";
+  const partner = new URLSearchParams(window.location.search).get("partner");
+  return partner && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(partner) ? partner : "";
+}
+
 const fieldClass =
   "min-h-12 border border-border bg-surface px-3 text-foreground outline-none focus:border-[#8ec0ff]";
 
@@ -50,6 +56,10 @@ function serverEnquiryType(): EnquiryType {
   return ENQUIRY_TYPES[0];
 }
 
+function serverPartner(): string {
+  return "";
+}
+
 export function ContactEnquiryForm() {
   const startedAt = useRef<number | null>(null);
   const turnstileContainer = useRef<HTMLDivElement | null>(null);
@@ -59,6 +69,11 @@ export function ContactEnquiryForm() {
     subscribeToLocation,
     initialEnquiryType,
     serverEnquiryType,
+  );
+  const partner = useSyncExternalStore(
+    subscribeToLocation,
+    initialPartner,
+    serverPartner,
   );
   const [selectedEnquiryType, setSelectedEnquiryType] =
     useState<EnquiryType | null>(null);
@@ -107,6 +122,7 @@ export function ContactEnquiryForm() {
       email: values.get("email"),
       country: values.get("country"),
       enquiryType,
+      partner,
       message: values.get("message"),
       consent: values.get("consent") === "on",
       website: values.get("website"),
@@ -165,6 +181,12 @@ export function ContactEnquiryForm() {
           data, drawings, export-controlled information, or personal data beyond
           what is needed for this enquiry.
         </Text>
+        {partner ? (
+          <Text size="small" className="text-[#9fb7cf]">
+            This enquiry includes public context from a Global Programmes
+            partner profile.
+          </Text>
+        ) : null}
       </div>
       <form
         className="mt-8 grid gap-5"

@@ -20,6 +20,17 @@ The Studio validation is a guardrail, not a replacement for project permissions.
 
 The public platform uses fixed singleton IDs for Home, Business, Contact and Site settings, plus exactly three fixed Business-line routes. Do not create duplicate singleton documents. A published CMS document is used only when required fields are complete; otherwise the website retains its typed, approved fallback instead of rendering a broken page.
 
+### Global Programmes partner directory
+
+Use **Website pages → Partner companies** to manage cards for `/business/global-programmes`. A company is displayed only when all of the following are true:
+
+1. Its lifecycle is **Published**.
+2. **Display on Global Programmes** is enabled.
+3. Its logo is Public and Approved, with meaningful alternative text.
+4. The public profile contains its company name, overview, services, official HTTPS website, public contact, and at least one public address.
+
+Use only company information, logos, contacts, and services that the company has approved for public publication. Set **Global Programmes display order** to arrange cards; lower numbers appear first. The profile opens in a public modal, so avoid confidential programme details, non-public personal data, customer names, export-control information, or unverified claims.
+
 Media is embedded only after it is marked **Public**, **Approved**, and has meaningful alternative text (or is explicitly decorative). The Studio is not an asset archive: do not upload drawings, models, source files, controlled data, unpublished research, or personal information.
 
 ## Draft preview / Presentation Tool

@@ -7,6 +7,7 @@ import {
   CAPABILITY_PAGE_QUERY,
   CAREER_VACANCIES_QUERY,
   INSIGHT_ARTICLES_QUERY,
+  GLOBAL_PROGRAMME_PARTNERS_QUERY,
   SITE_SETTINGS_QUERY,
 } from "./queries";
 import { isRevalidatablePath, secretsEqual } from "./revalidate";
@@ -40,6 +41,7 @@ describe("Sanity public CMS foundation", () => {
       "homepage",
       "businessPage",
       "businessLine",
+      "partnerCompany",
       "aboutPage",
       "capabilityPage",
       "contactPage",
@@ -61,6 +63,12 @@ describe("Sanity public CMS foundation", () => {
     expect(CAPABILITY_PAGE_QUERY).toContain('lifecycle == "published"');
     expect(BUSINESS_PAGE_QUERY).toContain('lifecycle == "published"');
     expect(BUSINESS_LINE_QUERY).toContain('lifecycle == "published"');
+    expect(GLOBAL_PROGRAMME_PARTNERS_QUERY).toContain(
+      'lifecycle == "published"',
+    );
+    expect(GLOBAL_PROGRAMME_PARTNERS_QUERY).toContain(
+      "displayOnGlobalProgrammes == true",
+    );
     expect(SITE_SETTINGS_QUERY).toContain('lifecycle == "published"');
     expect(INSIGHT_ARTICLES_QUERY).toContain('lifecycle == "published"');
     expect(CAREER_VACANCIES_QUERY).toContain('lifecycle == "published"');

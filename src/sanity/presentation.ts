@@ -47,6 +47,14 @@ export const presentationLocations = {
             tone: "caution",
           },
   }),
+  partnerCompany: defineLocations({
+    select: { title: "companyName" },
+    resolve: (document) =>
+      location(
+        document?.title || "Partner company",
+        "/business/global-programmes",
+      ),
+  }),
   contactPage: defineLocations({
     select: { title: "headline" },
     resolve: () => location("Contact", "/contact"),
