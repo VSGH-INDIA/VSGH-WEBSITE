@@ -42,6 +42,14 @@ describe("global programme partner normalization", () => {
     ).toEqual([]);
   });
 
+  it("allows a profile to use its public email before a named contact is approved", () => {
+    expect(
+      normalizeGlobalProgrammePartners([
+        { ...partner, contact: { email: "contact@example.com" } },
+      ]),
+    ).toMatchObject([{ contact: { email: "contact@example.com" } }]);
+  });
+
   it("rejects non-public logos and unsafe external links", () => {
     expect(
       normalizeGlobalProgrammePartners([

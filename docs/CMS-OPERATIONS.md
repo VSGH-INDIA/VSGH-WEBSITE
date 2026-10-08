@@ -31,6 +31,8 @@ Use **Website pages → Partner companies** to manage cards for `/business/globa
 
 Use only company information, logos, contacts, and services that the company has approved for public publication. Set **Global Programmes display order** to arrange cards; lower numbers appear first. The profile opens in a public modal, so avoid confidential programme details, non-public personal data, customer names, export-control information, or unverified claims.
 
+A public email address is required. A named contact and telephone number are optional and may be added only after the individual and company approve their public display.
+
 Media is embedded only after it is marked **Public**, **Approved**, and has meaningful alternative text (or is explicitly decorative). The Studio is not an asset archive: do not upload drawings, models, source files, controlled data, unpublished research, or personal information.
 
 ## Draft preview / Presentation Tool

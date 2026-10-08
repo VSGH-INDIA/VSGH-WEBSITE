@@ -18,6 +18,7 @@ import {
 import { isInsightArticlePath } from "@/lib/sitemap-entries";
 import type { CapabilityPageContent } from "@/content/types";
 import {
+  getPublishedServerSanityClient,
   getPreviewSanityClient,
   getPublishedSanityClient,
 } from "@/sanity/client";
@@ -71,7 +72,7 @@ async function cachedPublishedQuery<T>(
   if (!isSanityConfigured()) {
     return null;
   }
-  const client = getPublishedSanityClient();
+  const client = getPublishedServerSanityClient() ?? getPublishedSanityClient();
   if (!client) {
     return null;
   }

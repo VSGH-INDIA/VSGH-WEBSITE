@@ -72,7 +72,9 @@ export const partnerCompany = defineType({
           name: "name",
           title: "Contact name",
           type: "string",
-          validation: (rule) => rule.required().max(120),
+          description:
+            "Add only after the named person has approved public display. A public email address is required in the meantime.",
+          validation: (rule) => rule.max(120),
         }),
         defineField({
           name: "role",

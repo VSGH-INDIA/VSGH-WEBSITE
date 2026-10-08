@@ -24,6 +24,7 @@
     "studio": "sanity dev --port 3333",
     "studio:build": "sanity build --output-path .sanity-build",
     "cms:seed": "tsx scripts/sanity/seed-public-content.ts",
+    "cms:seed:kcnc": "sanity exec scripts/sanity/seed-kcnc-partner.ts --with-user-token --",
     "sbom": "npm sbom --sbom-format cyclonedx --sbom-type application"
   },
   "dependencies": {

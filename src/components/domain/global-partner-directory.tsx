@@ -171,7 +171,7 @@ export function GlobalPartnerDirectory({
                     Public contact
                   </p>
                   <address className="mt-4 not-italic text-sm leading-6 text-foreground">
-                    <p>{selected.contact.name}</p>
+                    <p>{selected.contact.name ?? "Business enquiries"}</p>
                     {selected.contact.role ? (
                       <p className="text-muted">{selected.contact.role}</p>
                     ) : null}

@@ -47,6 +47,35 @@ test("Business cards and CTA preserve the three approved landing-page routes", a
   );
 });
 
+test("Global Programmes opens the approved KCNC company profile in a modal", async ({
+  page,
+}) => {
+  await page.goto("/business/global-programmes", { waitUntil: "networkidle" });
+
+  const profileTrigger = page.getByRole("button", {
+    name: "View Karnataka CNC Tech Pvt. Ltd. profile",
+  });
+  await expect(profileTrigger).toBeVisible();
+  await profileTrigger.click();
+
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+  await expect(
+    dialog.getByRole("heading", { name: "Karnataka CNC Tech Pvt. Ltd." }),
+  ).toBeVisible();
+  await expect(
+    dialog.getByRole("link", { name: "info@kcnctech.com" }),
+  ).toHaveAttribute("href", "mailto:info@kcnctech.com");
+  await expect(
+    dialog.getByRole("link", { name: "Visit official website ↗" }),
+  ).toHaveAttribute("href", "https://www.kcnctech.in/");
+
+  await dialog
+    .getByRole("button", { name: "Close Karnataka CNC Tech Pvt. Ltd. profile" })
+    .click();
+  await expect(dialog).toBeHidden();
+});
+
 test("unmatched routes return a branded non-indexable 404 experience", async ({
   page,
 }) => {

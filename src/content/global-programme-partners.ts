@@ -8,7 +8,7 @@ export type GlobalProgrammePartner = {
   logo: MediaAsset;
   services: string[];
   contact: {
-    name: string;
+    name?: string;
     role?: string;
     email: string;
     phone?: string;
@@ -105,7 +105,6 @@ export function normalizeGlobalProgrammePartner(
     !services.length ||
     !locations.length ||
     !website ||
-    !contactName ||
     !EMAIL.test(email) ||
     (phone && !PHONE.test(phone))
   ) {
@@ -120,7 +119,7 @@ export function normalizeGlobalProgrammePartner(
     logo,
     services,
     contact: {
-      name: contactName,
+      ...(contactName ? { name: contactName } : {}),
       ...(contactRole ? { role: contactRole } : {}),
       email,
       ...(phone ? { phone } : {}),
