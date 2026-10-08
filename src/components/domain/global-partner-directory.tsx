@@ -63,16 +63,17 @@ export function GlobalPartnerDirectory({
           </Text>
         </div>
 
-        <ul className="grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {partners.map((partner) => (
-            <li key={partner.id} className="bg-background">
+            <li key={partner.id}>
               <button
                 type="button"
-                className="group flex min-h-64 w-full flex-col justify-between p-6 text-left outline-none transition-colors hover:bg-surface-elevated focus-visible:bg-surface-elevated focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#8ec0ff] sm:p-8"
+                className="group relative flex min-h-72 w-full flex-col justify-between overflow-hidden border border-border bg-background p-6 text-left outline-none transition-[border-color,background-color,transform] duration-[var(--vsgh-duration)] hover:-translate-y-0.5 hover:border-[#8ec0ff] hover:bg-surface-elevated focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#8ec0ff] sm:p-8"
                 aria-haspopup="dialog"
                 aria-label={`View ${partner.companyName} profile`}
                 onClick={() => openProfile(partner)}
               >
+                <span className="absolute inset-x-0 top-0 h-px bg-[#8ec0ff] opacity-0 transition-opacity duration-[var(--vsgh-duration)] group-hover:opacity-100" />
                 <span className="relative block h-20 w-full max-w-48">
                   <Image
                     fill
@@ -99,7 +100,7 @@ export function GlobalPartnerDirectory({
       <dialog
         ref={dialogRef}
         aria-labelledby="partner-profile-title"
-        className="m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-3xl border border-border bg-background p-0 text-foreground shadow-2xl backdrop:bg-black/80"
+        className="m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-4xl overflow-hidden border border-border bg-background p-0 text-foreground shadow-2xl backdrop:bg-black/80"
         onCancel={(event) => {
           event.preventDefault();
           closeProfile();
@@ -110,128 +111,132 @@ export function GlobalPartnerDirectory({
         }}
       >
         {selected ? (
-          <article className="max-h-[calc(100dvh-2rem)] overflow-y-auto p-6 sm:p-8 lg:p-10">
-            <div className="flex items-start justify-between gap-6 border-b border-border pb-6">
-              <div className="relative h-16 w-44 shrink-0 sm:h-20 sm:w-52">
-                <Image
-                  fill
-                  src={selected.logo.src}
-                  alt={selected.logo.decorative ? "" : selected.logo.altText}
-                  sizes="208px"
-                  className="object-contain object-left"
-                />
-              </div>
-              <button
-                type="button"
-                className="grid size-10 shrink-0 place-items-center border border-border text-xl leading-none outline-none transition-colors hover:border-foreground focus-visible:ring-2 focus-visible:ring-[#8ec0ff]"
-                aria-label={`Close ${selected.companyName} profile`}
-                onClick={closeProfile}
-              >
-                ×
-              </button>
-            </div>
-
-            <div className="mt-8 space-y-8">
-              <div className="max-w-2xl space-y-3">
-                <p className="font-mono text-[length:var(--vsgh-text-label)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
-                  Partner profile
-                </p>
-                <Heading as="h2" variant="h2" id="partner-profile-title">
-                  {selected.companyName}
-                </Heading>
-                <Text className="whitespace-pre-line text-muted">
-                  {selected.overview}
-                </Text>
-              </div>
-
-              <div className="grid gap-8 border-y border-border py-7 md:grid-cols-2">
-                <section aria-labelledby="partner-services-heading">
-                  <p
-                    id="partner-services-heading"
-                    className="font-mono text-[length:var(--vsgh-text-meta)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted"
-                  >
-                    Public services
-                  </p>
-                  <ul className="mt-4 space-y-2">
-                    {selected.services.map((service) => (
-                      <li
-                        key={service}
-                        className="text-sm leading-6 text-foreground"
-                      >
-                        {service}
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-                <section aria-labelledby="partner-contact-heading">
-                  <p
-                    id="partner-contact-heading"
-                    className="font-mono text-[length:var(--vsgh-text-meta)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted"
-                  >
-                    Public contact
-                  </p>
-                  <address className="mt-4 not-italic text-sm leading-6 text-foreground">
-                    <p>{selected.contact.name ?? "Business enquiries"}</p>
-                    {selected.contact.role ? (
-                      <p className="text-muted">{selected.contact.role}</p>
-                    ) : null}
-                    <a
-                      className="mt-3 block underline underline-offset-4 hover:text-accent-strong"
-                      href={`mailto:${selected.contact.email}`}
-                    >
-                      {selected.contact.email}
-                    </a>
-                    {selected.contact.phone ? (
-                      <a
-                        className="block underline underline-offset-4 hover:text-accent-strong"
-                        href={`tel:${selected.contact.phone.replace(/[^+\d]/g, "")}`}
-                      >
-                        {selected.contact.phone}
-                      </a>
-                    ) : null}
-                  </address>
-                </section>
-              </div>
-
-              <section aria-labelledby="partner-locations-heading">
-                <p
-                  id="partner-locations-heading"
-                  className="font-mono text-[length:var(--vsgh-text-meta)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted"
-                >
-                  Public locations
-                </p>
-                <div className="mt-4 grid gap-5 sm:grid-cols-2">
-                  {selected.locations.map((location) => (
-                    <address
-                      key={`${location.label}-${location.address}`}
-                      className="border-l border-border pl-4 text-sm leading-6 not-italic text-muted"
-                    >
-                      <p className="font-medium text-foreground">
-                        {location.label}
-                      </p>
-                      <p className="mt-1 whitespace-pre-line">
-                        {location.address}
-                      </p>
-                    </address>
-                  ))}
+          <article className="max-h-[calc(100dvh-2rem)] overflow-y-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="p-6 sm:p-8 lg:p-10">
+              <div className="flex items-start justify-between gap-6 border-b border-border pb-5 sm:pb-6">
+                <div className="relative h-14 w-36 shrink-0 sm:h-16 sm:w-44">
+                  <Image
+                    fill
+                    src={selected.logo.src}
+                    alt={selected.logo.decorative ? "" : selected.logo.altText}
+                    sizes="208px"
+                    className="object-contain object-left"
+                  />
                 </div>
-              </section>
+                <button
+                  type="button"
+                  className="grid size-10 shrink-0 place-items-center border border-border text-xl leading-none outline-none transition-colors hover:border-foreground focus-visible:ring-2 focus-visible:ring-[#8ec0ff]"
+                  aria-label={`Close ${selected.companyName} profile`}
+                  onClick={closeProfile}
+                >
+                  ×
+                </button>
+              </div>
 
-              <div className="flex flex-wrap gap-3 border-t border-border pt-7">
-                <ButtonLink
-                  href={partnerEnquiryHref(selected)}
-                  variant="primary"
-                >
-                  Discuss through VSGH
-                </ButtonLink>
-                <a
-                  href={selected.website}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex min-h-[var(--vsgh-control)] items-center justify-center border border-border px-5 py-2.5 text-[length:var(--vsgh-text-nav)] font-medium transition-colors hover:border-foreground"
-                >
-                  Visit official website ↗
-                </a>
+              <div className="mt-7">
+                <div className="max-w-2xl space-y-3">
+                  <p className="font-mono text-[length:var(--vsgh-text-label)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted">
+                    Partner profile
+                  </p>
+                  <Heading as="h2" variant="h2" id="partner-profile-title">
+                    {selected.companyName}
+                  </Heading>
+                  <Text className="whitespace-pre-line text-muted">
+                    {selected.overview}
+                  </Text>
+                </div>
+
+                <div className="mt-7 grid gap-8 border-t border-border pt-7 lg:grid-cols-[minmax(0,1.2fr)_minmax(16rem,0.8fr)]">
+                  <section aria-labelledby="partner-services-heading">
+                    <p
+                      id="partner-services-heading"
+                      className="font-mono text-[length:var(--vsgh-text-meta)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted"
+                    >
+                      Public services
+                    </p>
+                    <ul className="mt-4 grid gap-x-6 gap-y-2 sm:grid-cols-2">
+                      {selected.services.map((service) => (
+                        <li
+                          key={service}
+                          className="text-sm leading-6 text-foreground"
+                        >
+                          {service}
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                  <div className="space-y-7">
+                    <section aria-labelledby="partner-contact-heading">
+                      <p
+                        id="partner-contact-heading"
+                        className="font-mono text-[length:var(--vsgh-text-meta)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted"
+                      >
+                        Public contact
+                      </p>
+                      <address className="mt-4 not-italic text-sm leading-6 text-foreground">
+                        <p>{selected.contact.name ?? "Business enquiries"}</p>
+                        {selected.contact.role ? (
+                          <p className="text-muted">{selected.contact.role}</p>
+                        ) : null}
+                        <a
+                          className="mt-3 block underline underline-offset-4 hover:text-accent-strong"
+                          href={`mailto:${selected.contact.email}`}
+                        >
+                          {selected.contact.email}
+                        </a>
+                        {selected.contact.phone ? (
+                          <a
+                            className="block underline underline-offset-4 hover:text-accent-strong"
+                            href={`tel:${selected.contact.phone.replace(/[^+\d]/g, "")}`}
+                          >
+                            {selected.contact.phone}
+                          </a>
+                        ) : null}
+                      </address>
+                    </section>
+
+                    <section aria-labelledby="partner-locations-heading">
+                      <p
+                        id="partner-locations-heading"
+                        className="font-mono text-[length:var(--vsgh-text-meta)] uppercase tracking-[var(--vsgh-tracking-label)] text-muted"
+                      >
+                        Public locations
+                      </p>
+                      <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                        {selected.locations.map((location) => (
+                          <address
+                            key={`${location.label}-${location.address}`}
+                            className="border-l border-border pl-4 text-sm leading-6 not-italic text-muted"
+                          >
+                            <p className="font-medium text-foreground">
+                              {location.label}
+                            </p>
+                            <p className="mt-1 whitespace-pre-line">
+                              {location.address}
+                            </p>
+                          </address>
+                        ))}
+                      </div>
+                    </section>
+                  </div>
+                </div>
+
+                <div className="mt-7 flex flex-wrap gap-3 border-t border-border pt-6">
+                  <ButtonLink
+                    href={partnerEnquiryHref(selected)}
+                    variant="primary"
+                  >
+                    Discuss through VSGH
+                  </ButtonLink>
+                  <a
+                    href={selected.website}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex min-h-[var(--vsgh-control)] items-center justify-center border border-border px-5 py-2.5 text-[length:var(--vsgh-text-nav)] font-medium transition-colors hover:border-foreground"
+                  >
+                    Visit official website ↗
+                  </a>
+                </div>
               </div>
             </div>
           </article>
